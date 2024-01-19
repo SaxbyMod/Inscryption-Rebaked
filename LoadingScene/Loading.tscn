@@ -4,8 +4,8 @@
 [ext_resource path="res://LoadingScene/LoadingHandler.cs" type="Script" id=2]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource( 2 )
 
 [node name="LoadingScreen" type="Sprite" parent="."]
 position = Vector2( 512, 300 )
 texture = ExtResource( 1 )
-script = ExtResource( 2 )

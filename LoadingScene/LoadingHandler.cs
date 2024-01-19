@@ -1,22 +1,13 @@
+using System;
 using Godot;
 
-namespace LoadingScene {
-public class LoadingHandler : Node
+public class LoadingHandler : Node2D // Only godot node can be added to the tree so we have to extend one
 {
-	public override void _Process(float delta)
-	{
-		if (Input.IsActionJustPressed("ui_accept") || Input.IsKeyPressed((int)KeyList.Enter))
-		{
-			GetTree().ChangeScene("res://MainMenu/MainMenu.tscn");
-		}
-	}
-
 	public override void _Input(InputEvent inputEvent)
 	{
-		if (inputEvent is InputEventMouseButton)
+		if (inputEvent.IsActionPressed("LoadingSceneKeysPushed"))
 		{
-			GetTree().ChangeScene("res://MainMenu/MainMenu.tscn"); 
+			GetTree().ChangeScene("res://Main Menu/MainMenu.tscn");
 		}
 	}
-}
 }
