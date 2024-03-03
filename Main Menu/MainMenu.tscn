@@ -1,14 +1,16 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Assets/MainMenuScreen.png" type="Texture" id=1]
 [ext_resource path="res://GenScripts/ButtonSliding.cs" type="Script" id=2]
 [ext_resource path="res://Assets/MainMenuButtons.png" type="Texture" id=3]
+[ext_resource path="res://GenScripts/ButtonLogic.cs" type="Script" id=4]
 
 [node name="MainMenu" type="Node2D"]
 
 [node name="MainMenuScreen" type="Sprite" parent="."]
 position = Vector2( 512, 300 )
 texture = ExtResource( 1 )
+script = ExtResource( 4 )
 
 [node name="New_Game" type="Sprite" parent="."]
 position = Vector2( -259, 356 )
