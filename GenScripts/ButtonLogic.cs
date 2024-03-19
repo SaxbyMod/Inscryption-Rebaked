@@ -1,18 +1,28 @@
-using Godot;
 using System;
+using Godot;
 
-public class ButtonLogic : Node
+// If Clicked react by bobbing up and down
+
+public class LoadingHandler : Node2D // Only godot node can be added to the tree so we have to extend one
 {
-public override void _Ready()
-{
-	var button = new Button();
-	button.Text = "Click me";
-	if button.Pressed
-	AddChild(button);
+	public override void _Input(InputEvent inputEvent)
+	{
+		if (inputEvent.IsActionPressed("IAmPressed"))
+		{
+			CurrentX = Sprite.X
+			CurrentY = Sprite.Y
+			Sprite.MovePosition(currentX, +5)
+			Sprite.MovePosition(currentX, +5)
+			Sprite.MovePosition(currentX, +5)
+			Sprite.MovePosition(currentX, -5)
+			Sprite.MovePosition(currentX, -5)
+			Sprite.MovePosition(currentX, -5)
+		}
+	}
 }
 
-private void ButtonPressed()
-{
-	GD.Print("Hello world!");
-}
-}
+//If placed in box react
+
+// If unclicked react
+
+// Change Texture depending on save data
