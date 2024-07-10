@@ -1,9 +1,11 @@
 extends Node
 
-var selectedCard : Node2D
+var selectedCard : Card
 var currentlyHovered : Node2D
 
 var descriptor : Node2D
+
+var turnCounter = 0
 
 func _ready():
 	descriptor = get_tree().get_nodes_in_group("descriptor")[0]
@@ -24,3 +26,12 @@ func _process(delta):
 			if currentlyHovered.is_in_group("slot") and selectedCard != null:
 				selectedCard.parentSlot = currentlyHovered
 				selectedCard = null
+	
+	if Input.is_action_just_pressed("Spacebar"):
+		turnCounter += 1
+		print("Turn ", turnCounter)
+		var cards = get_tree().get_nodes_in_group("card")
+		
+		for n in len(cards):
+			var cur : Card = cards[n]
+			cur.tick_turn()

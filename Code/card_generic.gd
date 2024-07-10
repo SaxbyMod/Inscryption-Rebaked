@@ -1,5 +1,9 @@
 extends Node2D
 
+class_name Card
+
+signal card_ticked
+
 @export var cardGfx : Texture2D
 @export var cardName : String = "Card"
 @export var cardDesc: String = "A Dummy Card with no real use"
@@ -8,8 +12,14 @@ var mouseHover = false
 
 var originalSpritePosition : Vector2
 
-var parentSlot : Node2D
-var prevParentSlot : Node2D
+var parentSlot : Slot
+var prevParentSlot : Slot
+var slotted : bool = false
+
+var pickupAnim = 0
+# This is a very shitty solution and should be redone with proper animations
+var attackAnim = 0
+var attackTimer : float = 0
 
 func _ready():
 	$CardGfx.texture = cardGfx
@@ -30,16 +40,25 @@ func _process(delta):
 		$CardGfx.scale.y = lerp($CardGfx.scale.y, 1.0, 0.1)
 	
 	if Player.selectedCard == self:
-		$CardGfx.position.y = lerp($CardGfx.position.y, originalSpritePosition.y - 10, 0.1)
+		pickupAnim = -10
 	else:
-		$CardGfx.position.y = lerp($CardGfx.position.y, originalSpritePosition.y, 0.1)
+		pickupAnim = 0
 	
 	# If the card has no slot then it goes to it, also happens when its slot changes
 	if parentSlot != null:
 		parentSlot.occupied = true
-		position.x = lerp(position.x, parentSlot.position.x, 0.1)
-		position.y = lerp(position.y, parentSlot.position.y, 0.1)
+		position.x = lerp(position.x, parentSlot.global_position.x, 0.1)
+		position.y = lerp(position.y, parentSlot.global_position.y, 0.1)
+		slotted = true
+	else :
+		slotted = false
 	
+	if attackTimer > 0:
+		print(attackTimer)
+		attackAnim = -sin(attackTimer) * 5
+		attackTimer -= delta
+	
+	$CardGfx.position.y = lerp($CardGfx.position.y, originalSpritePosition.y + pickupAnim, 0.1) + attackAnim
 	prevParentSlot = parentSlot
 
 
@@ -52,3 +71,12 @@ func _on_area_2d_mouse_exited():
 	mouseHover = false
 	if Player.currentlyHovered == self:
 		Player.currentlyHovered = null
+
+# This tells all attached components to "tick" themselves
+func tick_turn():
+	if slotted:
+		card_ticked.emit()
+
+# The shittiness applies to this too
+func attack():
+	attackTimer = 0.5
