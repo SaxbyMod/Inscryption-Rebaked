@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c5ga6ncpntqca"]
+[gd_scene load_steps=9 format=3 uid="uid://c5ga6ncpntqca"]
 
 [ext_resource type="PackedScene" uid="uid://j7b4yw6jl5ma" path="res://Scenes/card_slot.tscn" id="1_w364x"]
 [ext_resource type="PackedScene" uid="uid://0xp12wby2ydk" path="res://Scenes/testing_card.tscn" id="2_ykg5k"]
@@ -6,6 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://b1mjetsigl5fw" path="res://Art/epic_card.tres" id="4_lj2of"]
 [ext_resource type="Texture2D" uid="uid://boy72lqfk76oh" path="res://Art/legendary_card.tres" id="5_0e7fv"]
 [ext_resource type="Script" path="res://Code/descriptor.gd" id="6_lh5fs"]
+[ext_resource type="FontFile" uid="uid://clsbw2dt4kdrf" path="res://Marksman.otf" id="7_q6xpw"]
+
+[sub_resource type="Theme" id="Theme_88kqw"]
+default_font = ExtResource("7_q6xpw")
+default_font_size = 18
 
 [node name="Deck" type="Node2D"]
 texture_filter = 1
@@ -60,7 +65,7 @@ position = Vector2(93, 44)
 position = Vector2(139, 44)
 
 [node name="Descriptor" type="Node2D" parent="." groups=["descriptor"]]
-position = Vector2(130, -123)
+position = Vector2(120, -123)
 script = ExtResource("6_lh5fs")
 
 [node name="Control" type="Control" parent="Descriptor"]
@@ -70,6 +75,8 @@ anchors_preset = 0
 offset_right = 150.0
 offset_bottom = 100.0
 mouse_filter = 2
+theme = SubResource("Theme_88kqw")
+metadata/_edit_use_anchors_ = true
 
 [node name="Bg" type="ColorRect" parent="Descriptor/Control"]
 layout_mode = 1
@@ -80,6 +87,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0.0980392, 0.0980392, 0.0980392, 0.780392)
+metadata/_edit_use_anchors_ = true
 
 [node name="Name" type="RichTextLabel" parent="Descriptor/Control"]
 layout_mode = 1
@@ -95,6 +103,7 @@ mouse_filter = 2
 text = "Card"
 scroll_active = false
 autowrap_mode = 0
+metadata/_edit_use_anchors_ = true
 
 [node name="Desc" type="RichTextLabel" parent="Descriptor/Control"]
 layout_mode = 1
@@ -107,7 +116,8 @@ offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 10
+theme_override_font_sizes/normal_font_size = 12
 text = "Card with description. It is made out of stuff"
 scroll_active = false
 autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
