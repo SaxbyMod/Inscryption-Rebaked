@@ -128,6 +128,8 @@ position = Vector2(-174, 80)
 cardGfx = ExtResource("3_vulkq")
 cardName = "Cool Card"
 cardDesc = "Moves one to the right and attacks"
+health = 3
+power = 2
 
 [node name="MoveSlot" type="Node" parent="CardStorage/CoolCard"]
 script = ExtResource("4_gbbpa")
@@ -146,6 +148,8 @@ position = Vector2(-81, 80)
 cardGfx = ExtResource("4_lj2of")
 cardName = "Epic Card"
 cardDesc = "Attacks every second turn"
+health = 1
+power = 3
 
 [node name="Attack" type="Node" parent="CardStorage/Epic"]
 script = ExtResource("6_kowq5")
@@ -156,6 +160,7 @@ position = Vector2(-35, 80)
 cardGfx = ExtResource("5_0e7fv")
 cardName = "Legendary Card"
 cardDesc = "Attacks every turn"
+power = 2
 
 [node name="Attack" type="Node" parent="CardStorage/Legendary"]
 script = ExtResource("6_kowq5")
