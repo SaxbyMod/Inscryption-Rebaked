@@ -1,12 +1,18 @@
-[gd_scene load_steps=9 format=3 uid="uid://c5ga6ncpntqca"]
+[gd_scene load_steps=13 format=3 uid="uid://c5ga6ncpntqca"]
 
 [ext_resource type="PackedScene" uid="uid://j7b4yw6jl5ma" path="res://Scenes/card_slot.tscn" id="1_w364x"]
+[ext_resource type="Texture2D" uid="uid://b7twcqt45o1l8" path="res://Art/card_recepticle.tres" id="2_7yf4o"]
 [ext_resource type="PackedScene" uid="uid://0xp12wby2ydk" path="res://Scenes/testing_card.tscn" id="2_ykg5k"]
 [ext_resource type="Texture2D" uid="uid://brtv8k5l6nm3k" path="res://Art/cool_card.tres" id="3_vulkq"]
+[ext_resource type="Script" path="res://Code/Abilites/move_slot.gd" id="4_gbbpa"]
 [ext_resource type="Texture2D" uid="uid://b1mjetsigl5fw" path="res://Art/epic_card.tres" id="4_lj2of"]
 [ext_resource type="Texture2D" uid="uid://boy72lqfk76oh" path="res://Art/legendary_card.tres" id="5_0e7fv"]
+[ext_resource type="Script" path="res://Code/Abilites/basic_attack.gd" id="6_kowq5"]
 [ext_resource type="Script" path="res://Code/descriptor.gd" id="6_lh5fs"]
 [ext_resource type="FontFile" uid="uid://clsbw2dt4kdrf" path="res://Marksman.otf" id="7_q6xpw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pw6dt"]
+size = Vector2(46, 60)
 
 [sub_resource type="Theme" id="Theme_88kqw"]
 default_font = ExtResource("7_q6xpw")
@@ -18,19 +24,102 @@ texture_filter = 1
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 
-[node name="CardSlots" type="Node" parent="."]
+[node name="PlayerSlots" type="Node2D" parent="."]
+position = Vector2(0, -54)
 
-[node name="CardSlot" parent="CardSlots" instance=ExtResource("1_w364x")]
-position = Vector2(30, -87)
+[node name="PlayerSlot1" parent="PlayerSlots" instance=ExtResource("1_w364x")]
+position = Vector2(-89, 0)
 
-[node name="CardSlot2" parent="CardSlots" instance=ExtResource("1_w364x")]
-position = Vector2(-29, -87)
+[node name="PlayerSlot2" parent="PlayerSlots" instance=ExtResource("1_w364x")]
+position = Vector2(-29, 0)
+place = 1
 
-[node name="CardSlot3" parent="CardSlots" instance=ExtResource("1_w364x")]
-position = Vector2(-89, -87)
+[node name="PlayerSlot3" parent="PlayerSlots" instance=ExtResource("1_w364x")]
+position = Vector2(30, 0)
+place = 2
 
-[node name="CardSlot4" parent="CardSlots" instance=ExtResource("1_w364x")]
-position = Vector2(85, -87)
+[node name="PlayerSlot4" parent="PlayerSlots" instance=ExtResource("1_w364x")]
+position = Vector2(85, 0)
+place = 3
+
+[node name="EnemySlots" type="Node2D" parent="."]
+position = Vector2(0, -123)
+
+[node name="EnemySlot1" type="Node2D" parent="EnemySlots"]
+texture_filter = 1
+position = Vector2(-89, 0)
+
+[node name="TextureRect" type="TextureRect" parent="EnemySlots/EnemySlot1"]
+offset_left = -21.0
+offset_top = -28.0
+offset_right = 21.0
+offset_bottom = 28.0
+texture = ExtResource("2_7yf4o")
+metadata/_edit_lock_ = true
+
+[node name="Area2D" type="Area2D" parent="EnemySlots/EnemySlot1"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemySlots/EnemySlot1/Area2D"]
+shape = SubResource("RectangleShape2D_pw6dt")
+metadata/_edit_lock_ = true
+
+[node name="EnemySlot2" type="Node2D" parent="EnemySlots"]
+texture_filter = 1
+position = Vector2(-29, 0)
+
+[node name="TextureRect" type="TextureRect" parent="EnemySlots/EnemySlot2"]
+offset_left = -21.0
+offset_top = -28.0
+offset_right = 21.0
+offset_bottom = 28.0
+texture = ExtResource("2_7yf4o")
+metadata/_edit_lock_ = true
+
+[node name="Area2D" type="Area2D" parent="EnemySlots/EnemySlot2"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemySlots/EnemySlot2/Area2D"]
+shape = SubResource("RectangleShape2D_pw6dt")
+metadata/_edit_lock_ = true
+
+[node name="EnemySlot3" type="Node2D" parent="EnemySlots"]
+texture_filter = 1
+position = Vector2(30, 0)
+
+[node name="TextureRect" type="TextureRect" parent="EnemySlots/EnemySlot3"]
+offset_left = -21.0
+offset_top = -28.0
+offset_right = 21.0
+offset_bottom = 28.0
+texture = ExtResource("2_7yf4o")
+metadata/_edit_lock_ = true
+
+[node name="Area2D" type="Area2D" parent="EnemySlots/EnemySlot3"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemySlots/EnemySlot3/Area2D"]
+shape = SubResource("RectangleShape2D_pw6dt")
+metadata/_edit_lock_ = true
+
+[node name="EnemySlot4" type="Node2D" parent="EnemySlots"]
+texture_filter = 1
+position = Vector2(85, 0)
+
+[node name="TextureRect" type="TextureRect" parent="EnemySlots/EnemySlot4"]
+offset_left = -21.0
+offset_top = -28.0
+offset_right = 21.0
+offset_bottom = 28.0
+texture = ExtResource("2_7yf4o")
+metadata/_edit_lock_ = true
+
+[node name="Area2D" type="Area2D" parent="EnemySlots/EnemySlot4"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemySlots/EnemySlot4/Area2D"]
+shape = SubResource("RectangleShape2D_pw6dt")
+metadata/_edit_lock_ = true
 
 [node name="CardStorage" type="Node" parent="."]
 
@@ -39,6 +128,15 @@ position = Vector2(-139, 44)
 cardGfx = ExtResource("3_vulkq")
 cardName = "Cool Card"
 cardDesc = "A Special Card that still has no use"
+
+[node name="MoveSlot" type="Node" parent="CardStorage/Card"]
+script = ExtResource("4_gbbpa")
+turnWait = 2
+
+[node name="Attack" type="Node" parent="CardStorage/Card"]
+script = ExtResource("6_kowq5")
+turnWait = 2
+turnWaitOffset = 1
 
 [node name="Card2" parent="CardStorage" instance=ExtResource("2_ykg5k")]
 position = Vector2(-93, 44)
@@ -54,6 +152,9 @@ position = Vector2(0, 44)
 cardGfx = ExtResource("5_0e7fv")
 cardName = "Legendary Card"
 cardDesc = "Now THAT'S something special"
+
+[node name="Attack" type="Node" parent="CardStorage/Card4"]
+script = ExtResource("6_kowq5")
 
 [node name="Card5" parent="CardStorage" instance=ExtResource("2_ykg5k")]
 position = Vector2(46, 44)
@@ -120,4 +221,12 @@ theme_override_font_sizes/normal_font_size = 12
 text = "Card with description. It is made out of stuff"
 scroll_active = false
 autowrap_mode = 2
-metadata/_edit_use_anchors_ = true
+
+[connection signal="mouse_entered" from="EnemySlots/EnemySlot1/Area2D" to="EnemySlots/EnemySlot1" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="EnemySlots/EnemySlot1/Area2D" to="EnemySlots/EnemySlot1" method="_on_area_2d_mouse_exited"]
+[connection signal="mouse_entered" from="EnemySlots/EnemySlot2/Area2D" to="EnemySlots/EnemySlot2" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="EnemySlots/EnemySlot2/Area2D" to="EnemySlots/EnemySlot2" method="_on_area_2d_mouse_exited"]
+[connection signal="mouse_entered" from="EnemySlots/EnemySlot3/Area2D" to="EnemySlots/EnemySlot3" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="EnemySlots/EnemySlot3/Area2D" to="EnemySlots/EnemySlot3" method="_on_area_2d_mouse_exited"]
+[connection signal="mouse_entered" from="EnemySlots/EnemySlot4/Area2D" to="EnemySlots/EnemySlot4" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="EnemySlots/EnemySlot4/Area2D" to="EnemySlots/EnemySlot4" method="_on_area_2d_mouse_exited"]

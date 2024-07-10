@@ -1,6 +1,10 @@
 extends Node2D
 
+class_name Slot
+
 var occupied = false
+
+@export var place : int = 0
 
 # This makes the slot unselectable when a card is on top of it
 func _process(delta):
