@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://0xp12wby2ydk"]
+
+[ext_resource type="Script" path="res://Code/card_generic.gd" id="1_87mu5"]
+[ext_resource type="Texture2D" uid="uid://blmdtl67t2ax7" path="res://Art/basic_card.tres" id="2_4d8pd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l6kyr"]
+size = Vector2(46, 60)
+
+[node name="Card" type="Node2D" groups=["card"]]
+texture_filter = 1
+script = ExtResource("1_87mu5")
+cardGfx = ExtResource("2_4d8pd")
+
+[node name="CardGfx" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = -28.0
+offset_right = 21.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(21, 28)
+size_flags_vertical = 4
+texture = ExtResource("2_4d8pd")
+stretch_mode = 4
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_l6kyr")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

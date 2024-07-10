@@ -1,0 +1,113 @@
+[gd_scene load_steps=7 format=3 uid="uid://c5ga6ncpntqca"]
+
+[ext_resource type="PackedScene" uid="uid://j7b4yw6jl5ma" path="res://Scenes/card_slot.tscn" id="1_w364x"]
+[ext_resource type="PackedScene" uid="uid://0xp12wby2ydk" path="res://Scenes/testing_card.tscn" id="2_ykg5k"]
+[ext_resource type="Texture2D" uid="uid://brtv8k5l6nm3k" path="res://Art/cool_card.tres" id="3_vulkq"]
+[ext_resource type="Texture2D" uid="uid://b1mjetsigl5fw" path="res://Art/epic_card.tres" id="4_lj2of"]
+[ext_resource type="Texture2D" uid="uid://boy72lqfk76oh" path="res://Art/legendary_card.tres" id="5_0e7fv"]
+[ext_resource type="Script" path="res://Code/descriptor.gd" id="6_lh5fs"]
+
+[node name="Deck" type="Node2D"]
+texture_filter = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="CardSlots" type="Node" parent="."]
+
+[node name="CardSlot" parent="CardSlots" instance=ExtResource("1_w364x")]
+position = Vector2(30, -87)
+
+[node name="CardSlot2" parent="CardSlots" instance=ExtResource("1_w364x")]
+position = Vector2(-29, -87)
+
+[node name="CardSlot3" parent="CardSlots" instance=ExtResource("1_w364x")]
+position = Vector2(-89, -87)
+
+[node name="CardSlot4" parent="CardSlots" instance=ExtResource("1_w364x")]
+position = Vector2(85, -87)
+
+[node name="CardStorage" type="Node" parent="."]
+
+[node name="Card" parent="CardStorage" instance=ExtResource("2_ykg5k")]
+position = Vector2(-139, 44)
+cardGfx = ExtResource("3_vulkq")
+cardName = "Cool Card"
+cardDesc = "A Special Card that still has no use"
+
+[node name="Card2" parent="CardStorage" instance=ExtResource("2_ykg5k")]
+position = Vector2(-93, 44)
+
+[node name="Card3" parent="CardStorage" instance=ExtResource("2_ykg5k")]
+position = Vector2(-46, 44)
+cardGfx = ExtResource("4_lj2of")
+cardName = "Epic Card"
+cardDesc = "Wow, this looks nicer"
+
+[node name="Card4" parent="CardStorage" instance=ExtResource("2_ykg5k")]
+position = Vector2(0, 44)
+cardGfx = ExtResource("5_0e7fv")
+cardName = "Legendary Card"
+cardDesc = "Now THAT'S something special"
+
+[node name="Card5" parent="CardStorage" instance=ExtResource("2_ykg5k")]
+position = Vector2(46, 44)
+
+[node name="Card6" parent="CardStorage" instance=ExtResource("2_ykg5k")]
+position = Vector2(93, 44)
+
+[node name="Card7" parent="CardStorage" instance=ExtResource("2_ykg5k")]
+position = Vector2(139, 44)
+
+[node name="Descriptor" type="Node2D" parent="." groups=["descriptor"]]
+position = Vector2(130, -123)
+script = ExtResource("6_lh5fs")
+
+[node name="Control" type="Control" parent="Descriptor"]
+z_index = 10
+layout_mode = 3
+anchors_preset = 0
+offset_right = 150.0
+offset_bottom = 100.0
+mouse_filter = 2
+
+[node name="Bg" type="ColorRect" parent="Descriptor/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.0980392, 0.0980392, 0.0980392, 0.780392)
+
+[node name="Name" type="RichTextLabel" parent="Descriptor/Control"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -50.0
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+text = "Card"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Desc" type="RichTextLabel" parent="Descriptor/Control"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -27.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 10
+text = "Card with description. It is made out of stuff"
+scroll_active = false
+autowrap_mode = 2

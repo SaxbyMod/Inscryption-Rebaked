@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://j7b4yw6jl5ma"]
+
+[ext_resource type="Script" path="res://Code/card_slot.gd" id="1_1dsqd"]
+[ext_resource type="Texture2D" uid="uid://b7twcqt45o1l8" path="res://Art/card_recepticle.tres" id="2_kjcaf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pw6dt"]
+size = Vector2(46, 60)
+
+[node name="CardSlot" type="Node2D" groups=["slot"]]
+texture_filter = 1
+script = ExtResource("1_1dsqd")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -21.0
+offset_top = -28.0
+offset_right = 21.0
+offset_bottom = 28.0
+texture = ExtResource("2_kjcaf")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_pw6dt")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
