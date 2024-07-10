@@ -6,5 +6,5 @@ func _process(delta):
 			$Control/Name.text = Player.currentlyHovered.cardName
 			$Control/Desc.text = Player.currentlyHovered.cardDesc
 	else:
-		$Control/Name.text = " -"
-		$Control/Desc.text = ""
+		$Control/Name.text = " FPS: " + str(round(1/delta)) # This is just a debug thing
+		$Control/Desc.text = "Debug information (temporary)"

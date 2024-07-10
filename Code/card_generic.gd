@@ -27,17 +27,19 @@ func _ready():
 
 
 func _process(delta):
+	print(delta*16)
+	
 	# If the card changes slots then it sets its previous slot to be unoccupied
 	if parentSlot != prevParentSlot and prevParentSlot != null:
 		prevParentSlot.occupied = false
 	
 	# Graphics code (scary-looking)
 	if mouseHover:
-		$CardGfx.scale.x = lerp($CardGfx.scale.x, 1.1, 0.1)
-		$CardGfx.scale.y = lerp($CardGfx.scale.y, 1.1, 0.1)
+		$CardGfx.scale.x = lerp($CardGfx.scale.x, 1.1, delta * 16)
+		$CardGfx.scale.y = lerp($CardGfx.scale.y, 1.1, delta * 16)
 	else:
-		$CardGfx.scale.x = lerp($CardGfx.scale.x, 1.0, 0.1)
-		$CardGfx.scale.y = lerp($CardGfx.scale.y, 1.0, 0.1)
+		$CardGfx.scale.x = lerp($CardGfx.scale.x, 1.0, delta * 16)
+		$CardGfx.scale.y = lerp($CardGfx.scale.y, 1.0, delta * 16)
 	
 	if Player.selectedCard == self:
 		pickupAnim = -10
@@ -47,8 +49,8 @@ func _process(delta):
 	# If the card has no slot then it goes to it, also happens when its slot changes
 	if parentSlot != null:
 		parentSlot.occupied = true
-		position.x = lerp(position.x, parentSlot.global_position.x, 0.1)
-		position.y = lerp(position.y, parentSlot.global_position.y, 0.1)
+		position.x = lerp(position.x, parentSlot.global_position.x, delta * 16)
+		position.y = lerp(position.y, parentSlot.global_position.y, delta * 16)
 		slotted = true
 	else :
 		slotted = false
@@ -57,7 +59,7 @@ func _process(delta):
 		attackAnim = -sin(attackTimer) * 5
 		attackTimer -= delta
 	
-	$CardGfx.position.y = lerp($CardGfx.position.y, originalSpritePosition.y + pickupAnim, 0.1) + attackAnim
+	$CardGfx.position.y = lerp($CardGfx.position.y, originalSpritePosition.y + pickupAnim, delta * 16) + attackAnim
 	prevParentSlot = parentSlot
 
 
