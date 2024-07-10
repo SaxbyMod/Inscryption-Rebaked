@@ -1,5 +1,7 @@
 # This is the base for all card abilities
-# If a card "ticks" this code executes and depending on the turnwait
+# If a card "ticks" this code executes and depending on the turnWait
+# the turnWait variable basically means how many turns it waits until it runs
+# DO NOT CHANGE THIS, INSTEAD MAKE A DUPLICATE OF IT
 
 extends Node
 
