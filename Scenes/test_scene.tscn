@@ -18,7 +18,7 @@ size = Vector2(46, 60)
 default_font = ExtResource("7_q6xpw")
 default_font_size = 18
 
-[node name="Deck" type="Node2D"]
+[node name="Deck" type="Node2D" groups=["cardPlayer"]]
 texture_filter = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]

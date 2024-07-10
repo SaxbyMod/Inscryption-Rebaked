@@ -3,14 +3,12 @@ extends Node
 var selectedCard : Card
 var currentlyHovered : Node2D
 
-var descriptor : Node2D
-
 var turnCounter = 0
 
-func _ready():
-	descriptor = get_tree().get_nodes_in_group("descriptor")[0]
-
 func _process(delta):
+	if get_tree().get_first_node_in_group("cardPlayer") == null:
+		return
+
 	if Input.is_action_just_pressed("leftClick"):
 		if currentlyHovered != null:
 			# If we click a selected card then we should unselect it

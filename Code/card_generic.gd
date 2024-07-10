@@ -54,7 +54,6 @@ func _process(delta):
 		slotted = false
 	
 	if attackTimer > 0:
-		print(attackTimer)
 		attackAnim = -sin(attackTimer) * 5
 		attackTimer -= delta
 	
