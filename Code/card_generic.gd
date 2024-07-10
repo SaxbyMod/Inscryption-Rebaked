@@ -8,6 +8,9 @@ signal card_ticked
 @export var cardName : String = "Card"
 @export var cardDesc: String = "A Dummy Card with no real use"
 
+@export var health : int = 2
+@export var power : int = 1
+
 var mouseHover = false
 
 var originalSpritePosition : Vector2
@@ -24,6 +27,8 @@ var attackTimer : float = 0
 func _ready():
 	$CardGfx.texture = cardGfx
 	originalSpritePosition = $CardGfx.position
+	$CardGfx/Healthbar.text = "[right]" + str(health)
+	$CardGfx/Powerbar.text = str(power)
 
 
 func _process(delta):

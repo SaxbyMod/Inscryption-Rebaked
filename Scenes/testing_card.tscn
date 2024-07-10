@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://0xp12wby2ydk"]
+[gd_scene load_steps=5 format=3 uid="uid://0xp12wby2ydk"]
 
 [ext_resource type="Script" path="res://Code/card_generic.gd" id="1_87mu5"]
 [ext_resource type="Texture2D" uid="uid://blmdtl67t2ax7" path="res://Art/basic_card.tres" id="2_4d8pd"]
+[ext_resource type="FontFile" uid="uid://clsbw2dt4kdrf" path="res://Marksman.otf" id="3_w05q7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l6kyr"]
 size = Vector2(46, 60)
@@ -28,9 +29,31 @@ size_flags_vertical = 4
 texture = ExtResource("2_4d8pd")
 stretch_mode = 4
 
+[node name="Healthbar" type="RichTextLabel" parent="CardGfx"]
+offset_left = 24.0
+offset_top = 43.0
+offset_right = 42.0
+offset_bottom = 56.0
+theme_override_colors/default_color = Color(0, 0, 0, 0.705882)
+theme_override_fonts/normal_font = ExtResource("3_w05q7")
+bbcode_enabled = true
+text = "[right]100"
+fit_content = true
+
+[node name="Powerbar" type="RichTextLabel" parent="CardGfx"]
+offset_top = 43.0
+offset_right = 18.0
+offset_bottom = 56.0
+theme_override_colors/default_color = Color(0, 0, 0, 0.705882)
+theme_override_fonts/normal_font = ExtResource("3_w05q7")
+bbcode_enabled = true
+text = "100"
+fit_content = true
+
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
 shape = SubResource("RectangleShape2D_l6kyr")
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
