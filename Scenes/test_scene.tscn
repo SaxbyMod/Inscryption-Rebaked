@@ -123,17 +123,17 @@ metadata/_edit_lock_ = true
 
 [node name="CardStorage" type="Node" parent="."]
 
-[node name="Card" parent="CardStorage" instance=ExtResource("2_ykg5k")]
+[node name="CoolCard" parent="CardStorage" instance=ExtResource("2_ykg5k")]
 position = Vector2(-174, 80)
 cardGfx = ExtResource("3_vulkq")
 cardName = "Cool Card"
-cardDesc = "A Special Card that still has no use"
+cardDesc = "Moves one to the right and attacks"
 
-[node name="MoveSlot" type="Node" parent="CardStorage/Card"]
+[node name="MoveSlot" type="Node" parent="CardStorage/CoolCard"]
 script = ExtResource("4_gbbpa")
 turnWait = 2
 
-[node name="Attack" type="Node" parent="CardStorage/Card"]
+[node name="Attack" type="Node" parent="CardStorage/CoolCard"]
 script = ExtResource("6_kowq5")
 turnWait = 2
 turnWaitOffset = 1
@@ -141,19 +141,23 @@ turnWaitOffset = 1
 [node name="Card2" parent="CardStorage" instance=ExtResource("2_ykg5k")]
 position = Vector2(-128, 80)
 
-[node name="Card3" parent="CardStorage" instance=ExtResource("2_ykg5k")]
+[node name="Epic" parent="CardStorage" instance=ExtResource("2_ykg5k")]
 position = Vector2(-81, 80)
 cardGfx = ExtResource("4_lj2of")
 cardName = "Epic Card"
 cardDesc = "Wow, this looks nicer"
 
-[node name="Card4" parent="CardStorage" instance=ExtResource("2_ykg5k")]
+[node name="Attack" type="Node" parent="CardStorage/Epic"]
+script = ExtResource("6_kowq5")
+turnWait = 2
+
+[node name="Legendary" parent="CardStorage" instance=ExtResource("2_ykg5k")]
 position = Vector2(-35, 80)
 cardGfx = ExtResource("5_0e7fv")
 cardName = "Legendary Card"
-cardDesc = "Now THAT'S something special"
+cardDesc = "Attacks every turn"
 
-[node name="Attack" type="Node" parent="CardStorage/Card4"]
+[node name="Attack" type="Node" parent="CardStorage/Legendary"]
 script = ExtResource("6_kowq5")
 
 [node name="Card5" parent="CardStorage" instance=ExtResource("2_ykg5k")]

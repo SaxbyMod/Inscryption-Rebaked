@@ -27,8 +27,6 @@ func _ready():
 
 
 func _process(delta):
-	print(delta*16)
-	
 	# If the card changes slots then it sets its previous slot to be unoccupied
 	if parentSlot != prevParentSlot and prevParentSlot != null:
 		prevParentSlot.occupied = false
