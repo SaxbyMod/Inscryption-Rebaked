@@ -2,7 +2,6 @@ extends Node
 
 var parent : Card
 
-@export var moveAmount = 1
 @export var turnWait = 1
 @export var turnWaitOffset = 0
 
@@ -20,5 +19,10 @@ func tick_power():
 	
 	for n in len(slots):
 		var l : Slot = slots[n]
-		if l.place == (currentSlot + moveAmount + 4) % 4 and not l.occupied:
+		if l.place == (currentSlot + 1) % 4 and not l.occupied:
+			print("first ran")
+			parent.parentSlot = l
+			break
+		elif l.place == (currentSlot + 2) % 4 and not l.occupied:
+			print("Second ran")
 			parent.parentSlot = l

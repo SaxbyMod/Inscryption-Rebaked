@@ -6,9 +6,9 @@ signal card_ticked
 
 @export var cardGfx : Texture2D
 @export var cardName : String = "Card"
-@export var cardDesc: String = "A Dummy Card with no real use"
+@export_multiline var cardDesc: String = "A Dummy Card with no real use"
 
-@export var health : int = 2
+@export var health : int = 1
 @export var power : int = 1
 
 var mouseHover = false
