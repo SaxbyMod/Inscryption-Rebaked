@@ -145,7 +145,7 @@ position = Vector2(-128, 80)
 position = Vector2(-81, 80)
 cardGfx = ExtResource("4_lj2of")
 cardName = "Epic Card"
-cardDesc = "Wow, this looks nicer"
+cardDesc = "Attacks every second turn"
 
 [node name="Attack" type="Node" parent="CardStorage/Epic"]
 script = ExtResource("6_kowq5")
