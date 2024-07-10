@@ -6,8 +6,9 @@ var currentlyHovered : Node2D
 var turnCounter = 0
 
 func _process(delta):
-	if get_tree().get_first_node_in_group("cardPlayer") == null:
-		return
+	if get_tree().current_scene != null:
+		if not get_tree().current_scene.is_in_group("cardPlayer"):
+			return
 
 	if Input.is_action_just_pressed("leftClick"):
 		if currentlyHovered != null:
