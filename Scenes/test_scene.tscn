@@ -28,18 +28,18 @@ zoom = Vector2(2, 2)
 position = Vector2(0, -54)
 
 [node name="PlayerSlot1" parent="PlayerSlots" instance=ExtResource("1_w364x")]
-position = Vector2(-89, 0)
+position = Vector2(-124, 36)
 
 [node name="PlayerSlot2" parent="PlayerSlots" instance=ExtResource("1_w364x")]
-position = Vector2(-29, 0)
+position = Vector2(-64, 36)
 place = 1
 
 [node name="PlayerSlot3" parent="PlayerSlots" instance=ExtResource("1_w364x")]
-position = Vector2(30, 0)
+position = Vector2(-5, 36)
 place = 2
 
 [node name="PlayerSlot4" parent="PlayerSlots" instance=ExtResource("1_w364x")]
-position = Vector2(85, 0)
+position = Vector2(50, 36)
 place = 3
 
 [node name="EnemySlots" type="Node2D" parent="."]
@@ -47,7 +47,7 @@ position = Vector2(0, -123)
 
 [node name="EnemySlot1" type="Node2D" parent="EnemySlots"]
 texture_filter = 1
-position = Vector2(-89, 0)
+position = Vector2(-124, 36)
 
 [node name="TextureRect" type="TextureRect" parent="EnemySlots/EnemySlot1"]
 offset_left = -21.0
@@ -66,7 +66,7 @@ metadata/_edit_lock_ = true
 
 [node name="EnemySlot2" type="Node2D" parent="EnemySlots"]
 texture_filter = 1
-position = Vector2(-29, 0)
+position = Vector2(-64, 36)
 
 [node name="TextureRect" type="TextureRect" parent="EnemySlots/EnemySlot2"]
 offset_left = -21.0
@@ -85,7 +85,7 @@ metadata/_edit_lock_ = true
 
 [node name="EnemySlot3" type="Node2D" parent="EnemySlots"]
 texture_filter = 1
-position = Vector2(30, 0)
+position = Vector2(-5, 36)
 
 [node name="TextureRect" type="TextureRect" parent="EnemySlots/EnemySlot3"]
 offset_left = -21.0
@@ -104,7 +104,7 @@ metadata/_edit_lock_ = true
 
 [node name="EnemySlot4" type="Node2D" parent="EnemySlots"]
 texture_filter = 1
-position = Vector2(85, 0)
+position = Vector2(50, 36)
 
 [node name="TextureRect" type="TextureRect" parent="EnemySlots/EnemySlot4"]
 offset_left = -21.0
@@ -124,7 +124,7 @@ metadata/_edit_lock_ = true
 [node name="CardStorage" type="Node" parent="."]
 
 [node name="Card" parent="CardStorage" instance=ExtResource("2_ykg5k")]
-position = Vector2(-139, 44)
+position = Vector2(-174, 80)
 cardGfx = ExtResource("3_vulkq")
 cardName = "Cool Card"
 cardDesc = "A Special Card that still has no use"
@@ -139,16 +139,16 @@ turnWait = 2
 turnWaitOffset = 1
 
 [node name="Card2" parent="CardStorage" instance=ExtResource("2_ykg5k")]
-position = Vector2(-93, 44)
+position = Vector2(-128, 80)
 
 [node name="Card3" parent="CardStorage" instance=ExtResource("2_ykg5k")]
-position = Vector2(-46, 44)
+position = Vector2(-81, 80)
 cardGfx = ExtResource("4_lj2of")
 cardName = "Epic Card"
 cardDesc = "Wow, this looks nicer"
 
 [node name="Card4" parent="CardStorage" instance=ExtResource("2_ykg5k")]
-position = Vector2(0, 44)
+position = Vector2(-35, 80)
 cardGfx = ExtResource("5_0e7fv")
 cardName = "Legendary Card"
 cardDesc = "Now THAT'S something special"
@@ -157,13 +157,13 @@ cardDesc = "Now THAT'S something special"
 script = ExtResource("6_kowq5")
 
 [node name="Card5" parent="CardStorage" instance=ExtResource("2_ykg5k")]
-position = Vector2(46, 44)
+position = Vector2(11, 80)
 
 [node name="Card6" parent="CardStorage" instance=ExtResource("2_ykg5k")]
-position = Vector2(93, 44)
+position = Vector2(58, 80)
 
 [node name="Card7" parent="CardStorage" instance=ExtResource("2_ykg5k")]
-position = Vector2(139, 44)
+position = Vector2(104, 80)
 
 [node name="Descriptor" type="Node2D" parent="." groups=["descriptor"]]
 position = Vector2(120, -123)
@@ -181,9 +181,11 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Bg" type="ColorRect" parent="Descriptor/Control"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_left = -0.16
+anchor_top = 0.29
+anchor_right = 0.84
+anchor_bottom = 1.29
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -192,10 +194,11 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Name" type="RichTextLabel" parent="Descriptor/Control"]
 layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
+anchors_preset = -1
+anchor_left = -0.16
+anchor_top = 0.79
+anchor_right = 0.84
+anchor_bottom = 0.79
 offset_top = -50.0
 offset_bottom = -27.0
 grow_horizontal = 2
@@ -208,10 +211,11 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Desc" type="RichTextLabel" parent="Descriptor/Control"]
 layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
+anchors_preset = -1
+anchor_left = -0.16
+anchor_top = 0.79
+anchor_right = 0.84
+anchor_bottom = 0.79
 offset_top = -27.0
 offset_bottom = 50.0
 grow_horizontal = 2
@@ -221,6 +225,7 @@ theme_override_font_sizes/normal_font_size = 12
 text = "Card with description. It is made out of stuff"
 scroll_active = false
 autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
 
 [connection signal="mouse_entered" from="EnemySlots/EnemySlot1/Area2D" to="EnemySlots/EnemySlot1" method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="EnemySlots/EnemySlot1/Area2D" to="EnemySlots/EnemySlot1" method="_on_area_2d_mouse_exited"]
