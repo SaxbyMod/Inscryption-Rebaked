@@ -1,9 +1,11 @@
 # This is the base for all card abilities
 # If a card "ticks" this code executes depending on the turnWait
 # the turnWait variable basically means how many turns it waits until it runs
-# DO NOT CHANGE THIS, INSTEAD MAKE A DUPLICATE OF IT IF YOU WANT TO CREATE CUSTOM BEHAVIOURS
+# Do not add ability-specific code here, they should be added to a script inherited from this
 
 extends Node
+
+class_name Ability
 
 var parent : Card
 
@@ -16,7 +18,6 @@ func _ready():
 
 func tick_power():
 	if not parent.slotted or (Player.turnCounter + turnWaitOffset) % turnWait != 0:
-		return
+		return true
 	
-	# Special function should go beyond this point
-	print("I have been ticked")
+	return false

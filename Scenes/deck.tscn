@@ -230,11 +230,11 @@ costAmount = 1
 [node name="MoveSlot" type="Node" parent="Cards/CoolCard"]
 script = ExtResource("9_i02mh")
 turnWait = 2
+turnWaitOffset = 1
 
 [node name="Attack" type="Node" parent="Cards/CoolCard"]
 script = ExtResource("10_clmqx")
 turnWait = 2
-turnWaitOffset = 1
 
 [node name="Simpleton" parent="Cards" instance=ExtResource("1_143ww")]
 position = Vector2(-108, 377)
