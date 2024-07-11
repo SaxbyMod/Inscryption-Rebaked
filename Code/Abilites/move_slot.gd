@@ -7,7 +7,6 @@ var parent : Card
 
 func _ready():
 	parent = get_parent()
-	print(parent.get_class())
 	parent.card_ticked.connect(tick_power)
 
 func tick_power():
@@ -20,9 +19,7 @@ func tick_power():
 	for n in len(slots):
 		var l : Slot = slots[n]
 		if l.place == (currentSlot + 1) % 4 and not l.occupied:
-			print("first ran")
 			parent.parentSlot = l
 			break
 		elif l.place == (currentSlot + 2) % 4 and not l.occupied:
-			print("Second ran")
 			parent.parentSlot = l

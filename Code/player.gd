@@ -33,13 +33,15 @@ func _process(delta):
 		advance_turn()
 
 func play_card():
-	print(levels[selectedCard.costType])
 	if levels[selectedCard.costType] - selectedCard.costAmount >= 0:
 		levels[selectedCard.costType] -= selectedCard.costAmount
 		selectedCard.parentSlot = currentlyHovered
 		selectedCard = null
 
 func advance_turn():
+	if levels[2] < 6:
+		levels[2] += 1
+	
 	turnCounter += 1
 	print("Turn ", turnCounter)
 	var cards = get_tree().get_nodes_in_group("card")

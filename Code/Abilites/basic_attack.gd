@@ -7,7 +7,6 @@ var parent : Card
 
 func _ready():
 	parent = get_parent()
-	print(parent.get_class())
 	parent.card_ticked.connect(tick_power)
 
 func tick_power():
