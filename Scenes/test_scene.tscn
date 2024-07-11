@@ -151,3 +151,22 @@ text = "Card with description. It is made out of stuff"
 scroll_active = false
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="ColorRect" parent="."]
+z_index = 100
+offset_left = -353.0
+offset_top = -138.0
+offset_right = 198.0
+offset_bottom = 134.0
+color = Color(0, 0, 0, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("7_q6xpw")
+theme_override_font_sizes/normal_font_size = 32
+text = "This scene is broken, please use \"deck.tscn\""

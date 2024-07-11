@@ -52,6 +52,9 @@ func _ready():
 			thisCard = energy
 	
 	$CardGfx/CostDisplay/Cost.texture = thisCard
+	
+	if costAmount == 0:
+		$CardGfx/CostDisplay.queue_free()
 
 
 func _process(delta):
