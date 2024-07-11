@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bg5j42a4b6h0o"]
+[gd_scene load_steps=17 format=3 uid="uid://bg5j42a4b6h0o"]
 
 [ext_resource type="PackedScene" uid="uid://0xp12wby2ydk" path="res://Scenes/testing_card.tscn" id="1_143ww"]
 [ext_resource type="Theme" uid="uid://c82wwqw147q63" path="res://theme.tres" id="1_efcxe"]
@@ -8,6 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://j7b4yw6jl5ma" path="res://Scenes/card_slot.tscn" id="3_kiv3s"]
 [ext_resource type="Script" path="res://Code/cost_display.gd" id="4_mj5aw"]
 [ext_resource type="Script" path="res://Code/descriptor.gd" id="4_qwlo2"]
+[ext_resource type="Texture2D" uid="uid://dy42kje557nlm" path="res://Art/scale_spinle.tres" id="5_07ox4"]
+[ext_resource type="Texture2D" uid="uid://dxa6p2ri0xnqw" path="res://Art/scale_pointer.tres" id="6_7s8d3"]
+[ext_resource type="Script" path="res://Code/scale_pointer.gd" id="7_xoqwu"]
 [ext_resource type="Texture2D" uid="uid://brtv8k5l6nm3k" path="res://Art/cool_card.tres" id="8_tsknb"]
 [ext_resource type="Script" path="res://Code/Abilites/move_slot.gd" id="9_i02mh"]
 [ext_resource type="Script" path="res://Code/Abilites/basic_attack.gd" id="10_clmqx"]
@@ -91,9 +94,8 @@ script = ExtResource("3_7ehk0")
 [node name="DebugDisplay" type="RichTextLabel" parent="BackgroundGfx"]
 layout_mode = 0
 offset_left = 105.0
-offset_top = 411.0
 offset_right = 510.0
-offset_bottom = 606.0
+offset_bottom = 195.0
 theme = ExtResource("1_efcxe")
 theme_override_font_sizes/normal_font_size = 48
 text = "[DEBUG DISPLAY]
@@ -102,6 +104,16 @@ Bone: 99
 Energy: 99
 Scale State: 5"
 script = ExtResource("4_mj5aw")
+
+[node name="Scale" type="Sprite2D" parent="BackgroundGfx"]
+position = Vector2(293, 452)
+scale = Vector2(4.5, 4.5)
+texture = ExtResource("5_07ox4")
+
+[node name="ScalePointer" type="Sprite2D" parent="BackgroundGfx/Scale"]
+position = Vector2(0, -8)
+texture = ExtResource("6_7s8d3")
+script = ExtResource("7_xoqwu")
 
 [node name="SlotParent" type="Node2D" parent="."]
 position = Vector2(-8, -75)
@@ -225,7 +237,7 @@ cardGfx = ExtResource("8_tsknb")
 cardName = "Cool Card"
 cardDesc = "Moves one to the right and attacks. If a card is in the way then it can jump over it"
 health = 3
-power = 2
+power = 1
 costAmount = 1
 
 [node name="MoveSlot" type="Node" parent="Cards/CoolCard"]
@@ -258,6 +270,7 @@ position = Vector2(292, 377)
 cardGfx = ExtResource("12_0aivv")
 cardName = "Legendary Card"
 cardDesc = "Attacks every turn"
+health = 2
 power = 2
 costType = 1
 costAmount = 3
