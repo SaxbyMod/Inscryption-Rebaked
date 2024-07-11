@@ -9,7 +9,7 @@ signal card_ticked
 @export_multiline var cardDesc: String = "A Dummy Card with no real use"
 
 @export var health : int = 1
-@export var power : int = 1
+@export var power : int = 0
 
 var mouseHover = false
 
@@ -45,7 +45,7 @@ func _process(delta):
 		$CardGfx.scale.y = lerp($CardGfx.scale.y, 1.0, delta * 16)
 	
 	if Player.selectedCard == self:
-		pickupAnim = -10
+		pickupAnim = -50
 	else:
 		pickupAnim = 0
 	

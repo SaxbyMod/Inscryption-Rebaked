@@ -23,14 +23,19 @@ func _process(delta):
 			
 			# If we hover over a slot and have a selected card then we should put our card there
 			if currentlyHovered.is_in_group("slot") and selectedCard != null:
-				selectedCard.parentSlot = currentlyHovered
-				selectedCard = null
+				
+				if not currentlyHovered.enemy:
+					selectedCard.parentSlot = currentlyHovered
+					selectedCard = null
 	
 	if Input.is_action_just_pressed("Spacebar"):
-		turnCounter += 1
-		print("Turn ", turnCounter)
-		var cards = get_tree().get_nodes_in_group("card")
-		
-		for n in len(cards):
-			var cur : Card = cards[n]
-			cur.tick_turn()
+		advance_turn()
+
+func advance_turn():
+	turnCounter += 1
+	print("Turn ", turnCounter)
+	var cards = get_tree().get_nodes_in_group("card")
+	
+	for n in len(cards):
+		var cur : Card = cards[n]
+		cur.tick_turn()

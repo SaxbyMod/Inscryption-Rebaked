@@ -1,0 +1,192 @@
+[gd_scene load_steps=8 format=3 uid="uid://bg5j42a4b6h0o"]
+
+[ext_resource type="PackedScene" uid="uid://0xp12wby2ydk" path="res://Scenes/testing_card.tscn" id="1_143ww"]
+[ext_resource type="Texture2D" uid="uid://bx7id2h6vnii6" path="res://Temp/Pasted image.png" id="2_r7h3a"]
+[ext_resource type="Texture2D" uid="uid://4n2imcfqhfry" path="res://Art/arriving_cardslot.tres" id="3_k7fgv"]
+[ext_resource type="PackedScene" uid="uid://j7b4yw6jl5ma" path="res://Scenes/card_slot.tscn" id="3_kiv3s"]
+[ext_resource type="Script" path="res://Code/descriptor.gd" id="4_qwlo2"]
+[ext_resource type="FontFile" uid="uid://clsbw2dt4kdrf" path="res://Marksman.otf" id="5_l2y6w"]
+
+[sub_resource type="Theme" id="Theme_do4l8"]
+default_font = ExtResource("5_l2y6w")
+default_font_size = 18
+
+[node name="Deck" type="Node2D" groups=["cardPlayer"]]
+texture_filter = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="Deck" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -329.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.35
+mouse_filter = 2
+color = Color(0.396078, 0.247059, 0.168627, 1)
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="ColorRect" parent="Control/Deck"]
+layout_mode = 0
+offset_left = 1388.0
+offset_top = 58.0
+offset_right = 1854.0
+offset_bottom = 735.0
+color = Color(0.894118, 0.941176, 0.686275, 1)
+
+[node name="CardPlace" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 751.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+mouse_filter = 2
+color = Color(0.227451, 0.176471, 0.172549, 1)
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+visible = false
+modulate = Color(1, 1, 1, 0.470588)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_r7h3a")
+metadata/_edit_lock_ = true
+
+[node name="SlotParent" type="Node2D" parent="."]
+position = Vector2(-8, -75)
+
+[node name="Player0" parent="SlotParent" instance=ExtResource("3_kiv3s")]
+position = Vector2(-300, 150)
+
+[node name="Player1" parent="SlotParent" instance=ExtResource("3_kiv3s")]
+position = Vector2(-100, 150)
+place = 1
+
+[node name="Player2" parent="SlotParent" instance=ExtResource("3_kiv3s")]
+position = Vector2(100, 150)
+place = 2
+
+[node name="Player3" parent="SlotParent" instance=ExtResource("3_kiv3s")]
+position = Vector2(300, 150)
+place = 3
+
+[node name="Enemy1" parent="SlotParent" instance=ExtResource("3_kiv3s")]
+position = Vector2(-300, -145)
+rotation = 3.14159
+place = 4
+enemy = true
+
+[node name="Enemy2" parent="SlotParent" instance=ExtResource("3_kiv3s")]
+position = Vector2(-100, -145)
+rotation = 3.14159
+place = 5
+enemy = true
+
+[node name="Enemy3" parent="SlotParent" instance=ExtResource("3_kiv3s")]
+position = Vector2(100, -145)
+rotation = 3.14159
+place = 6
+enemy = true
+
+[node name="Enemy4" parent="SlotParent" instance=ExtResource("3_kiv3s")]
+position = Vector2(300, -145)
+rotation = 3.14159
+place = 7
+enemy = true
+
+[node name="Incoming1" type="Sprite2D" parent="SlotParent"]
+position = Vector2(-300, -350)
+scale = Vector2(4.31517, 4.25)
+texture = ExtResource("3_k7fgv")
+
+[node name="Incoming2" type="Sprite2D" parent="SlotParent"]
+position = Vector2(-100, -350)
+scale = Vector2(4.31517, 4.25)
+texture = ExtResource("3_k7fgv")
+
+[node name="Incoming3" type="Sprite2D" parent="SlotParent"]
+position = Vector2(100, -350)
+scale = Vector2(4.31517, 4.25)
+texture = ExtResource("3_k7fgv")
+
+[node name="Incoming4" type="Sprite2D" parent="SlotParent"]
+position = Vector2(300, -350)
+scale = Vector2(4.31517, 4.25)
+texture = ExtResource("3_k7fgv")
+
+[node name="Card" parent="." instance=ExtResource("1_143ww")]
+position = Vector2(-189, 383)
+
+[node name="Descriptor" type="Node2D" parent="." groups=["descriptor"]]
+texture_filter = 1
+position = Vector2(453, -509)
+script = ExtResource("4_qwlo2")
+
+[node name="Control" type="Control" parent="Descriptor"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 150.0
+offset_bottom = 100.0
+mouse_filter = 2
+theme = SubResource("Theme_do4l8")
+metadata/_edit_use_anchors_ = true
+
+[node name="Name" type="RichTextLabel" parent="Descriptor/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.153333
+anchor_top = 0.79
+anchor_right = 2.92667
+anchor_bottom = 1.28
+offset_top = -50.0
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 80
+text = "Card"
+scroll_active = false
+autowrap_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Desc" type="RichTextLabel" parent="Descriptor/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.153333
+anchor_top = 1.34
+anchor_right = 2.92667
+anchor_bottom = 6.05
+offset_top = -27.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 40
+text = "Card with description. It is made out of stuff"
+scroll_active = false
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
