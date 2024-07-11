@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Player="*res://Code/player.gd"
+CardManager="*res://Code/card_manager.gd"
 
 [display]
 

@@ -108,5 +108,5 @@ func tick_turn():
 		card_ticked.emit()
 
 # The shittiness applies to this too
-func attack():
+func playAttackAnimation():
 	attackTimer = 0.5

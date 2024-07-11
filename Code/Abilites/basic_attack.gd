@@ -4,4 +4,6 @@ func tick_power():
 	if super.tick_power():
 		return
 	
-	parent.attack()
+	parent.playAttackAnimation()
+	
+	CardManager.damage += parent.power
