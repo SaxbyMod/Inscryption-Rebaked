@@ -3,7 +3,7 @@ extends Node
 var selectedCard : Card
 var currentlyHovered : Node2D
 
-var levels = [1,2,3]
+var levels = [1,3,3]
 
 var turnCounter = 0
 
