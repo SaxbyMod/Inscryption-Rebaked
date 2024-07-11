@@ -4,7 +4,7 @@ class_name Card
 
 signal card_ticked
 
-@export_group("Appearance")
+@export_category("Appearance")
 @export var cardGfx : Texture2D
 @export var cardName : String = "Card"
 @export_multiline var cardDesc: String = "A Dummy Card with no real use"
@@ -16,6 +16,13 @@ signal card_ticked
 @export_category("Cost")
 @export_enum("Blood","Bone","Energy") var costType = 0
 @export var costAmount = 0
+
+@export_group("Cost Sprites")
+@export var blood : AtlasTexture
+@export var bone : AtlasTexture
+@export var energy : AtlasTexture
+
+var thisCard : AtlasTexture
 
 var mouseHover = false
 
@@ -35,6 +42,16 @@ func _ready():
 	originalSpritePosition = $CardGfx.position
 	$CardGfx/Healthbar.text = "[right]" + str(health)
 	$CardGfx/Powerbar.text = str(power)
+	
+	match costType:
+		0:
+			thisCard = blood
+		1:
+			thisCard = bone
+		2:
+			thisCard = energy
+	
+	$CardGfx/CostDisplay/Cost.texture = thisCard
 
 
 func _process(delta):
