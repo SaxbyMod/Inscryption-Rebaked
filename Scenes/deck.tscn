@@ -93,13 +93,14 @@ layout_mode = 0
 offset_left = 105.0
 offset_top = 411.0
 offset_right = 510.0
-offset_bottom = 590.0
+offset_bottom = 606.0
 theme = ExtResource("1_efcxe")
 theme_override_font_sizes/normal_font_size = 48
 text = "[DEBUG DISPLAY]
 Blood: 99
 Bone: 99
-Energy: 99"
+Energy: 99
+Scale State: 5"
 script = ExtResource("4_mj5aw")
 
 [node name="SlotParent" type="Node2D" parent="."]
