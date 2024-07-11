@@ -59,6 +59,7 @@ fit_content = true
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
 shape = SubResource("RectangleShape2D_l6kyr")
 metadata/_edit_lock_ = true
 

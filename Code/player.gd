@@ -3,6 +3,10 @@ extends Node
 var selectedCard : Card
 var currentlyHovered : Node2D
 
+var bloodLevel = 99
+var boneLevel = 99
+var energyLevel = 99
+
 var turnCounter = 0
 
 func _process(delta):

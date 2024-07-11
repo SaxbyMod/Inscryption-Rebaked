@@ -4,12 +4,18 @@ class_name Card
 
 signal card_ticked
 
+@export_group("Appearance")
 @export var cardGfx : Texture2D
 @export var cardName : String = "Card"
 @export_multiline var cardDesc: String = "A Dummy Card with no real use"
 
+@export_category("Health & Power")
 @export var health : int = 1
 @export var power : int = 0
+
+@export_category("Cost")
+@export_enum("Blood","Bone","Energy") var costType = 0
+@export var costAmount = 0
 
 var mouseHover = false
 
@@ -59,7 +65,7 @@ func _process(delta):
 		slotted = false
 	
 	if attackTimer > 0:
-		attackAnim = -sin(attackTimer) * 5
+		attackAnim = -sin(attackTimer) * 20
 		attackTimer -= delta
 	
 	$CardGfx.position.y = lerp($CardGfx.position.y, originalSpritePosition.y + pickupAnim, delta * 16) + attackAnim
