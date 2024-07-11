@@ -3,9 +3,7 @@ extends Node
 var selectedCard : Card
 var currentlyHovered : Node2D
 
-var bloodLevel = 99
-var boneLevel = 99
-var energyLevel = 99
+var levels = [1,2,3]
 
 var turnCounter = 0
 
@@ -23,17 +21,23 @@ func _process(delta):
 			
 			# If we hover over a card we should select it
 			if currentlyHovered.is_in_group("card"):
-				selectedCard = currentlyHovered
+				if not currentlyHovered.slotted:
+					selectedCard = currentlyHovered
 			
 			# If we hover over a slot and have a selected card then we should put our card there
 			if currentlyHovered.is_in_group("slot") and selectedCard != null:
-				
 				if not currentlyHovered.enemy:
-					selectedCard.parentSlot = currentlyHovered
-					selectedCard = null
+					play_card()
 	
 	if Input.is_action_just_pressed("Spacebar"):
 		advance_turn()
+
+func play_card():
+	print(levels[selectedCard.costType])
+	if levels[selectedCard.costType] - selectedCard.costAmount >= 0:
+		levels[selectedCard.costType] -= selectedCard.costAmount
+		selectedCard.parentSlot = currentlyHovered
+		selectedCard = null
 
 func advance_turn():
 	turnCounter += 1

@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://c82wwqw147q63"]
+
+[ext_resource type="FontFile" uid="uid://clsbw2dt4kdrf" path="res://Marksman.otf" id="1_ua7lj"]
+
+[resource]
+default_font = ExtResource("1_ua7lj")
