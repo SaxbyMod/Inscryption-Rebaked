@@ -1,0 +1,102 @@
+[gd_scene load_steps=11 format=3 uid="uid://cwyaijidsdwjk"]
+
+[ext_resource type="Script" path="res://Code/card_generic.gd" id="1_n2fet"]
+[ext_resource type="Texture2D" uid="uid://brtv8k5l6nm3k" path="res://Art/cool_card.tres" id="2_ndhn7"]
+[ext_resource type="Script" path="res://Code/Abilites/move_slot.gd" id="3_dgb7g"]
+[ext_resource type="Texture2D" uid="uid://hruea0qoo0nb" path="res://Art/blood_icon.tres" id="3_jjjut"]
+[ext_resource type="Texture2D" uid="uid://cyngupd4ofob" path="res://Art/bone_icon.tres" id="4_etwv7"]
+[ext_resource type="Script" path="res://Code/Abilites/basic_attack.gd" id="4_m44rj"]
+[ext_resource type="Texture2D" uid="uid://dlthwe5ts71ri" path="res://Art/energy_icon.tres" id="5_0vys7"]
+[ext_resource type="Texture2D" uid="uid://blmdtl67t2ax7" path="res://Art/basic_card.tres" id="6_wvfh6"]
+[ext_resource type="FontFile" uid="uid://clsbw2dt4kdrf" path="res://Marksman.otf" id="7_n0sl0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l6kyr"]
+size = Vector2(208, 270)
+
+[node name="Cool Card" type="Node2D" groups=["card"]]
+texture_filter = 1
+script = ExtResource("1_n2fet")
+cardGfx = ExtResource("2_ndhn7")
+cardName = "Cool Card"
+cardDesc = "Moves one to the right and attacks. If a card is in the way then it can jump over it"
+costAmount = 1
+health = 3
+power = 1
+blood = ExtResource("3_jjjut")
+bone = ExtResource("4_etwv7")
+energy = ExtResource("5_0vys7")
+
+[node name="CardGfx" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -95.0
+offset_top = -127.0
+offset_right = 95.0
+offset_bottom = 127.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(95, 127)
+size_flags_vertical = 4
+texture = ExtResource("6_wvfh6")
+stretch_mode = 4
+
+[node name="Healthbar" type="RichTextLabel" parent="CardGfx"]
+layout_mode = 0
+offset_left = 113.0
+offset_top = 203.0
+offset_right = 190.0
+offset_bottom = 254.0
+theme_override_colors/default_color = Color(0, 0, 0, 0.705882)
+theme_override_fonts/normal_font = ExtResource("7_n0sl0")
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[right]100"
+fit_content = true
+
+[node name="Powerbar" type="RichTextLabel" parent="CardGfx"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 203.0
+offset_right = 81.0
+offset_bottom = 254.0
+theme_override_colors/default_color = Color(0, 0, 0, 0.705882)
+theme_override_fonts/normal_font = ExtResource("7_n0sl0")
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "100"
+fit_content = true
+
+[node name="CostDisplay" type="Node2D" parent="CardGfx"]
+position = Vector2(95, 127)
+
+[node name="Cost" type="TextureRect" parent="CardGfx/CostDisplay"]
+offset_left = 64.0
+offset_top = -123.0
+offset_right = 70.0
+offset_bottom = -114.0
+scale = Vector2(4.5, 4.5)
+texture = ExtResource("3_jjjut")
+stretch_mode = 3
+
+[node name="Area2D" type="Area2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+shape = SubResource("RectangleShape2D_l6kyr")
+metadata/_edit_lock_ = true
+
+[node name="MoveSlot" type="Node" parent="."]
+script = ExtResource("3_dgb7g")
+turnWait = 2
+turnWaitOffset = 1
+
+[node name="Attack" type="Node" parent="."]
+script = ExtResource("4_m44rj")
+turnWait = 2
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

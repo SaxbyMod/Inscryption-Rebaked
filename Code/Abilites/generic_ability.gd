@@ -17,7 +17,7 @@ func _ready():
 	parent.card_ticked.connect(tick_power)
 
 func tick_power():
-	if not parent.slotted or (Player.turnCounter + turnWaitOffset) % turnWait != 0:
+	if not parent.slotted or (CardManager.turnCounter + turnWaitOffset) % turnWait != 0:
 		return true
 	
 	return false

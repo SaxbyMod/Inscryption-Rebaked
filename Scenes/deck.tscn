@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bg5j42a4b6h0o"]
+[gd_scene load_steps=19 format=3 uid="uid://bg5j42a4b6h0o"]
 
 [ext_resource type="PackedScene" uid="uid://0xp12wby2ydk" path="res://Scenes/testing_card.tscn" id="1_143ww"]
 [ext_resource type="Theme" uid="uid://c82wwqw147q63" path="res://theme.tres" id="1_efcxe"]
@@ -11,11 +11,13 @@
 [ext_resource type="Texture2D" uid="uid://dy42kje557nlm" path="res://Art/scale_spinle.tres" id="5_07ox4"]
 [ext_resource type="Texture2D" uid="uid://dxa6p2ri0xnqw" path="res://Art/scale_pointer.tres" id="6_7s8d3"]
 [ext_resource type="Script" path="res://Code/scale_pointer.gd" id="7_xoqwu"]
-[ext_resource type="Texture2D" uid="uid://brtv8k5l6nm3k" path="res://Art/cool_card.tres" id="8_tsknb"]
-[ext_resource type="Script" path="res://Code/Abilites/move_slot.gd" id="9_i02mh"]
 [ext_resource type="Script" path="res://Code/Abilites/basic_attack.gd" id="10_clmqx"]
 [ext_resource type="Texture2D" uid="uid://b1mjetsigl5fw" path="res://Art/epic_card.tres" id="11_j10da"]
 [ext_resource type="Texture2D" uid="uid://boy72lqfk76oh" path="res://Art/legendary_card.tres" id="12_0aivv"]
+[ext_resource type="PackedScene" uid="uid://cwyaijidsdwjk" path="res://Cards/cool_card.tscn" id="15_dlq4g"]
+[ext_resource type="PackedScene" uid="uid://c8d0ob018dxcg" path="res://Cards/simple_card.tscn" id="16_qym75"]
+[ext_resource type="Script" path="res://Code/basic_enemy.gd" id="17_243yy"]
+[ext_resource type="PackedScene" uid="uid://pg7y4q1x8k6m" path="res://Cards/enemy_card.tscn" id="18_tg61k"]
 
 [node name="Deck" type="Node2D" groups=["cardPlayer"]]
 texture_filter = 1
@@ -114,6 +116,10 @@ texture = ExtResource("5_07ox4")
 position = Vector2(0, -8)
 texture = ExtResource("6_7s8d3")
 script = ExtResource("7_xoqwu")
+
+[node name="ScaleMoveTimer" type="Timer" parent="BackgroundGfx/Scale/ScalePointer"]
+wait_time = 0.5
+one_shot = true
 
 [node name="SlotParent" type="Node2D" parent="."]
 position = Vector2(-8, -75)
@@ -231,35 +237,14 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Cards" type="Node" parent="."]
 
-[node name="CoolCard" parent="Cards" instance=ExtResource("1_143ww")]
-position = Vector2(-308, 377)
-cardGfx = ExtResource("8_tsknb")
-cardName = "Cool Card"
-cardDesc = "Moves one to the right and attacks. If a card is in the way then it can jump over it"
-health = 3
-power = 1
-costAmount = 1
-
-[node name="MoveSlot" type="Node" parent="Cards/CoolCard"]
-script = ExtResource("9_i02mh")
-turnWait = 2
-turnWaitOffset = 1
-
-[node name="Attack" type="Node" parent="Cards/CoolCard"]
-script = ExtResource("10_clmqx")
-turnWait = 2
-
-[node name="Simpleton" parent="Cards" instance=ExtResource("1_143ww")]
-position = Vector2(-108, 377)
-
 [node name="Epic" parent="Cards" instance=ExtResource("1_143ww")]
 position = Vector2(92, 377)
 cardGfx = ExtResource("11_j10da")
 cardName = "Epic Card"
 cardDesc = "Attacks every second turn."
-power = 3
 costType = 2
 costAmount = 2
+power = 3
 
 [node name="Attack" type="Node" parent="Cards/Epic"]
 script = ExtResource("10_clmqx")
@@ -270,12 +255,23 @@ position = Vector2(292, 377)
 cardGfx = ExtResource("12_0aivv")
 cardName = "Legendary Card"
 cardDesc = "Attacks every turn"
-health = 2
-power = 2
 costType = 1
 costAmount = 3
+health = 2
+power = 2
 
 [node name="Attack" type="Node" parent="Cards/Legendary"]
 script = ExtResource("10_clmqx")
 
+[node name="Cool Card" parent="Cards" instance=ExtResource("15_dlq4g")]
+position = Vector2(-308, 377)
+
+[node name="Simple Card" parent="Cards" instance=ExtResource("16_qym75")]
+position = Vector2(-108, 377)
+
+[node name="Enemy" type="Node" parent="." groups=["enemy"]]
+script = ExtResource("17_243yy")
+cardToPlay = ExtResource("18_tg61k")
+
 [connection signal="pressed" from="BackgroundGfx/BellButton" to="BackgroundGfx/BellButton" method="_on_pressed"]
+[connection signal="timeout" from="BackgroundGfx/Scale/ScalePointer/ScaleMoveTimer" to="BackgroundGfx/Scale/ScalePointer" method="_on_scale_move_timer_timeout"]

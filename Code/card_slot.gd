@@ -13,6 +13,8 @@ func _process(delta):
 		$Area2D.hide()
 	else:
 		$Area2D.show()
+	
+	print("Slot ", place, ": ", occupied)
 
 
 # Tells the player they are hovering over this object

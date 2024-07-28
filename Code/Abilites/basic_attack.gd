@@ -6,4 +6,4 @@ func tick_power():
 	
 	parent.playAttackAnimation()
 	
-	CardManager.damage += parent.power
+	CardManager.damage_slot(parent.parentSlot.place + (4 * parent.direction), parent.power, parent)

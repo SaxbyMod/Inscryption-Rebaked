@@ -9,13 +9,14 @@ signal card_ticked
 @export var cardName : String = "Card"
 @export_multiline var cardDesc: String = "A Dummy Card with no real use"
 
-@export_category("Health & Power")
-@export var health : int = 1
-@export var power : int = 0
-
 @export_category("Cost")
 @export_enum("Blood","Bone","Energy") var costType = 0
 @export var costAmount = 0
+
+@export_category("Misc")
+@export var health : int = 1
+@export var power : int = 0
+@export var enemyCard = false
 
 @export_group("Cost Sprites")
 @export var blood : AtlasTexture
@@ -37,6 +38,10 @@ var pickupAnim = 0
 var attackAnim = 0
 var attackTimer : float = 0
 
+var direction = 1
+
+var dead = false
+
 func _ready():
 	$CardGfx.texture = cardGfx
 	originalSpritePosition = $CardGfx.position
@@ -55,9 +60,15 @@ func _ready():
 	
 	if costAmount == 0:
 		$CardGfx/CostDisplay.queue_free()
+	
+	if enemyCard:
+		direction = -1
 
 
 func _process(delta):
+	if dead:
+		return
+	
 	# If the card changes slots then it sets its previous slot to be unoccupied
 	if parentSlot != prevParentSlot and prevParentSlot != null:
 		prevParentSlot.occupied = false
@@ -88,12 +99,19 @@ func _process(delta):
 		attackAnim = -sin(attackTimer) * 20
 		attackTimer -= delta
 	
-	$CardGfx.position.y = lerp($CardGfx.position.y, originalSpritePosition.y + pickupAnim, delta * 16) + attackAnim
+	var direction = 1
+	if enemyCard:
+		direction = -1
+	
+	$CardGfx.position.y = lerp($CardGfx.position.y, originalSpritePosition.y + pickupAnim, delta * 16) + attackAnim * direction
 	prevParentSlot = parentSlot
 
 
 # Tells the player they are hovering over this object
 func _on_area_2d_mouse_entered():
+	if enemyCard:
+		return
+	
 	mouseHover = true
 	Player.currentlyHovered = self
 
@@ -110,3 +128,12 @@ func tick_turn():
 # The shittiness applies to this too
 func playAttackAnimation():
 	attackTimer = 0.5
+
+func takeDamage(amount : int):
+	health -= amount
+	if health <= 0:
+		parentSlot.occupied = false
+		dead = true
+		queue_free()
+	
+	$CardGfx/Healthbar.text = "[right]" + str(health)

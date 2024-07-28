@@ -5,8 +5,6 @@ var currentlyHovered : Node2D
 
 var levels = [1,3,3]
 
-var turnCounter = 0
-
 func _process(delta):
 	if get_tree().current_scene != null:
 		if not get_tree().current_scene.is_in_group("cardPlayer"):
@@ -30,7 +28,7 @@ func _process(delta):
 					play_card()
 	
 	if Input.is_action_just_pressed("Spacebar"):
-		advance_turn()
+		CardManager.advance_turn()
 
 func play_card():
 	if levels[selectedCard.costType] - selectedCard.costAmount >= 0:
@@ -38,14 +36,4 @@ func play_card():
 		selectedCard.parentSlot = currentlyHovered
 		selectedCard = null
 
-func advance_turn():
-	if levels[2] < 6:
-		levels[2] += 1
-	
-	turnCounter += 1
-	print("Turn ", turnCounter)
-	var cards = get_tree().get_nodes_in_group("card")
-	
-	for n in len(cards):
-		var cur : Card = cards[n]
-		cur.tick_turn()
+
