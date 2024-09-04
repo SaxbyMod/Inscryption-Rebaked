@@ -14,8 +14,6 @@ func _process(delta):
 	else:
 		$Area2D.show()
 	
-	print("Slot ", place, ": ", occupied)
-
 
 # Tells the player they are hovering over this object
 func _on_area_2d_mouse_entered():
