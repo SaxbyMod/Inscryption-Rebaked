@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bg5j42a4b6h0o"]
+[gd_scene load_steps=20 format=3 uid="uid://bg5j42a4b6h0o"]
 
 [ext_resource type="PackedScene" uid="uid://0xp12wby2ydk" path="res://Scenes/testing_card.tscn" id="1_143ww"]
 [ext_resource type="Theme" uid="uid://c82wwqw147q63" path="res://theme.tres" id="1_efcxe"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://c8d0ob018dxcg" path="res://Cards/simple_card.tscn" id="16_qym75"]
 [ext_resource type="Script" path="res://Code/basic_enemy.gd" id="17_243yy"]
 [ext_resource type="PackedScene" uid="uid://pg7y4q1x8k6m" path="res://Cards/enemy_card.tscn" id="18_tg61k"]
+[ext_resource type="AudioStream" uid="uid://b47fgy5ndsxgn" path="res://Music/35.mp3" id="19_dyg5n"]
 
 [node name="Deck" type="Node2D" groups=["cardPlayer"]]
 texture_filter = 1
@@ -272,6 +273,11 @@ position = Vector2(-108, 377)
 [node name="Enemy" type="Node" parent="." groups=["enemy"]]
 script = ExtResource("17_243yy")
 cardToPlay = ExtResource("18_tg61k")
+
+[node name="Music Handling" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_dyg5n")
+autoplay = true
+mix_target = 1
 
 [connection signal="pressed" from="BackgroundGfx/BellButton" to="BackgroundGfx/BellButton" method="_on_pressed"]
 [connection signal="timeout" from="BackgroundGfx/Scale/ScalePointer/ScaleMoveTimer" to="BackgroundGfx/Scale/ScalePointer" method="_on_scale_move_timer_timeout"]
