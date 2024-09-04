@@ -1,5 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://c5ga6ncpntqca"]
+[gd_scene load_steps=12 format=3 uid="uid://c5ga6ncpntqca"]
 
+[ext_resource type="AudioStream" uid="uid://b47fgy5ndsxgn" path="res://Music/35.mp3" id="1_c7lk7"]
 [ext_resource type="PackedScene" uid="uid://j7b4yw6jl5ma" path="res://Scenes/card_slot.tscn" id="1_w364x"]
 [ext_resource type="PackedScene" uid="uid://0xp12wby2ydk" path="res://Scenes/testing_card.tscn" id="2_ykg5k"]
 [ext_resource type="Texture2D" uid="uid://brtv8k5l6nm3k" path="res://Art/cool_card.tres" id="3_vulkq"]
@@ -170,3 +171,8 @@ grow_vertical = 2
 theme_override_fonts/normal_font = ExtResource("7_q6xpw")
 theme_override_font_sizes/normal_font_size = 32
 text = "This scene is broken, please use \"deck.tscn\""
+
+[node name="Music Handling" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_c7lk7")
+autoplay = true
+mix_target = 1

@@ -9,6 +9,9 @@ func _process(delta):
 	if get_tree().current_scene != null:
 		if not get_tree().current_scene.is_in_group("cardPlayer"):
 			return
+			
+	if Input.is_action_just_pressed("Exit"):
+		get_tree().quit()
 
 	if Input.is_action_just_pressed("leftClick"):
 		if currentlyHovered != null:
