@@ -276,6 +276,7 @@ cardToPlay = ExtResource("18_tg61k")
 
 [node name="Music Handling" type="AudioStreamPlayer" parent="."]
 mix_target = 1
+bus = &"Music"
 script = ExtResource("20_ywnuo")
 
 [connection signal="pressed" from="BackgroundGfx/BellButton" to="BackgroundGfx/BellButton" method="_on_pressed"]
