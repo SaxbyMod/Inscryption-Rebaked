@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b8h0gi3nof2hs"]
+[gd_scene load_steps=4 format=3 uid="uid://b8h0gi3nof2hs"]
 
 [ext_resource type="Texture2D" uid="uid://bh5fb0hlo3w5" path="res://Art/LoadingScreen.png" id="1_fyu5g"]
 [ext_resource type="Script" path="res://Code/LoadingScene.gd" id="2_6ydal"]
+[ext_resource type="PackedScene" uid="uid://crjr85r3vidu4" path="res://Scenes/music_ui.tscn" id="3_rq4e8"]
 
 [node name="Loading" type="Node2D"]
 
@@ -10,3 +11,5 @@ position = Vector2(963, 536)
 scale = Vector2(1.87, 1.87)
 texture = ExtResource("1_fyu5g")
 script = ExtResource("2_6ydal")
+
+[node name="Music UI" parent="." instance=ExtResource("3_rq4e8")]

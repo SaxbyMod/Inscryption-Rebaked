@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://c8d0ob018dxcg" path="res://Cards/simple_card.tscn" id="16_qym75"]
 [ext_resource type="Script" path="res://Code/basic_enemy.gd" id="17_243yy"]
 [ext_resource type="PackedScene" uid="uid://pg7y4q1x8k6m" path="res://Cards/enemy_card.tscn" id="18_tg61k"]
-[ext_resource type="Script" path="res://Code/Music.gd" id="20_ywnuo"]
+[ext_resource type="PackedScene" uid="uid://crjr85r3vidu4" path="res://Scenes/music_ui.tscn" id="19_hl1c4"]
 
 [node name="Deck" type="Node2D" groups=["cardPlayer"]]
 texture_filter = 1
@@ -274,10 +274,7 @@ position = Vector2(-108, 377)
 script = ExtResource("17_243yy")
 cardToPlay = ExtResource("18_tg61k")
 
-[node name="Music Handling" type="AudioStreamPlayer" parent="."]
-mix_target = 1
-bus = &"Music"
-script = ExtResource("20_ywnuo")
+[node name="Music UI" parent="." instance=ExtResource("19_hl1c4")]
 
 [connection signal="pressed" from="BackgroundGfx/BellButton" to="BackgroundGfx/BellButton" method="_on_pressed"]
 [connection signal="timeout" from="BackgroundGfx/Scale/ScalePointer/ScaleMoveTimer" to="BackgroundGfx/Scale/ScalePointer" method="_on_scale_move_timer_timeout"]
