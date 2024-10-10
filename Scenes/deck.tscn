@@ -275,7 +275,6 @@ script = ExtResource("17_243yy")
 cardToPlay = ExtResource("18_tg61k")
 
 [node name="Music Handling" type="AudioStreamPlayer" parent="."]
-autoplay = true
 mix_target = 1
 script = ExtResource("20_ywnuo")
 

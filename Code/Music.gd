@@ -1,15 +1,19 @@
-extends Node
+extends AudioStreamPlayer
 
-var scene_id = get_tree().current_scene.name
+@onready var scene_id = get_tree().current_scene.name
 @export var song: AudioStream
-var current_track = ""
+
+# Track Registry
+@onready var track1 = preload("res://Music/01.mp3")
+@onready var track2 = preload("res://Music/35.mp3")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if scene_id == "loading":
-		current_track = "01.mp3"
+		stream.set.bind(track1)
 	elif scene_id == "deck":
-		current_track = "35.mp3"
-	song = "res://Music/" + current_track
+		stream.set.bind(track2)
+	
 	pass # Replace with function body.
 
 
