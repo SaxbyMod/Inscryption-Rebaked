@@ -4,7 +4,9 @@ extends Node
 @export var availableCards : Array[cardData] = []
 @onready var cardParent : Node2D
 
-# Called when the node enters the scene tree for the first time.
+# A card is 254 units wide, so that's good to keep in mind
+var horizontalOffset = 260
+
 func _ready():
 	cardParent = $Cards
 	
@@ -22,8 +24,9 @@ func _ready():
 		summon.power = availableCards[n].power
 		
 		cardParent.add_child(summon)
+		
+		summon.position = Vector2(horizontalOffset * n, 0)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass

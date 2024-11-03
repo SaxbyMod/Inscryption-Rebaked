@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bg5j42a4b6h0o"]
+[gd_scene load_steps=18 format=3 uid="uid://bg5j42a4b6h0o"]
 
 [ext_resource type="PackedScene" uid="uid://0xp12wby2ydk" path="res://Scenes/testing_card.tscn" id="1_143ww"]
 [ext_resource type="Theme" uid="uid://c82wwqw147q63" path="res://theme.tres" id="1_efcxe"]
@@ -14,8 +14,9 @@
 [ext_resource type="Script" path="res://Code/card_instantiator.gd" id="14_qpqtc"]
 [ext_resource type="Resource" uid="uid://bpt7u0caxw165" path="res://CardFiles/basicCard.tres" id="15_q751h"]
 [ext_resource type="Script" path="res://Code/basic_enemy.gd" id="17_243yy"]
+[ext_resource type="Resource" uid="uid://cwvyvmj3ah14a" path="res://CardFiles/idkCard.tres" id="17_g88qe"]
 [ext_resource type="PackedScene" uid="uid://pg7y4q1x8k6m" path="res://Cards/enemy_card.tscn" id="18_tg61k"]
-[ext_resource type="PackedScene" path="res://Scenes/music_ui.tscn" id="19_hl1c4"]
+[ext_resource type="PackedScene" uid="uid://crjr85r3vidu4" path="res://Scenes/music_ui.tscn" id="19_hl1c4"]
 
 [node name="Deck" type="Node2D" groups=["cardPlayer"]]
 texture_filter = 1
@@ -243,10 +244,10 @@ DEBUGDISABLE = true
 [node name="CardInstantiator" type="Node" parent="."]
 script = ExtResource("14_qpqtc")
 cardObject = ExtResource("1_143ww")
-availableCards = Array[Resource("res://Code/card_data.gd")]([ExtResource("15_q751h")])
+availableCards = Array[Resource("res://Code/card_data.gd")]([ExtResource("15_q751h"), ExtResource("17_g88qe")])
 
 [node name="Cards" type="Node2D" parent="CardInstantiator"]
-position = Vector2(-2, 355)
+position = Vector2(0, 390)
 
 [connection signal="pressed" from="BackgroundGfx/BellButton" to="BackgroundGfx/BellButton" method="_on_pressed"]
 [connection signal="timeout" from="BackgroundGfx/Scale/ScalePointer/ScaleMoveTimer" to="BackgroundGfx/Scale/ScalePointer" method="_on_scale_move_timer_timeout"]

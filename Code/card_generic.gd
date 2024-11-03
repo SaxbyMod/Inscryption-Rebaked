@@ -85,6 +85,7 @@ func _process(delta):
 	# If the card has no slot then it goes to it, also happens when its slot changes
 	if parentSlot != null:
 		parentSlot.occupied = true
+		reparent(get_node("/root"))
 		position.x = lerp(position.x, parentSlot.global_position.x, delta * 16)
 		position.y = lerp(position.y, parentSlot.global_position.y, delta * 16)
 		slotted = true

@@ -1,14 +1,14 @@
 [gd_resource type="Resource" script_class="cardData" load_steps=3 format=3 uid="uid://bpt7u0caxw165"]
 
-[ext_resource type="Texture2D" uid="uid://blmdtl67t2ax7" path="res://Art/basic_card.tres" id="1_4223g"]
+[ext_resource type="Texture2D" uid="uid://b1mjetsigl5fw" path="res://Art/epic_card.tres" id="1_rdwmu"]
 [ext_resource type="Script" path="res://Code/card_data.gd" id="2_ampj5"]
 
 [resource]
 script = ExtResource("2_ampj5")
-cardGfx = ExtResource("1_4223g")
-cardName = "OMG"
-cardDesc = "KARD"
+cardGfx = ExtResource("1_rdwmu")
+cardName = "Card 1"
+cardDesc = "This is  Card 1"
 costType = 1
-costAmount = 8
+costAmount = 3
 health = 2
-power = 4
+power = 1
