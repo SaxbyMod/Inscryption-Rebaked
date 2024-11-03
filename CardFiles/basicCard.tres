@@ -7,7 +7,7 @@
 script = ExtResource("2_ampj5")
 cardGfx = ExtResource("1_rdwmu")
 cardName = "Card 1"
-cardDesc = "This is  Card 1"
+cardDesc = "This is Card 1"
 costType = 1
 costAmount = 3
 health = 2
