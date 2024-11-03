@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://cwyaijidsdwjk"]
+[gd_scene load_steps=8 format=3 uid="uid://cwyaijidsdwjk"]
 
 [ext_resource type="Script" path="res://Code/card_generic.gd" id="1_n2fet"]
-[ext_resource type="Texture2D" uid="uid://brtv8k5l6nm3k" path="res://Art/cool_card.tres" id="2_ndhn7"]
 [ext_resource type="Script" path="res://Code/Abilites/move_slot.gd" id="3_dgb7g"]
 [ext_resource type="Texture2D" uid="uid://hruea0qoo0nb" path="res://Art/blood_icon.tres" id="3_jjjut"]
 [ext_resource type="Script" path="res://Code/Abilites/basic_attack.gd" id="4_m44rj"]
@@ -14,12 +13,6 @@ size = Vector2(208, 270)
 [node name="Cool Card" type="Node2D" groups=["card"]]
 texture_filter = 1
 script = ExtResource("1_n2fet")
-cardGfx = ExtResource("2_ndhn7")
-cardName = "Cool Card"
-cardDesc = "Moves one to the right and attacks. If a card is in the way then it can jump over it"
-costAmount = 1
-health = 3
-power = 1
 
 [node name="CardGfx" type="TextureRect" parent="."]
 anchors_preset = 8

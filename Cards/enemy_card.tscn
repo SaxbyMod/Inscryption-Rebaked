@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://pg7y4q1x8k6m"]
+[gd_scene load_steps=7 format=3 uid="uid://pg7y4q1x8k6m"]
 
 [ext_resource type="Script" path="res://Code/card_generic.gd" id="1_xw8tq"]
-[ext_resource type="Texture2D" uid="uid://c67kh3cd8ys8i" path="res://Art/enemy_card.tres" id="2_gr64m"]
 [ext_resource type="Texture2D" uid="uid://hruea0qoo0nb" path="res://Art/blood_icon.tres" id="3_q1gb4"]
 [ext_resource type="Texture2D" uid="uid://blmdtl67t2ax7" path="res://Art/basic_card.tres" id="6_g21fi"]
 [ext_resource type="FontFile" uid="uid://clsbw2dt4kdrf" path="res://Marksman.otf" id="7_k58qu"]
@@ -13,13 +12,6 @@ size = Vector2(208, 270)
 [node name="Enemy Card" type="Node2D" groups=["card"]]
 texture_filter = 1
 script = ExtResource("1_xw8tq")
-cardGfx = ExtResource("2_gr64m")
-cardName = "Enemy Card"
-cardDesc = "A card used my enemies"
-costType = 2
-costAmount = 1
-health = 2
-power = 1
 
 [node name="CardGfx" type="TextureRect" parent="."]
 anchors_preset = 8

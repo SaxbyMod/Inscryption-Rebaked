@@ -1,11 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://c5ga6ncpntqca"]
+[gd_scene load_steps=8 format=3 uid="uid://c5ga6ncpntqca"]
 
 [ext_resource type="PackedScene" uid="uid://j7b4yw6jl5ma" path="res://Scenes/card_slot.tscn" id="1_w364x"]
 [ext_resource type="PackedScene" uid="uid://0xp12wby2ydk" path="res://Scenes/testing_card.tscn" id="2_ykg5k"]
-[ext_resource type="Texture2D" uid="uid://brtv8k5l6nm3k" path="res://Art/cool_card.tres" id="3_vulkq"]
 [ext_resource type="Script" path="res://Code/Abilites/move_slot.gd" id="4_gbbpa"]
-[ext_resource type="Texture2D" uid="uid://b1mjetsigl5fw" path="res://Art/epic_card.tres" id="4_lj2of"]
-[ext_resource type="Texture2D" uid="uid://boy72lqfk76oh" path="res://Art/legendary_card.tres" id="5_0e7fv"]
 [ext_resource type="Script" path="res://Code/Abilites/basic_attack.gd" id="6_kowq5"]
 [ext_resource type="Script" path="res://Code/descriptor.gd" id="6_lh5fs"]
 [ext_resource type="FontFile" uid="uid://clsbw2dt4kdrf" path="res://Marksman.otf" id="7_q6xpw"]
@@ -42,11 +39,6 @@ place = 3
 
 [node name="CoolCard" parent="CardStorage" instance=ExtResource("2_ykg5k")]
 position = Vector2(-174, 80)
-cardGfx = ExtResource("3_vulkq")
-cardName = "Cool Card"
-cardDesc = "Moves one to the right and attacks"
-health = 3
-power = 2
 
 [node name="MoveSlot" type="Node" parent="CardStorage/CoolCard"]
 script = ExtResource("4_gbbpa")
@@ -62,10 +54,6 @@ position = Vector2(-128, 80)
 
 [node name="Epic" parent="CardStorage" instance=ExtResource("2_ykg5k")]
 position = Vector2(-81, 80)
-cardGfx = ExtResource("4_lj2of")
-cardName = "Epic Card"
-cardDesc = "Attacks every second turn. If a card is in the way then it can skip it."
-power = 3
 
 [node name="Attack" type="Node" parent="CardStorage/Epic"]
 script = ExtResource("6_kowq5")
@@ -73,10 +61,6 @@ turnWait = 2
 
 [node name="Legendary" parent="CardStorage" instance=ExtResource("2_ykg5k")]
 position = Vector2(-35, 80)
-cardGfx = ExtResource("5_0e7fv")
-cardName = "Legendary Card"
-cardDesc = "Attacks every turn"
-power = 2
 
 [node name="Attack" type="Node" parent="CardStorage/Legendary"]
 script = ExtResource("6_kowq5")

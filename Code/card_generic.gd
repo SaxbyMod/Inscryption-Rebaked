@@ -4,19 +4,16 @@ class_name Card
 
 signal card_ticked
 
-@export_category("Appearance")
-@export var cardGfx : Texture2D
-@export var cardName : String = "Card"
-@export_multiline var cardDesc: String = "A Dummy Card with no real use"
+var cardGfx : Texture2D
+var cardName : String = "[NO DATA]"
+var cardDesc: String = "[NO DATA]"
 
-@export_category("Cost")
-@export_enum("Blood","Bone","Energy") var costType = 0
-@export var costAmount = 0
+var costType = 0
+var costAmount = -1
 
-@export_category("Misc")
-@export var health : int = 1
-@export var power : int = 0
-@export var enemyCard = false
+var health : int = -1
+var power : int = -1
+var enemyCard = false
 
 var blood : AtlasTexture = load("res://Art/blood_icon.tres")
 var bone : AtlasTexture = load("res://Art/bone_icon.tres")

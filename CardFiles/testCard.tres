@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="cardData" load_steps=2 format=3 uid="uid://bpt7u0caxw165"]
-
-[ext_resource type="Script" path="res://Code/card_data.gd" id="1_n7q0p"]
-
-[resource]
-script = ExtResource("1_n7q0p")
-cardName = "Card Name here"
-cardDesc = "Card description here"

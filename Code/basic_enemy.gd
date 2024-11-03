@@ -5,8 +5,12 @@ class_name Enemy
 @export var cardToPlay : PackedScene
 @export var cardCooldown : int = 4
 var nextActivation = 1
+@export var DEBUGDISABLE = false
 
 func play():
+	if DEBUGDISABLE:
+		return
+	
 	if nextActivation <= CardManager.turnCounter:
 		nextActivation = CardManager.turnCounter + cardCooldown
 		var curCard : Card = cardToPlay.instantiate()

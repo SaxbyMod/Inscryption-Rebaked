@@ -11,7 +11,6 @@ size = Vector2(208, 270)
 [node name="Card" type="Node2D" groups=["card"]]
 texture_filter = 1
 script = ExtResource("1_87mu5")
-cardGfx = ExtResource("2_4d8pd")
 
 [node name="CardGfx" type="TextureRect" parent="."]
 anchors_preset = 8
