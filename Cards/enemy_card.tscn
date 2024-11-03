@@ -1,10 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://pg7y4q1x8k6m"]
+[gd_scene load_steps=8 format=3 uid="uid://pg7y4q1x8k6m"]
 
 [ext_resource type="Script" path="res://Code/card_generic.gd" id="1_xw8tq"]
 [ext_resource type="Texture2D" uid="uid://c67kh3cd8ys8i" path="res://Art/enemy_card.tres" id="2_gr64m"]
 [ext_resource type="Texture2D" uid="uid://hruea0qoo0nb" path="res://Art/blood_icon.tres" id="3_q1gb4"]
-[ext_resource type="Texture2D" uid="uid://cyngupd4ofob" path="res://Art/bone_icon.tres" id="4_vx22q"]
-[ext_resource type="Texture2D" uid="uid://dlthwe5ts71ri" path="res://Art/energy_icon.tres" id="5_phxx3"]
 [ext_resource type="Texture2D" uid="uid://blmdtl67t2ax7" path="res://Art/basic_card.tres" id="6_g21fi"]
 [ext_resource type="FontFile" uid="uid://clsbw2dt4kdrf" path="res://Marksman.otf" id="7_k58qu"]
 [ext_resource type="Script" path="res://Code/Abilites/basic_attack.gd" id="9_qmwbq"]
@@ -22,9 +20,6 @@ costType = 2
 costAmount = 1
 health = 2
 power = 1
-blood = ExtResource("3_q1gb4")
-bone = ExtResource("4_vx22q")
-energy = ExtResource("5_phxx3")
 
 [node name="CardGfx" type="TextureRect" parent="."]
 anchors_preset = 8

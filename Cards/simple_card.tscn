@@ -1,10 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://c8d0ob018dxcg"]
+[gd_scene load_steps=6 format=3 uid="uid://c8d0ob018dxcg"]
 
 [ext_resource type="Script" path="res://Code/card_generic.gd" id="1_fvnbc"]
 [ext_resource type="Texture2D" uid="uid://blmdtl67t2ax7" path="res://Art/basic_card.tres" id="2_6jao1"]
 [ext_resource type="Texture2D" uid="uid://hruea0qoo0nb" path="res://Art/blood_icon.tres" id="3_m6cdg"]
-[ext_resource type="Texture2D" uid="uid://cyngupd4ofob" path="res://Art/bone_icon.tres" id="4_7k721"]
-[ext_resource type="Texture2D" uid="uid://dlthwe5ts71ri" path="res://Art/energy_icon.tres" id="5_c6llc"]
 [ext_resource type="FontFile" uid="uid://clsbw2dt4kdrf" path="res://Marksman.otf" id="6_86rk4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l6kyr"]
@@ -15,9 +13,6 @@ texture_filter = 1
 script = ExtResource("1_fvnbc")
 cardGfx = ExtResource("2_6jao1")
 cardName = "Basic Card"
-blood = ExtResource("3_m6cdg")
-bone = ExtResource("4_7k721")
-energy = ExtResource("5_c6llc")
 
 [node name="CardGfx" type="TextureRect" parent="."]
 anchors_preset = 8

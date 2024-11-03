@@ -18,10 +18,9 @@ signal card_ticked
 @export var power : int = 0
 @export var enemyCard = false
 
-@export_group("Cost Sprites")
-@export var blood : AtlasTexture
-@export var bone : AtlasTexture
-@export var energy : AtlasTexture
+var blood : AtlasTexture = load("res://Art/blood_icon.tres")
+var bone : AtlasTexture = load("res://Art/bone_icon.tres")
+var energy : AtlasTexture = load("res://Art/energy_icon.tres")
 
 var thisCard : AtlasTexture
 
