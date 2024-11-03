@@ -41,6 +41,7 @@ var dead = false
 func _ready():
 	$CardGfx.texture = cardGfx
 	originalSpritePosition = $CardGfx.position
+	
 	$CardGfx/Healthbar.text = "[right]" + str(health)
 	$CardGfx/Powerbar.text = str(power)
 	
@@ -53,6 +54,7 @@ func _ready():
 			thisCard = energy
 	
 	$CardGfx/CostDisplay/Cost.texture = thisCard
+	$CardGfx/CostDisplay/Number.text = "x" + str(costAmount)
 	
 	if costAmount == 0:
 		$CardGfx/CostDisplay.queue_free()

@@ -15,7 +15,7 @@
 [ext_resource type="Resource" uid="uid://bpt7u0caxw165" path="res://CardFiles/basicCard.tres" id="15_q751h"]
 [ext_resource type="Script" path="res://Code/basic_enemy.gd" id="17_243yy"]
 [ext_resource type="Resource" uid="uid://cwvyvmj3ah14a" path="res://CardFiles/idkCard.tres" id="17_g88qe"]
-[ext_resource type="PackedScene" path="res://Scenes/music_ui.tscn" id="19_hl1c4"]
+[ext_resource type="PackedScene" uid="uid://crjr85r3vidu4" path="res://Scenes/music_ui.tscn" id="19_hl1c4"]
 
 [node name="Deck" type="Node2D" groups=["cardPlayer"]]
 texture_filter = 1
