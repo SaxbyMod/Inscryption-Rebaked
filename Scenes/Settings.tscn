@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://btlw6pvg30gi8"]
+[gd_scene load_steps=3 format=3 uid="uid://civ6xc8njadtq"]
 
 [ext_resource type="Script" path="res://Code/Settings.gd" id="1_camxw"]
 [ext_resource type="PackedScene" uid="uid://crjr85r3vidu4" path="res://Scenes/music_ui.tscn" id="2_qw5gq"]
@@ -35,6 +35,7 @@ layout_mode = 2
 tab_alignment = 1
 
 [node name="Sound" type="VBoxContainer" parent="MarginContainer/TabContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 10
 
@@ -168,7 +169,6 @@ layout_mode = 2
 tooltip_text = "Mute the Music Volume?"
 
 [node name="Display" type="VBoxContainer" parent="MarginContainer/TabContainer"]
-visible = false
 clip_contents = true
 layout_mode = 2
 size_flags_vertical = 4
@@ -184,14 +184,16 @@ text = "Resolution:"
 
 [node name="Resolution" type="OptionButton" parent="MarginContainer/TabContainer/Display/HSplitContainer"]
 layout_mode = 2
-item_count = 3
+item_count = 4
 selected = 2
-popup/item_0/text = "1920x1080"
-popup/item_0/id = 0
-popup/item_1/text = "1600x900"
-popup/item_1/id = 1
-popup/item_2/text = "1280x720"
-popup/item_2/id = 2
+popup/item_0/text = "2560x1440"
+popup/item_0/id = 3
+popup/item_1/text = "1920x1080"
+popup/item_1/id = 0
+popup/item_2/text = "1600x900"
+popup/item_2/id = 1
+popup/item_3/text = "1280x720"
+popup/item_3/id = 2
 
 [connection signal="value_changed" from="MarginContainer/TabContainer/Sound/Master Volume/Set Master" to="." method="_on_volume_value_changed"]
 [connection signal="toggled" from="MarginContainer/TabContainer/Sound/Master Volume/Mute Master" to="." method="_on_check_box_toggled"]
