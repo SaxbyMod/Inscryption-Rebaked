@@ -10,8 +10,8 @@ func _process(delta):
 		if not get_tree().current_scene.is_in_group("cardPlayer"):
 			return
 			
-	if Input.is_action_just_pressed("Exit"):
-		get_tree().quit()
+	if Input.is_action_just_pressed("Settings"):
+		get_tree().change_scene_to_file("res://Scenes/Settings.tscn")
 
 	if Input.is_action_just_pressed("leftClick"):
 		if currentlyHovered != null:

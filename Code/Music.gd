@@ -16,6 +16,9 @@ func _ready():
 	elif scene_id == "Deck":
 		stream = track2
 		print("deck")
+	elif scene_id == "Settings":
+		stream = track1
+		print("settings")
 	playing = true
 	stream_paused = false
 	pass # Replace with function body.

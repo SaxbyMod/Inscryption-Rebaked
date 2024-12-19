@@ -1,0 +1,206 @@
+[gd_scene load_steps=3 format=3 uid="uid://btlw6pvg30gi8"]
+
+[ext_resource type="Script" path="res://Code/Settings.gd" id="1_camxw"]
+[ext_resource type="PackedScene" uid="uid://crjr85r3vidu4" path="res://Scenes/music_ui.tscn" id="2_qw5gq"]
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_camxw")
+
+[node name="Music UI" parent="." instance=ExtResource("2_qw5gq")]
+layout_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -97.0
+offset_right = 97.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="TabContainer" type="TabContainer" parent="MarginContainer"]
+layout_mode = 2
+tab_alignment = 1
+
+[node name="Sound" type="VBoxContainer" parent="MarginContainer/TabContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Master Volume" type="GridContainer" parent="MarginContainer/TabContainer/Sound"]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 5
+columns = 3
+
+[node name="Master Volume Label" type="Label" parent="MarginContainer/TabContainer/Sound/Master Volume"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 1
+text = "Master Volume: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Set Master" type="HSlider" parent="MarginContainer/TabContainer/Sound/Master Volume"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+tooltip_text = "Change the Master Volume with this slider"
+rounded = true
+ticks_on_borders = true
+
+[node name="Mute Master" type="CheckBox" parent="MarginContainer/TabContainer/Sound/Master Volume"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+tooltip_text = "Mute the Master Volume?"
+
+[node name="SFX Volume" type="GridContainer" parent="MarginContainer/TabContainer/Sound"]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 5
+columns = 3
+
+[node name="SFX Volume Label" type="Label" parent="MarginContainer/TabContainer/Sound/SFX Volume"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 1
+text = "SFX Volume: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Set SFX" type="HSlider" parent="MarginContainer/TabContainer/Sound/SFX Volume"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+tooltip_text = "Change the SFX Volume with this slider"
+rounded = true
+ticks_on_borders = true
+
+[node name="Mute SFX" type="CheckBox" parent="MarginContainer/TabContainer/Sound/SFX Volume"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+tooltip_text = "Mute the SFX Volume?"
+
+[node name="Dialouge SFX" type="GridContainer" parent="MarginContainer/TabContainer/Sound"]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 5
+columns = 3
+
+[node name="Dialouge SFX Volume Label" type="Label" parent="MarginContainer/TabContainer/Sound/Dialouge SFX"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 1
+text = "Dialouge SFX Volume: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Set Dialouge SFX" type="HSlider" parent="MarginContainer/TabContainer/Sound/Dialouge SFX"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+tooltip_text = "Change the Dialouge SFX Volume with this slider"
+rounded = true
+ticks_on_borders = true
+
+[node name="Mute Dialouge SFX" type="CheckBox" parent="MarginContainer/TabContainer/Sound/Dialouge SFX"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+tooltip_text = "Mute the Dialouge SFX Volume?"
+
+[node name="Ambience" type="GridContainer" parent="MarginContainer/TabContainer/Sound"]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 5
+columns = 3
+
+[node name="Ambience Volume Label" type="Label" parent="MarginContainer/TabContainer/Sound/Ambience"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 1
+text = "Ambience Volume: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Set Ambience" type="HSlider" parent="MarginContainer/TabContainer/Sound/Ambience"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+tooltip_text = "Change the Ambience Volume with this slider"
+rounded = true
+ticks_on_borders = true
+
+[node name="Mute Ambience" type="CheckBox" parent="MarginContainer/TabContainer/Sound/Ambience"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+tooltip_text = "Mute the Ambience Volume?"
+
+[node name="Music" type="GridContainer" parent="MarginContainer/TabContainer/Sound"]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 5
+columns = 3
+
+[node name="Music Volume Label" type="Label" parent="MarginContainer/TabContainer/Sound/Music"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 1
+text = "Music Volume: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Set Music" type="HSlider" parent="MarginContainer/TabContainer/Sound/Music"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+tooltip_text = "Change the Music Volume with this slider"
+rounded = true
+
+[node name="Mute Music" type="CheckBox" parent="MarginContainer/TabContainer/Sound/Music"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+tooltip_text = "Mute the Music Volume?"
+
+[node name="Display" type="VBoxContainer" parent="MarginContainer/TabContainer"]
+visible = false
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+theme_override_constants/separation = 10
+
+[node name="HSplitContainer" type="HSplitContainer" parent="MarginContainer/TabContainer/Display"]
+layout_mode = 2
+
+[node name="Resolution Label" type="Label" parent="MarginContainer/TabContainer/Display/HSplitContainer"]
+layout_mode = 2
+text = "Resolution:"
+
+[node name="Resolution" type="OptionButton" parent="MarginContainer/TabContainer/Display/HSplitContainer"]
+layout_mode = 2
+item_count = 3
+selected = 2
+popup/item_0/text = "1920x1080"
+popup/item_0/id = 0
+popup/item_1/text = "1600x900"
+popup/item_1/id = 1
+popup/item_2/text = "1280x720"
+popup/item_2/id = 2
+
+[connection signal="value_changed" from="MarginContainer/TabContainer/Sound/Master Volume/Set Master" to="." method="_on_volume_value_changed"]
+[connection signal="toggled" from="MarginContainer/TabContainer/Sound/Master Volume/Mute Master" to="." method="_on_check_box_toggled"]
+[connection signal="value_changed" from="MarginContainer/TabContainer/Sound/SFX Volume/Set SFX" to="." method="_on_volume_value_changed"]
+[connection signal="toggled" from="MarginContainer/TabContainer/Sound/SFX Volume/Mute SFX" to="." method="_on_check_box_toggled"]
+[connection signal="value_changed" from="MarginContainer/TabContainer/Sound/Dialouge SFX/Set Dialouge SFX" to="." method="_on_volume_value_changed"]
+[connection signal="toggled" from="MarginContainer/TabContainer/Sound/Dialouge SFX/Mute Dialouge SFX" to="." method="_on_check_box_toggled"]
+[connection signal="value_changed" from="MarginContainer/TabContainer/Sound/Ambience/Set Ambience" to="." method="_on_volume_value_changed"]
+[connection signal="toggled" from="MarginContainer/TabContainer/Sound/Ambience/Mute Ambience" to="." method="_on_check_box_toggled"]
+[connection signal="value_changed" from="MarginContainer/TabContainer/Sound/Music/Set Music" to="." method="_on_volume_value_changed"]
+[connection signal="toggled" from="MarginContainer/TabContainer/Sound/Music/Mute Music" to="." method="_on_check_box_toggled"]
+[connection signal="item_selected" from="MarginContainer/TabContainer/Display/HSplitContainer/Resolution" to="." method="_on_resolution_item_selected"]
