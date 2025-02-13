@@ -13,7 +13,7 @@ var data : Dictionary = {
 		"secondary_tag" : ""
 	}
 }
-
+ 
 var non_string_key_dictionary : Dictionary = {
 	123 : "abc",
 	true : Vector2.ONE,

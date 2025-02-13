@@ -40,7 +40,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = -329.0
+offset_bottom = -330.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
@@ -64,6 +64,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 751.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
@@ -251,6 +252,7 @@ availableCards = Array[Resource("res://Code/card_data.gd")]([ExtResource("15_q75
 
 [node name="Cards" type="Node2D" parent="CardInstantiator"]
 position = Vector2(0, 390)
+scale = Vector2(0.5, 0.5)
 
 [connection signal="pressed" from="BackgroundGfx/BellButton" to="BackgroundGfx/BellButton" method="_on_pressed"]
 [connection signal="timeout" from="BackgroundGfx/Scale/ScalePointer/ScaleMoveTimer" to="BackgroundGfx/Scale/ScalePointer" method="_on_scale_move_timer_timeout"]

@@ -1,88 +1,123 @@
-[gd_scene load_steps=7 format=3 uid="uid://0xp12wby2ydk"]
+[gd_scene load_steps=8 format=3 uid="uid://0xp12wby2ydk"]
 
 [ext_resource type="Script" path="res://Code/card_generic.gd" id="1_87mu5"]
 [ext_resource type="Texture2D" uid="uid://blmdtl67t2ax7" path="res://Art/basic_card.tres" id="2_4d8pd"]
 [ext_resource type="FontFile" uid="uid://clsbw2dt4kdrf" path="res://Marksman.otf" id="3_w05q7"]
 [ext_resource type="Texture2D" uid="uid://hruea0qoo0nb" path="res://Art/blood_icon.tres" id="4_6fktj"]
 [ext_resource type="Theme" uid="uid://c82wwqw147q63" path="res://theme.tres" id="5_l1m5x"]
+[ext_resource type="Texture2D" uid="uid://jhj5lrp0p8da" path="res://Art/temp-sigil-icon.png" id="6_o8br8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l6kyr"]
-size = Vector2(208, 270)
+size = Vector2(420, 560)
 
 [node name="Card" type="Node2D" groups=["card"]]
 texture_filter = 1
+position = Vector2(-210, -280)
 script = ExtResource("1_87mu5")
 
 [node name="CardGfx" type="TextureRect" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -95.0
-offset_top = -127.0
-offset_right = 95.0
-offset_bottom = 127.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(95, 127)
+offset_right = 420.0
+offset_bottom = 560.0
 size_flags_vertical = 4
 texture = ExtResource("2_4d8pd")
 stretch_mode = 4
+metadata/_edit_lock_ = true
 
 [node name="Healthbar" type="RichTextLabel" parent="CardGfx"]
 layout_mode = 0
-offset_left = 113.0
-offset_top = 203.0
-offset_right = 190.0
-offset_bottom = 254.0
+offset_left = 323.0
+offset_top = 489.0
+offset_right = 400.0
+offset_bottom = 540.0
 theme_override_colors/default_color = Color(0, 0, 0, 0.705882)
 theme_override_fonts/normal_font = ExtResource("3_w05q7")
 theme_override_font_sizes/normal_font_size = 64
 bbcode_enabled = true
 text = "[right]100"
 fit_content = true
+metadata/_edit_lock_ = true
 
 [node name="Powerbar" type="RichTextLabel" parent="CardGfx"]
 layout_mode = 0
-offset_left = 4.0
-offset_top = 203.0
-offset_right = 81.0
-offset_bottom = 254.0
+offset_left = 20.0
+offset_top = 489.0
+offset_right = 97.0
+offset_bottom = 540.0
 theme_override_colors/default_color = Color(0, 0, 0, 0.705882)
 theme_override_fonts/normal_font = ExtResource("3_w05q7")
 theme_override_font_sizes/normal_font_size = 64
 bbcode_enabled = true
 text = "100"
 fit_content = true
+metadata/_edit_lock_ = true
 
 [node name="CostDisplay" type="Node2D" parent="CardGfx"]
-position = Vector2(104, 5)
+position = Vector2(210, 10)
+metadata/_edit_lock_ = true
 
 [node name="Cost" type="TextureRect" parent="CardGfx/CostDisplay"]
-offset_right = 6.0
-offset_bottom = 9.0
-scale = Vector2(4.5, 4.5)
+custom_minimum_size = Vector2(6, 9)
+offset_left = 110.0
+offset_top = 25.0
+offset_right = 140.0
+offset_bottom = 70.0
+size_flags_vertical = 4
 texture = ExtResource("4_6fktj")
-stretch_mode = 3
+metadata/_edit_lock_ = true
 
 [node name="Number" type="RichTextLabel" parent="CardGfx/CostDisplay"]
-offset_left = 33.0
-offset_top = -5.0
-offset_right = 86.0
-offset_bottom = 48.0
+offset_left = 143.0
+offset_top = 27.0
+offset_right = 196.0
+offset_bottom = 80.0
 theme = ExtResource("5_l1m5x")
 theme_override_colors/default_color = Color(0, 0, 0, 0.705882)
 theme_override_font_sizes/normal_font_size = 64
 text = "x4"
 scroll_active = false
 autowrap_mode = 0
+metadata/_edit_lock_ = true
+
+[node name="Sigils" type="Area2D" parent="CardGfx"]
+position = Vector2(117, 346)
+metadata/_edit_lock_ = true
+
+[node name="GridContainer" type="GridContainer" parent="CardGfx/Sigils"]
+offset_left = -18.0
+offset_top = -40.0
+offset_right = 18.0
+offset_bottom = -4.0
+scale = Vector2(6, 6)
+theme_override_constants/h_separation = 2
+theme_override_constants/v_separation = 2
+columns = 2
+metadata/_edit_lock_ = true
+
+[node name="Sigil" type="TextureRect" parent="CardGfx/Sigils/GridContainer"]
+layout_mode = 2
+texture = ExtResource("6_o8br8")
+metadata/_edit_lock_ = true
+
+[node name="Sigil2" type="TextureRect" parent="CardGfx/Sigils/GridContainer"]
+layout_mode = 2
+texture = ExtResource("6_o8br8")
+metadata/_edit_lock_ = true
+
+[node name="Sigil3" type="TextureRect" parent="CardGfx/Sigils/GridContainer"]
+layout_mode = 2
+texture = ExtResource("6_o8br8")
+metadata/_edit_lock_ = true
+
+[node name="Sigil4" type="TextureRect" parent="CardGfx/Sigils/GridContainer"]
+layout_mode = 2
+texture = ExtResource("6_o8br8")
+metadata/_edit_lock_ = true
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2(210, 280)
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-visible = false
 shape = SubResource("RectangleShape2D_l6kyr")
 metadata/_edit_lock_ = true
 
