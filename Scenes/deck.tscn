@@ -254,8 +254,5 @@ availableCards = Array[Resource("res://Code/card_data.gd")]([ExtResource("15_q75
 position = Vector2(0, 390)
 scale = Vector2(0.5, 0.5)
 
-[node name="Card" parent="." instance=ExtResource("1_143ww")]
-position = Vector2(-246, 313)
-
 [connection signal="pressed" from="BackgroundGfx/BellButton" to="BackgroundGfx/BellButton" method="_on_pressed"]
 [connection signal="timeout" from="BackgroundGfx/Scale/ScalePointer/ScaleMoveTimer" to="BackgroundGfx/Scale/ScalePointer" method="_on_scale_move_timer_timeout"]
