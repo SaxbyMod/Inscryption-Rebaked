@@ -42,8 +42,8 @@ func _ready():
 	$CardGfx.texture = cardGfx
 	originalSpritePosition = $CardGfx.position
 	
-	$CardGfx/Healthbar.text = "[right]" + str(health)
-	$CardGfx/Powerbar.text = str(power)
+	$"CardGfx/Text Boxes/Healthbar".text = "[right]" + str(health)
+	$"CardGfx/Text Boxes/Powerbar".text = str(power)
 	
 	match costType:
 		0:
@@ -135,4 +135,4 @@ func takeDamage(amount : int):
 		dead = true
 		queue_free()
 	
-	$CardGfx/Healthbar.text = "[right]" + str(health)
+	$"CardGfx/Text Boxes/Healthbar".text = "[right]" + str(health)
