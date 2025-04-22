@@ -15,6 +15,7 @@ size = Vector2(420, 560)
 
 [node name="Card" type="Node2D" groups=["card"]]
 texture_filter = 1
+scale = Vector2(0.454, 0.454)
 script = ExtResource("1_87mu5")
 metadata/_edit_lock_ = true
 

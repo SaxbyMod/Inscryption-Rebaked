@@ -12,7 +12,10 @@ func _process(delta):
 			
 	if Input.is_action_just_pressed("Settings"):
 		get_tree().change_scene_to_file("res://Scenes/Settings.tscn")
-
+	
+	if Input.is_action_pressed("EXIT THE GAME"):
+		get_tree().quit()
+	
 	if Input.is_action_just_pressed("leftClick"):
 		if currentlyHovered != null:
 			# If we click a selected card then we should unselect it

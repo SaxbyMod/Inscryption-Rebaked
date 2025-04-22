@@ -50,3 +50,7 @@ func _on_resolution_item_selected(index):
 			DisplayServer.window_set_size(Vector2i(1920, 1080))
 		3:
 			DisplayServer.window_set_size(Vector2i(2560, 1440))
+
+## EXIT Game
+func _on_button_pressed():
+	get_tree().quit() # Replace with function body.

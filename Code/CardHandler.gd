@@ -1,10 +1,11 @@
 extends Node
 
-func load():
+func CardHandler():
 	var path = FileAccess.open("res://ModData/CardBank-Vanilla.txt", FileAccess.READ)
 	var content = path.get_as_text()
 	var newcontent = content.split("\n")
 	var CardBank = CardBank.new()
+	var List: ItemList
 	for i in newcontent:
 		if i == "Name,Flavor,Temple,Rarity,Cost[],Sigils[],Power,Health,Illus,Tribes[],LORE,Traits,Secrets,Playsound":
 			print(i)
@@ -82,6 +83,7 @@ func load():
 				elif (Check == 13):
 					CardBank.playsound = j
 					Check = Check + 1
+		List.add_item(CardBank.name, CardBank)
 	print("Printing Card Bank: ")
 	print(CardBank.name)
 	print(CardBank.flavor)
@@ -100,5 +102,5 @@ func load():
 
 
 func _ready():
-	load.call()
+	CardHandler.call()
 	pass
