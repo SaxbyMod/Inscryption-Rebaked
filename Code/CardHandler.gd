@@ -1,6 +1,6 @@
 extends Node
 
-func CardHandler():
+func CardHandler() -> Dictionary:
 	# Get and Access the File
 	var path = FileAccess.open("res://ModData/CardBank-Vanilla.txt", FileAccess.READ)
 	var content: Array
@@ -138,24 +138,45 @@ func CardHandler():
 			secrets = CardBank.secrets,
 			playsound = CardBank.playsound
 			}
-			List.get_or_add(CardBank.name, CardBank)
-			# Verbose logging because why not
-			print("Printing Card Bank: ")
-			print(CardBank.name)
-			print(CardBank.flavor)
-			print(CardBank.temple)
-			print(CardBank.rarity)
-			print(CardBank.cost)
-			print(CardBank.sigils)
-			print(CardBank.power)
-			print(CardBank.health)
-			print(CardBank.illustrator)
-			print(CardBank.tribes)
-			print(CardBank.lore)
-			print(CardBank.traits)
-			print(CardBank.secrets)
-			print(CardBank.playsound)
+		List.get_or_add(CardBank.name, CardBank)
+		# Verbose logging because why not
+		print("Printing Card Bank: ")
+		print(CardBank.name)
+		print(CardBank.flavor)
+		print(CardBank.temple)
+		print(CardBank.rarity)
+		print(CardBank.cost)
+		print(CardBank.sigils)
+		print(CardBank.power)
+		print(CardBank.health)
+		print(CardBank.illustrator)
+		print(CardBank.tribes)
+		print(CardBank.lore)
+		print(CardBank.traits)
+		print(CardBank.secrets)
+		print(CardBank.playsound)
+	return List
 
 func _ready():
 	CardHandler.call()
 	pass
+
+# Define the Parent and Object
+@onready var cardParent : Node2D
+@export var cardObject : PackedScene
+func _on_ready() -> void:
+	# Fetch the List
+	var List = CardHandler()
+	# Iterate through the List
+	for card in List:
+		# Define CardName and Bank
+		var cardname = card
+		var cardBank = List[card]
+		
+		# Get the Parent
+		cardParent = $Bestiary
+		
+		# Define an Entry
+		var entry : Card = cardObject.instantiate()
+		
+		# Find a way to get a Instantiated Entry into cardParent with all properties in Card Bank.

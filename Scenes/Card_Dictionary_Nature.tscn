@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://08wbderokqti"]
+
+[ext_resource type="Script" uid="uid://cxji2qa347l61" path="res://Code/CardHandler.gd" id="1_sr22s"]
+
+[node name="CardDictionaryNature" type="Node2D"]
+script = ExtResource("1_sr22s")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[connection signal="ready" from="." to="." method="_on_ready"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bg5j42a4b6h0o"]
+[gd_scene load_steps=19 format=3 uid="uid://bg5j42a4b6h0o"]
 
 [ext_resource type="PackedScene" uid="uid://0xp12wby2ydk" path="res://Scenes/card_object.tscn" id="1_143ww"]
 [ext_resource type="Theme" uid="uid://c82wwqw147q63" path="res://theme.tres" id="1_efcxe"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://cilddt7g5g1k8" path="res://Code/card_data.gd" id="15_w7esf"]
 [ext_resource type="Script" uid="uid://c1w0y5irdl686" path="res://Code/basic_enemy.gd" id="17_243yy"]
 [ext_resource type="Resource" uid="uid://cwvyvmj3ah14a" path="res://CardFiles/idkCard.tres" id="17_g88qe"]
+[ext_resource type="PackedScene" uid="uid://08wbderokqti" path="res://Scenes/Card_Dictionary_Nature.tscn" id="18_eq2nn"]
 [ext_resource type="PackedScene" uid="uid://crjr85r3vidu4" path="res://Scenes/music_ui.tscn" id="19_hl1c4"]
 
 [node name="Deck" type="Node2D" groups=["cardPlayer"]]
@@ -253,6 +254,8 @@ availableCards = Array[ExtResource("15_w7esf")]([ExtResource("15_q751h"), ExtRes
 
 [node name="Cards" type="Node2D" parent="CardInstantiator"]
 position = Vector2(0, 390)
+
+[node name="CardDictionaryNature" parent="." instance=ExtResource("18_eq2nn")]
 
 [connection signal="pressed" from="BackgroundGfx/BellButton" to="BackgroundGfx/BellButton" method="_on_pressed"]
 [connection signal="timeout" from="BackgroundGfx/Scale/ScalePointer/ScaleMoveTimer" to="BackgroundGfx/Scale/ScalePointer" method="_on_scale_move_timer_timeout"]
