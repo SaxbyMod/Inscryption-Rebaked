@@ -3,40 +3,43 @@ extends Node
 func CardHandler():
 	# Get and Access the File
 	var path = FileAccess.open("res://ModData/CardBank-Vanilla.txt", FileAccess.READ)
-	# Read the File As Text
-	var content = path.get_as_text()
-	# Create the Cards CardBank
-	var CardBank = CardBank.new()
+	var content: Array
+	var FileIterator = 0
+	if path:
+		while not path.eof_reached():
+			var row = path.get_csv_line()
+			# Process 'row' as needed
+			content.append(row)
+			FileIterator = FileIterator + 1
+		content.remove_at(FileIterator-1)
 	# Define a List of cards to pass to the game later
-	var List: ItemList
+	var List: Dictionary
 	# Run as many times as there is entries in content
 	for i in len(content):
+		var Check: int = 0
+		# Create the Cards CardBank
+		var CardBank = CardBank.new()
 		if i == 0:
 			# We skip because this is the Info line
 			continue
 		else:
 			# Lets get the values of the line
-			var card = content[i].get_csv_line(",")
-			var Check: int = 0
+			var card = content[i]
 			# Lets iterate over each value in the line, than define it
 			for j in card:
 				print(j)
 				if (Check == 0):
 					# Define the Name
 					CardBank.name = j
-					Check = Check + 1
 				elif (Check == 1):
 					# Define the flavor
 					CardBank.flavor = j
-					Check = Check + 1
 				elif (Check == 2):
 					# Define the Temple [May be marked obsolete later]
 					CardBank.temple = j
-					Check = Check + 1
 				elif (Check == 3):
 					# Define the Rarity
 					CardBank.rarity = j
-					Check = Check + 1
 				elif (Check == 4):
 					# Create a cost array
 					var cost: Array
@@ -50,7 +53,6 @@ func CardHandler():
 						cost.append(m)
 					# Define the Cost
 					CardBank.cost = cost
-					Check = Check + 1
 				elif (Check == 5):
 					# Create a Sigils array
 					var sigils: Array
@@ -64,19 +66,15 @@ func CardHandler():
 						sigils.append(CoolK)
 					# Define the Sigils
 					CardBank.sigils = sigils
-					Check = Check + 1
 				elif (Check == 6):
 					# Define the Power
 					CardBank.power = j.to_int()
-					Check = Check + 1
 				elif (Check == 7):
 					# Define the Health
 					CardBank.health = j.to_int()
-					Check = Check + 1
 				elif (Check == 8):
 					# Define the Illustrator
 					CardBank.illustrator = j
-					Check = Check + 1
 				elif (Check == 9):
 					# Define an Array for Tribes
 					var tribes: Array
@@ -90,11 +88,9 @@ func CardHandler():
 						tribes.append(CoolK)
 					# Define the Tribes
 					CardBank.tribes = tribes
-					Check = Check + 1
 				elif (Check == 10):
 					# Define the Lore
 					CardBank.lore = j
-					Check = Check + 1
 				elif (Check == 11):
 					# Create an Array of Traits
 					var traits: Array
@@ -108,7 +104,6 @@ func CardHandler():
 						traits.append(CoolK)
 					# Define the Traits
 					CardBank.traits = traits
-					Check = Check + 1
 				elif (Check == 12):
 					# Create an Array for Secrets
 					var secrets: Array
@@ -122,13 +117,28 @@ func CardHandler():
 						secrets.append(CoolK)
 					# Define Secrets
 					CardBank.secrets = secrets
-					Check = Check + 1
 				elif (Check == 13):
 					# Define the Playsound [May be marked Obselete]
 					CardBank.playsound = j
-					Check = Check + 1
+				Check = Check + 1
 			# Append the card to the list
-			List.add_item(CardBank.name, CardBank)
+			CardBank = {
+			name = CardBank.name,
+			flavor = CardBank.flavor,
+			temple = CardBank.temple,
+			rarity = CardBank.rarity,
+			cost = CardBank.cost,
+			sigils = CardBank.sigils,
+			power = CardBank.power,
+			health = CardBank.health,
+			illustrator = CardBank.illustrator,
+			tribes = CardBank.tribes,
+			lore = CardBank.lore,
+			traits = CardBank.traits,
+			secrets = CardBank.secrets,
+			playsound = CardBank.playsound
+			}
+			List.get_or_add(CardBank.name, CardBank)
 			# Verbose logging because why not
 			print("Printing Card Bank: ")
 			print(CardBank.name)

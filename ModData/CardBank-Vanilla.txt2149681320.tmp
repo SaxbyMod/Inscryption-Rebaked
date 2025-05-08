@@ -1,0 +1,2 @@
+Name,Flavor,Temple,Rarity,Cost[],Sigils[],Power,Health,Illus,Tribes[],LORE,Traits,Secrets,Playsound
+Warden,The warden of the hills of Rektopolis,Beasts,Common,["Cost": 2 blood|3 bones],["Sigil 1": "Airborne";"Sigil 2": "Mighty Leap"],1,3,Warden,["Tribe 1": "Rodent"],A silly rabbit messing around with some Lizzards and Skizzards.,null,null,null
