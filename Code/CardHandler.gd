@@ -6,11 +6,11 @@ func CardHandler():
 	var newcontent = content.split("\n")
 	var CardBank = CardBank.new()
 	var List: ItemList
-	for i in newcontent:
-		if i == "Name,Flavor,Temple,Rarity,Cost[],Sigils[],Power,Health,Illus,Tribes[],LORE,Traits,Secrets,Playsound":
+	for i in len(newcontent):
+		if newcontent[i] == "Name,Flavor,Temple,Rarity,Cost[],Sigils[],Power,Health,Illus,Tribes[],LORE,Traits,Secrets,Playsound":
 			print(i)
 		else:
-			var card = i.split(",")
+			var card = newcontent[i].split(",")
 			var Check: int = 0
 			for j in card:
 				print(j)
