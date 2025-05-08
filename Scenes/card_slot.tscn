@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://j7b4yw6jl5ma"]
 
-[ext_resource type="Script" path="res://Code/card_slot.gd" id="1_1dsqd"]
+[ext_resource type="Script" uid="uid://dloeq2jmv5r3y" path="res://Code/card_slot.gd" id="1_1dsqd"]
 [ext_resource type="Texture2D" uid="uid://b7twcqt45o1l8" path="res://Art/card_recepticle.tres" id="2_kjcaf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pw6dt"]

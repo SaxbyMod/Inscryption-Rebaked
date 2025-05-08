@@ -41,5 +41,3 @@ func play_card():
 		levels[selectedCard.costType] -= selectedCard.costAmount
 		selectedCard.parentSlot = currentlyHovered
 		selectedCard = null
-
-

@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://j7b4yw6jl5ma" path="res://Scenes/card_slot.tscn" id="1_w364x"]
 [ext_resource type="PackedScene" uid="uid://0xp12wby2ydk" path="res://Scenes/card_object.tscn" id="2_ykg5k"]
-[ext_resource type="Script" path="res://Code/Abilites/move_slot.gd" id="4_gbbpa"]
-[ext_resource type="Script" path="res://Code/Abilites/basic_attack.gd" id="6_kowq5"]
-[ext_resource type="Script" path="res://Code/descriptor.gd" id="6_lh5fs"]
+[ext_resource type="Script" uid="uid://bfdyiwroj6gra" path="res://Code/Abilites/move_slot.gd" id="4_gbbpa"]
+[ext_resource type="Script" uid="uid://duibqojxjf30f" path="res://Code/Abilites/basic_attack.gd" id="6_kowq5"]
+[ext_resource type="Script" uid="uid://cc1gqhopbhnxa" path="res://Code/descriptor.gd" id="6_lh5fs"]
 [ext_resource type="FontFile" uid="uid://clsbw2dt4kdrf" path="res://Marksman.otf" id="7_q6xpw"]
 
 [sub_resource type="Theme" id="Theme_88kqw"]

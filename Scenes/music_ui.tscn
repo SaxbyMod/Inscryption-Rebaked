@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://crjr85r3vidu4"]
 
-[ext_resource type="Script" path="res://Code/Music.gd" id="1_i2vwg"]
+[ext_resource type="Script" uid="uid://cikyhnb3lc4j2" path="res://Code/Music.gd" id="1_i2vwg"]
 
 [node name="Music UI" type="Control"]
 layout_mode = 3

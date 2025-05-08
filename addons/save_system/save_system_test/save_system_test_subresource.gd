@@ -4,4 +4,3 @@ extends Resource
 
 var id : int
 var name : String
-

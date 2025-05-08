@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://civ6xc8njadtq"]
 
-[ext_resource type="Script" path="res://Code/Settings.gd" id="1_camxw"]
+[ext_resource type="Script" uid="uid://cqho228mkmvt2" path="res://Code/Settings.gd" id="1_camxw"]
 [ext_resource type="PackedScene" uid="uid://crjr85r3vidu4" path="res://Scenes/music_ui.tscn" id="2_qw5gq"]
 
 [node name="Settings" type="Control"]
@@ -33,10 +33,12 @@ theme_override_constants/margin_bottom = 10
 [node name="TabContainer" type="TabContainer" parent="MarginContainer"]
 layout_mode = 2
 tab_alignment = 1
+current_tab = 0
 
 [node name="Sound" type="VBoxContainer" parent="MarginContainer/TabContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
+metadata/_tab_index = 0
 
 [node name="Master Volume" type="GridContainer" parent="MarginContainer/TabContainer/Sound"]
 layout_mode = 2
@@ -194,6 +196,7 @@ layout_mode = 2
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.0
 theme_override_constants/separation = 10
+metadata/_tab_index = 1
 
 [node name="HSplitContainer" type="HSplitContainer" parent="MarginContainer/TabContainer/Display"]
 layout_mode = 2
@@ -206,8 +209,8 @@ text = "Set your Resolution:"
 
 [node name="Resolution" type="OptionButton" parent="MarginContainer/TabContainer/Display/HSplitContainer"]
 layout_mode = 2
-item_count = 4
 selected = 2
+item_count = 4
 popup/item_0/text = "1280x720"
 popup/item_0/id = 0
 popup/item_1/text = "1600x900"
@@ -220,6 +223,7 @@ popup/item_3/id = 3
 [node name="EXIT GAME" type="VBoxContainer" parent="MarginContainer/TabContainer"]
 visible = false
 layout_mode = 2
+metadata/_tab_index = 2
 
 [node name="HSplitContainer" type="HSplitContainer" parent="MarginContainer/TabContainer/EXIT GAME"]
 layout_mode = 2
@@ -232,25 +236,25 @@ text = "Click in order to Exit The Game UI Button"
 layout_mode = 2
 text = "EXIT"
 
-[connection signal="value_changed" from="MarginContainer/TabContainer/Sound/Master Volume/Set Master" to="." method="_on_volume_value_changed"]
 [connection signal="value_changed" from="MarginContainer/TabContainer/Sound/Master Volume/Set Master" to="." method="_on_set_master_value_changed"]
-[connection signal="toggled" from="MarginContainer/TabContainer/Sound/Master Volume/Mute Master" to="." method="_on_check_box_toggled"]
+[connection signal="value_changed" from="MarginContainer/TabContainer/Sound/Master Volume/Set Master" to="." method="_on_volume_value_changed"]
 [connection signal="toggled" from="MarginContainer/TabContainer/Sound/Master Volume/Mute Master" to="." method="_on_mute_master_toggled"]
-[connection signal="value_changed" from="MarginContainer/TabContainer/Sound/SFX Volume/Set SFX" to="." method="_on_volume_value_changed"]
+[connection signal="toggled" from="MarginContainer/TabContainer/Sound/Master Volume/Mute Master" to="." method="_on_check_box_toggled"]
 [connection signal="value_changed" from="MarginContainer/TabContainer/Sound/SFX Volume/Set SFX" to="." method="_on_set_sfx_value_changed"]
+[connection signal="value_changed" from="MarginContainer/TabContainer/Sound/SFX Volume/Set SFX" to="." method="_on_volume_value_changed"]
 [connection signal="toggled" from="MarginContainer/TabContainer/Sound/SFX Volume/Mute SFX" to="." method="_on_mute_sfx_toggled"]
 [connection signal="toggled" from="MarginContainer/TabContainer/Sound/SFX Volume/Mute SFX" to="." method="_on_check_box_toggled"]
-[connection signal="value_changed" from="MarginContainer/TabContainer/Sound/Dialouge SFX/Set Dialouge SFX" to="." method="_on_volume_value_changed"]
 [connection signal="value_changed" from="MarginContainer/TabContainer/Sound/Dialouge SFX/Set Dialouge SFX" to="." method="_on_set_dialouge_sfx_value_changed"]
+[connection signal="value_changed" from="MarginContainer/TabContainer/Sound/Dialouge SFX/Set Dialouge SFX" to="." method="_on_volume_value_changed"]
 [connection signal="toggled" from="MarginContainer/TabContainer/Sound/Dialouge SFX/Mute Dialouge SFX" to="." method="_on_mute_dialouge_sfx_toggled"]
 [connection signal="toggled" from="MarginContainer/TabContainer/Sound/Dialouge SFX/Mute Dialouge SFX" to="." method="_on_check_box_toggled"]
-[connection signal="value_changed" from="MarginContainer/TabContainer/Sound/Ambience/Set Ambience" to="." method="_on_volume_value_changed"]
 [connection signal="value_changed" from="MarginContainer/TabContainer/Sound/Ambience/Set Ambience" to="." method="_on_set_ambience_value_changed"]
+[connection signal="value_changed" from="MarginContainer/TabContainer/Sound/Ambience/Set Ambience" to="." method="_on_volume_value_changed"]
 [connection signal="toggled" from="MarginContainer/TabContainer/Sound/Ambience/Mute Ambience" to="." method="_on_mute_ambience_toggled"]
 [connection signal="toggled" from="MarginContainer/TabContainer/Sound/Ambience/Mute Ambience" to="." method="_on_check_box_toggled"]
-[connection signal="value_changed" from="MarginContainer/TabContainer/Sound/Music/Set Music" to="." method="_on_volume_value_changed"]
 [connection signal="value_changed" from="MarginContainer/TabContainer/Sound/Music/Set Music" to="." method="_on_set_music_value_changed"]
-[connection signal="toggled" from="MarginContainer/TabContainer/Sound/Music/Mute Music" to="." method="_on_check_box_toggled"]
+[connection signal="value_changed" from="MarginContainer/TabContainer/Sound/Music/Set Music" to="." method="_on_volume_value_changed"]
 [connection signal="toggled" from="MarginContainer/TabContainer/Sound/Music/Mute Music" to="." method="_on_mute_music_toggled"]
+[connection signal="toggled" from="MarginContainer/TabContainer/Sound/Music/Mute Music" to="." method="_on_check_box_toggled"]
 [connection signal="item_selected" from="MarginContainer/TabContainer/Display/HSplitContainer/Resolution" to="." method="_on_resolution_item_selected"]
 [connection signal="pressed" from="MarginContainer/TabContainer/EXIT GAME/HSplitContainer/Button" to="." method="_on_button_pressed"]
