@@ -7,8 +7,16 @@
 script = ExtResource("2_ampj5")
 cardGfx = ExtResource("1_rdwmu")
 cardName = "Card 1"
+temple = ""
+rarity = "common"
 cardDesc = "This is Card 1"
-costType = 1
-costAmount = 3
+cardLore = "lore here"
+costs = {
+"Blood": 0,
+"Bone": 0,
+"Energy": 0
+}
 health = 2
 power = 1
+sigils = [""]
+tribes = [""]
