@@ -7,9 +7,9 @@
 [node name="Loading" type="Node2D"]
 
 [node name="LoadingScreen" type="Sprite2D" parent="."]
-position = Vector2(963, 536)
-scale = Vector2(1.87, 1.87)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("1_fyu5g")
+centered = false
 script = ExtResource("2_6ydal")
 
 [node name="Music UI" parent="." instance=ExtResource("3_rq4e8")]

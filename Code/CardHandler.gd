@@ -177,6 +177,6 @@ func _on_ready() -> void:
 		cardParent = $Bestiary
 		
 		# Define an Entry
-		var entry : Card = cardObject.instantiate()
+		# var entry : Card = cardObject.instantiate()
 		
 		# Find a way to get a Instantiated Entry into cardParent with all properties in Card Bank.
