@@ -191,6 +191,7 @@ texture = ExtResource("8_6wu2d")
 metadata/_edit_lock_ = true
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
