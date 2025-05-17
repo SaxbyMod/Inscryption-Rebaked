@@ -1,6 +1,5 @@
-[gd_scene load_steps=19 format=3 uid="uid://bg5j42a4b6h0o"]
+[gd_scene load_steps=15 format=3 uid="uid://bg5j42a4b6h0o"]
 
-[ext_resource type="PackedScene" uid="uid://0xp12wby2ydk" path="res://Scenes/card_object.tscn" id="1_143ww"]
 [ext_resource type="Theme" uid="uid://c82wwqw147q63" path="res://theme.tres" id="1_efcxe"]
 [ext_resource type="Texture2D" uid="uid://bx7id2h6vnii6" path="res://Temp/Pasted image.png" id="2_r7h3a"]
 [ext_resource type="Script" uid="uid://cly2ba7xr8svp" path="res://Code/advance_bell.gd" id="3_7ehk0"]
@@ -12,10 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dxa6p2ri0xnqw" path="res://Art/scale_pointer.tres" id="6_7s8d3"]
 [ext_resource type="Script" uid="uid://d25ttylqd3ani" path="res://Code/scale_pointer.gd" id="7_xoqwu"]
 [ext_resource type="Script" uid="uid://b6tnr4ydj3vbd" path="res://Code/card_instantiator.gd" id="14_qpqtc"]
-[ext_resource type="Resource" uid="uid://bpt7u0caxw165" path="res://CardFiles/basicCard.tres" id="15_q751h"]
-[ext_resource type="Script" uid="uid://cilddt7g5g1k8" path="res://Code/card_data.gd" id="15_w7esf"]
 [ext_resource type="Script" uid="uid://c1w0y5irdl686" path="res://Code/basic_enemy.gd" id="17_243yy"]
-[ext_resource type="Resource" uid="uid://cwvyvmj3ah14a" path="res://CardFiles/idkCard.tres" id="17_g88qe"]
 [ext_resource type="PackedScene" uid="uid://08wbderokqti" path="res://Scenes/Card_Dictionary_Nature.tscn" id="18_eq2nn"]
 [ext_resource type="PackedScene" uid="uid://crjr85r3vidu4" path="res://Scenes/music_ui.tscn" id="19_hl1c4"]
 
@@ -247,15 +243,13 @@ DEBUGDISABLE = true
 [node name="Music UI" parent="." instance=ExtResource("19_hl1c4")]
 metadata/_edit_use_anchors_ = true
 
+[node name="CardDictionaryNature" parent="." instance=ExtResource("18_eq2nn")]
+
 [node name="CardInstantiator" type="Node" parent="."]
 script = ExtResource("14_qpqtc")
-cardObject = ExtResource("1_143ww")
-availableCards = Array[ExtResource("15_w7esf")]([ExtResource("15_q751h"), ExtResource("17_g88qe")])
 
 [node name="Cards" type="Node2D" parent="CardInstantiator"]
 position = Vector2(0, 390)
-
-[node name="CardDictionaryNature" parent="." instance=ExtResource("18_eq2nn")]
 
 [connection signal="pressed" from="BackgroundGfx/BellButton" to="BackgroundGfx/BellButton" method="_on_pressed"]
 [connection signal="timeout" from="BackgroundGfx/Scale/ScalePointer/ScaleMoveTimer" to="BackgroundGfx/Scale/ScalePointer" method="_on_scale_move_timer_timeout"]

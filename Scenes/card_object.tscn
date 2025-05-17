@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://0xp12wby2ydk"]
+[gd_scene load_steps=10 format=3 uid="uid://0xp12wby2ydk"]
 
 [ext_resource type="Script" uid="uid://bvvaeni2jfo4a" path="res://Code/card_generic.gd" id="1_87mu5"]
 [ext_resource type="Texture2D" uid="uid://blmdtl67t2ax7" path="res://Art/basic_card.tres" id="2_4d8pd"]
@@ -8,7 +8,6 @@
 [ext_resource type="Theme" uid="uid://c82wwqw147q63" path="res://theme.tres" id="5_l1m5x"]
 [ext_resource type="Texture2D" uid="uid://jhj5lrp0p8da" path="res://Art/temp-sigil-icon.png" id="6_o8br8"]
 [ext_resource type="Texture2D" uid="uid://187doea0a1lc" path="res://Art/temp-tribe-icon.png" id="8_6wu2d"]
-[ext_resource type="Script" uid="uid://cxji2qa347l61" path="res://Code/CardHandler.gd" id="9_1uyh1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l6kyr"]
 size = Vector2(420, 560)
@@ -169,7 +168,6 @@ metadata/_edit_lock_ = true
 [node name="Tribe 1" type="TextureRect" parent="CardGfx/Text Boxes/Text Element Defined/Tribe Holder/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("8_6wu2d")
-script = ExtResource("9_1uyh1")
 metadata/_edit_lock_ = true
 
 [node name="Tribe 2" type="TextureRect" parent="CardGfx/Text Boxes/Text Element Defined/Tribe Holder/HBoxContainer"]
