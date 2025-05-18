@@ -172,11 +172,24 @@ func _on_ready() -> void:
 		# Define CardName and Bank
 		var cardname = card
 		var cardBank = List[card]
+		var ProperBank = cardBank
 		
 		# Get the Parent
 		cardParent = $Bestiary
 		
 		# Define an Entry
 		var entry : Card = cardObject.instantiate()
+		var portrait : AtlasTexture = load("res://ModData/Art/" + ProperBank.name + ".png")
+		entry.cardGfx = portrait
+		entry.power = ProperBank.power
+		entry.health = ProperBank.health
+		entry.cardDesc = ProperBank.flavor
+		entry.cardLore = ProperBank.lore
+		var cost = ProperBank.cost[0].split(" ")
+		entry.costAmount = cost[0]
+		entry.costType = cost[1]
+		entry.illus = ProperBank.illustrator
+		entry.temple = ProperBank.temple
+		entry.rarity = ProperBank.rarity
 		
 		# Find a way to get a Instantiated Entry into cardParent with all properties in Card Bank.
