@@ -227,4 +227,6 @@ func _on_ready() -> void:
 		entry.health = health
 		entry.power = power
 		
+		cardParent.add_child(entry)
+		
 		 #Find a way to get a Instantiated Entry into cardParent with all properties in Card Bank.
