@@ -39,7 +39,7 @@ var direction = 1
 var dead = false
 
 func _ready():
-	$CardGfx.texture = cardGfx
+	$CardGfx/Avatar/Portrait.texture = cardGfx
 	originalSpritePosition = $CardGfx.position
 	
 	$"CardGfx/Text Boxes/Healthbar".text = "[right]" + str(health)
