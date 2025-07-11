@@ -224,7 +224,44 @@ func _on_ready() -> void:
 			if Check == 13:
 				playsound = cardBank[item]
 			Check = Check + 1
-			Portrait.load("res://ModData/Art/" + name + ".png")
+			Portrait.load("res://ModData/Art/Portraits/" + name + ".png")
+			
+		# Define Cost
+		print("Testing Cost;")
+		print(cost)
+		var boneCost
+		var bloodCost
+		var energyCost
+		var sapphireGemCost
+		var rubyGemCost
+		var emeraldGemCost
+		var onyxGemCost
+		var prismCost
+		for item in cost:
+			var costNew : String = item
+			var costNum = costNew.split(" ")[0]
+			var costType = costNew.split(" ")[1]
+			if costType.to_lower() == "bones" || costType.to_lower() == "bone":
+				boneCost = costNew
+			if costType.to_lower() == "blood":
+				bloodCost = costNew
+			if costType.to_lower() == "energy":
+				energyCost = costNew
+			if costType.to_lower() == "sapphire":
+				if costNew.split(" ")[2] == "gem" || costNew.split(" ")[2] == "gems":
+					sapphireGemCost = costNew
+			if costType.to_lower() == "emerald":
+				if costNew.split(" ")[2] == "gem" || costNew.split(" ")[2] == "gems":
+					emeraldGemCost = costNew
+			if costType.to_lower() == "ruby":
+				if costNew.split(" ")[2] == "gem" || costNew.split(" ")[2] == "gems":
+					rubyGemCost = costNew
+			if costType.to_lower() == "onyx":
+				if costNew.split(" ")[2] == "gem" || costNew.split(" ")[2] == "gems":
+					onyxGemCost = costNew
+			if costType.to_lower() == "prism" || costType.to_lower() == "prisms":
+				prismCost = costNew
+		
 		# Define an Entry
 		var entry = cardObject.instantiate()
 		entry.cardGfx = ImageTexture.create_from_image(Portrait)
@@ -233,5 +270,3 @@ func _on_ready() -> void:
 		entry.power = power
 		
 		cardParent.add_child(entry)
-		
-		 #Find a way to get a Instantiated Entry into cardParent with all properties in Card Bank.
