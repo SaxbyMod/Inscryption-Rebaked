@@ -190,36 +190,41 @@ func _on_ready() -> void:
 		var secrets
 		var playsound
 		for item in cardBank:
+			print("testing item;")
+			print(item)
+			var gtem = cardBank[item]
+			print ("Testing gtem;")
+			print(gtem)
 			if Check == 0:
-				name = item
+				name = cardBank[item]
 			if Check == 1:
-				flavor = item
+				flavor = cardBank[item]
 			if Check == 2:
-				temple = item
+				temple = cardBank[item]
 			if Check == 3:
-				rarity = item
+				rarity = cardBank[item]
 			if Check == 4:
-				cost = item
+				cost = cardBank[item]
 			if Check == 5:
-				sigils = item
+				sigils = cardBank[item]
 			if Check == 6:
-				power = item
+				power = cardBank[item]
 			if Check == 7:
-				health = item
+				health = cardBank[item]
 			if Check == 8:
-				illustrator = item
+				illustrator = cardBank[item]
 			if Check == 9:
-				tribes = item
+				tribes = cardBank[item]
 			if Check == 10:
-				lore = item
+				lore = cardBank[item]
 			if Check == 11:
-				traits = item
+				traits = cardBank[item]
 			if Check == 12:
-				secrets = item
+				secrets = cardBank[item]
 			if Check == 13:
-				playsound = item
+				playsound = cardBank[item]
 			Check = Check + 1
-			Portrait.load("res://ModData/Art/" + item + ".png")
+			Portrait.load("res://ModData/Art/" + name + ".png")
 		# Define an Entry
 		var entry = cardObject.instantiate()
 		entry.cardGfx = ImageTexture.create_from_image(Portrait)
