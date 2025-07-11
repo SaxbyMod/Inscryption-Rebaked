@@ -1,5 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://bg5j42a4b6h0o"]
+[gd_scene load_steps=16 format=3 uid="uid://bg5j42a4b6h0o"]
 
+[ext_resource type="PackedScene" uid="uid://0xp12wby2ydk" path="res://Scenes/card_object.tscn" id="1_143ww"]
 [ext_resource type="Theme" uid="uid://c82wwqw147q63" path="res://theme.tres" id="1_efcxe"]
 [ext_resource type="Texture2D" uid="uid://bx7id2h6vnii6" path="res://Temp/Pasted image.png" id="2_r7h3a"]
 [ext_resource type="Script" uid="uid://cly2ba7xr8svp" path="res://Code/advance_bell.gd" id="3_7ehk0"]
@@ -244,9 +245,11 @@ DEBUGDISABLE = true
 metadata/_edit_use_anchors_ = true
 
 [node name="CardDictionaryNature" parent="." instance=ExtResource("18_eq2nn")]
+cardObject = ExtResource("1_143ww")
 
 [node name="CardInstantiator" type="Node" parent="."]
 script = ExtResource("14_qpqtc")
+cardObject = ExtResource("1_143ww")
 
 [node name="Cards" type="Node2D" parent="CardInstantiator"]
 position = Vector2(0, 390)

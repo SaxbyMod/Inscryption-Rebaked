@@ -165,6 +165,7 @@ func _on_ready() -> void:
 	# Fetch the List
 	var List = CardHandler()
 	# Iterate through the List
+	var Portrait : Image = Image.new()
 	for card in List:
 		# Get the Parent
 		cardParent = $Bestiary
@@ -218,10 +219,10 @@ func _on_ready() -> void:
 			if Check == 13:
 				playsound = item
 			Check = Check + 1
-		var Portrait : AtlasTexture = load("res://ModData/Art" + name + ".png")
+			Portrait.load("res://ModData/Art/" + item + ".png")
 		# Define an Entry
-		var entry : Card = cardObject.instantiate()
-		entry.cardGfx = Portrait
+		var entry = cardObject.instantiate()
+		entry.cardGfx = ImageTexture.create_from_image(Portrait)
 		entry.cardName = name
 		entry.health = health
 		entry.power = power
