@@ -1,11 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://08wbderokqti"]
+[gd_scene load_steps=3 format=3 uid="uid://08wbderokqti"]
 
 [ext_resource type="Script" uid="uid://cxji2qa347l61" path="res://Code/CardHandler.gd" id="1_sr22s"]
+
+[sub_resource type="PackedScene" id="PackedScene_sr22s"]
 
 [node name="CardDictionaryNature" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_sr22s")
+cardObject = SubResource("PackedScene_sr22s")
 
 [node name="Bestiary" type="Node2D" parent="."]
 

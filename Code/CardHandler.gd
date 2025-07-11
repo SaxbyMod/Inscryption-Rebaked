@@ -18,7 +18,7 @@ func CardHandler() -> Dictionary:
 	for i in len(content):
 		var Check: int = 0
 		# Create the Cards CardBank
-		var CardBank = CardBank.new()
+		var cardBank = CardBank.new()
 		if i == 0:
 			# We skip because this is the Info line
 			continue
@@ -30,16 +30,16 @@ func CardHandler() -> Dictionary:
 				print(j)
 				if (Check == 0):
 					# Define the Name
-					CardBank.name = j
+					cardBank.name = j
 				elif (Check == 1):
 					# Define the flavor
-					CardBank.flavor = j
+					cardBank.flavor = j
 				elif (Check == 2):
 					# Define the Temple [May be marked obsolete later]
-					CardBank.temple = j
+					cardBank.temple = j
 				elif (Check == 3):
 					# Define the Rarity
-					CardBank.rarity = j
+					cardBank.rarity = j
 				elif (Check == 4):
 					# Create a cost array
 					var cost: Array
@@ -52,7 +52,7 @@ func CardHandler() -> Dictionary:
 						# Append the array for the cost
 						cost.append(m)
 					# Define the Cost
-					CardBank.cost = cost
+					cardBank.cost = cost
 				elif (Check == 5):
 					# Create a Sigils array
 					var sigils: Array
@@ -65,16 +65,16 @@ func CardHandler() -> Dictionary:
 						# Append the value to the sigil array
 						sigils.append(CoolK)
 					# Define the Sigils
-					CardBank.sigils = sigils
+					cardBank.sigils = sigils
 				elif (Check == 6):
 					# Define the Power
-					CardBank.power = j.to_int()
+					cardBank.power = j.to_int()
 				elif (Check == 7):
 					# Define the Health
-					CardBank.health = j.to_int()
+					cardBank.health = j.to_int()
 				elif (Check == 8):
 					# Define the Illustrator
-					CardBank.illustrator = j
+					cardBank.illustrator = j
 				elif (Check == 9):
 					# Define an Array for Tribes
 					var tribes: Array
@@ -87,10 +87,10 @@ func CardHandler() -> Dictionary:
 						# Append the value to the tribes array
 						tribes.append(CoolK)
 					# Define the Tribes
-					CardBank.tribes = tribes
+					cardBank.tribes = tribes
 				elif (Check == 10):
 					# Define the Lore
-					CardBank.lore = j
+					cardBank.lore = j
 				elif (Check == 11):
 					# Create an Array of Traits
 					var traits: Array
@@ -103,7 +103,7 @@ func CardHandler() -> Dictionary:
 						# Append the Value to traits
 						traits.append(CoolK)
 					# Define the Traits
-					CardBank.traits = traits
+					cardBank.traits = traits
 				elif (Check == 12):
 					# Create an Array for Secrets
 					var secrets: Array
@@ -116,45 +116,45 @@ func CardHandler() -> Dictionary:
 						# Append the Value to Secrets
 						secrets.append(CoolK)
 					# Define Secrets
-					CardBank.secrets = secrets
+					cardBank.secrets = secrets
 				elif (Check == 13):
 					# Define the Playsound [May be marked Obselete]
-					CardBank.playsound = j
+					cardBank.playsound = j
 				Check = Check + 1
 			# Append the card to the list
-			CardBank = {
-			name = CardBank.name,
-			flavor = CardBank.flavor,
-			temple = CardBank.temple,
-			rarity = CardBank.rarity,
-			cost = CardBank.cost,
-			sigils = CardBank.sigils,
-			power = CardBank.power,
-			health = CardBank.health,
-			illustrator = CardBank.illustrator,
-			tribes = CardBank.tribes,
-			lore = CardBank.lore,
-			traits = CardBank.traits,
-			secrets = CardBank.secrets,
-			playsound = CardBank.playsound
+			cardBank = {
+			name = cardBank.name,
+			flavor = cardBank.flavor,
+			temple = cardBank.temple,
+			rarity = cardBank.rarity,
+			cost = cardBank.cost,
+			sigils = cardBank.sigils,
+			power = cardBank.power,
+			health = cardBank.health,
+			illustrator = cardBank.illustrator,
+			tribes = cardBank.tribes,
+			lore = cardBank.lore,
+			traits = cardBank.traits,
+			secrets = cardBank.secrets,
+			playsound = cardBank.playsound
 			}
-		List[CardBank.name] = CardBank
+		List[cardBank.name] = cardBank
 		# Verbose logging because why not
 		print("Printing Card Bank: ")
-		print(CardBank.name)
-		print(CardBank.flavor)
-		print(CardBank.temple)
-		print(CardBank.rarity)
-		print(CardBank.cost)
-		print(CardBank.sigils)
-		print(CardBank.power)
-		print(CardBank.health)
-		print(CardBank.illustrator)
-		print(CardBank.tribes)
-		print(CardBank.lore)
-		print(CardBank.traits)
-		print(CardBank.secrets)
-		print(CardBank.playsound)
+		print(cardBank.name)
+		print(cardBank.flavor)
+		print(cardBank.temple)
+		print(cardBank.rarity)
+		print(cardBank.cost)
+		print(cardBank.sigils)
+		print(cardBank.power)
+		print(cardBank.health)
+		print(cardBank.illustrator)
+		print(cardBank.tribes)
+		print(cardBank.lore)
+		print(cardBank.traits)
+		print(cardBank.secrets)
+		print(cardBank.playsound)
 	return List
 
 # Define the Parent and Object
@@ -166,15 +166,64 @@ func _on_ready() -> void:
 	var List = CardHandler()
 	# Iterate through the List
 	for card in List:
-		# Define CardName and Bank
-		var cardname = card
-		var cardBank = List[card]
-		
 		# Get the Parent
 		cardParent = $Bestiary
-		
+		print("Testing;")
+		print(card)
+		var cardBank = List[card]
+		print("Testing Bank;")
+		print(cardBank)
+		var Check = 0
+		var name
+		var flavor
+		var temple
+		var rarity
+		var cost
+		var sigils
+		var power
+		var health
+		var illustrator
+		var tribes
+		var lore
+		var traits
+		var secrets
+		var playsound
+		for item in cardBank:
+			if Check == 0:
+				name = item
+			if Check == 1:
+				flavor = item
+			if Check == 2:
+				temple = item
+			if Check == 3:
+				rarity = item
+			if Check == 4:
+				cost = item
+			if Check == 5:
+				sigils = item
+			if Check == 6:
+				power = item
+			if Check == 7:
+				health = item
+			if Check == 8:
+				illustrator = item
+			if Check == 9:
+				tribes = item
+			if Check == 10:
+				lore = item
+			if Check == 11:
+				traits = item
+			if Check == 12:
+				secrets = item
+			if Check == 13:
+				playsound = item
+			Check = Check + 1
+		var Portrait : AtlasTexture = load("res://ModData/Art" + name + ".png")
 		# Define an Entry
 		var entry : Card = cardObject.instantiate()
+		entry.cardGfx = Portrait
+		entry.cardName = name
+		entry.health = health
+		entry.power = power
 		
-		
-		# Find a way to get a Instantiated Entry into cardParent with all properties in Card Bank.
+		 #Find a way to get a Instantiated Entry into cardParent with all properties in Card Bank.
