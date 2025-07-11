@@ -11,7 +11,7 @@ func CardHandler() -> Dictionary:
 			# Process 'row' as needed
 			content.append(row)
 			FileIterator = FileIterator + 1
-		content.remove_at(FileIterator-1)
+		content.remove_at(FileIterator - 1)
 	# Define a List of cards to pass to the game later
 	var List: Dictionary
 	# Run as many times as there is entries in content
@@ -138,7 +138,7 @@ func CardHandler() -> Dictionary:
 			secrets = CardBank.secrets,
 			playsound = CardBank.playsound
 			}
-		List.get_or_add(CardBank.name, CardBank)
+		List[CardBank.name] = CardBank
 		# Verbose logging because why not
 		print("Printing Card Bank: ")
 		print(CardBank.name)
@@ -157,13 +157,10 @@ func CardHandler() -> Dictionary:
 		print(CardBank.playsound)
 	return List
 
-func _ready():
-	CardHandler.call()
-	pass
-
 # Define the Parent and Object
 @onready var cardParent : Node2D
 @export var cardObject : PackedScene
+
 func _on_ready() -> void:
 	# Fetch the List
 	var List = CardHandler()
@@ -172,24 +169,12 @@ func _on_ready() -> void:
 		# Define CardName and Bank
 		var cardname = card
 		var cardBank = List[card]
-		var ProperBank = cardBank
 		
 		# Get the Parent
 		cardParent = $Bestiary
 		
 		# Define an Entry
 		var entry : Card = cardObject.instantiate()
-		var portrait : AtlasTexture = load("res://ModData/Art/" + ProperBank.name + ".png")
-		entry.cardGfx = portrait
-		entry.power = ProperBank.power
-		entry.health = ProperBank.health
-		entry.cardDesc = ProperBank.flavor
-		entry.cardLore = ProperBank.lore
-		var cost = ProperBank.cost[0].split(" ")
-		entry.costAmount = cost[0]
-		entry.costType = cost[1]
-		entry.illus = ProperBank.illustrator
-		entry.temple = ProperBank.temple
-		entry.rarity = ProperBank.rarity
+		
 		
 		# Find a way to get a Instantiated Entry into cardParent with all properties in Card Bank.

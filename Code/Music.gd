@@ -4,7 +4,7 @@ extends AudioStreamPlayer
 @export var song: AudioStream
 
 # Track Registry
-@onready var track1 = preload("res://Music/01.mp3")
+@onready var track1 = preload("res://Music/A2Re-Title.mp3")
 @onready var track2 = preload("res://Music/35.mp3")
 
 # Called when the node enters the scene tree for the first time.

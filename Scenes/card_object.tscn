@@ -65,8 +65,8 @@ autowrap_mode = 0
 metadata/_edit_lock_ = true
 
 [node name="Sigils" type="Area2D" parent="CardGfx"]
-position = Vector2(128.502, 324.053)
-scale = Vector2(0.08, 0.08)
+position = Vector2(117.489, 310.837)
+scale = Vector2(0.09, 0.09)
 metadata/_edit_lock_ = true
 
 [node name="GridContainer" type="GridContainer" parent="CardGfx/Sigils"]
