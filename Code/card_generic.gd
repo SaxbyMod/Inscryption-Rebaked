@@ -41,12 +41,9 @@ func _ready():
 		var inst : CostInstance = costInstance.instantiate()
 		$CostSpawningArea.add_child(inst)
 		inst.set_display(cost[n], n)
-	
-	var tribeempty : Image = Image.new()
-	tribeempty.load("res://Art/Empty-Tribe.png")
-	var tribeemptygfx : Texture2D = ImageTexture.create_from_image(tribeempty)
-	for n in range(1, 5):
-		get_node("CardGfx/Text Boxes/Text Element Defined/Tribe Holder/Tribe Container/Tribe " + str(n)).texture = tribeemptygfx
+
+	for n in range(1, 6):
+		get_node("CardGfx/Text Boxes/Text Element Defined/Tribe Holder/Tribe Container/Tribe " + str(n)).texture = null
 
 	for n in len(tribes):
 		var image : Image = Image.new()
@@ -54,12 +51,9 @@ func _ready():
 		var tribe1 : Texture2D = ImageTexture.create_from_image(image)
 		get_node("CardGfx/Text Boxes/Text Element Defined/Tribe Holder/Tribe Container/Tribe " + str(n+1)).texture = tribe1
 	
-	
-	var sigilempty : Image = Image.new()
-	tribeempty.load("res://Art/Empty-Sigil.png")
-	var sigilemptygfx : Texture2D = ImageTexture.create_from_image(sigilempty)
-	for n in range(1, 4):
-		get_node("CardGfx/Sigils/GridContainer/Sigil" + str(n)).texture = sigilemptygfx
+
+	for n in range(1, 5):
+		get_node("CardGfx/Sigils/GridContainer/Sigil" + str(n)).texture = null
 
 	for n in len(sigils):
 		var image : Image = Image.new()
