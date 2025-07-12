@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://nxt2g0cousd3"]
+
+[ext_resource type="Texture2D" uid="uid://hruea0qoo0nb" path="res://Art/blood_icon.tres" id="1_k61l7"]
+[ext_resource type="Theme" uid="uid://c82wwqw147q63" path="res://theme.tres" id="2_n2hml"]
+
+[node name="CostElement" type="Node2D"]
+
+[node name="CostDisplay1" type="Node2D" parent="."]
+position = Vector2(210, 10)
+
+[node name="Cost" type="TextureRect" parent="CostDisplay1"]
+custom_minimum_size = Vector2(6, 9)
+offset_left = 110.0
+offset_top = 25.0
+offset_right = 140.0
+offset_bottom = 70.0
+size_flags_vertical = 4
+texture = ExtResource("1_k61l7")
+metadata/_edit_lock_ = true
+
+[node name="Number" type="RichTextLabel" parent="CostDisplay1"]
+offset_left = 143.0
+offset_top = 27.0
+offset_right = 196.0
+offset_bottom = 80.0
+theme = ExtResource("2_n2hml")
+theme_override_colors/default_color = Color(0, 0, 0, 0.705882)
+theme_override_font_sizes/normal_font_size = 64
+text = "x4"
+scroll_active = false
+autowrap_mode = 0
+metadata/_edit_lock_ = true
