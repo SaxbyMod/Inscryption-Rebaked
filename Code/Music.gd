@@ -8,17 +8,18 @@ extends AudioStreamPlayer
 @onready var track2 = preload("res://Music/35.mp3")
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _process(delta: float) -> void:
 	print("test")
-	if scene_id == "Loading":
-		stream = track1
-		print("load")
-	elif scene_id == "Deck":
-		stream = track2
-		print("deck")
-	elif scene_id == "Settings":
-		stream = track1
-		print("settings")
-	playing = true
-	stream_paused = false
-	pass # Replace with function body.
+	if playing == false || stream_paused == true:
+		if scene_id == "Loading":
+			stream = track1
+			print("load")
+		elif scene_id == "Deck":
+			stream = track2
+			print("deck")
+		elif scene_id == "Settings":
+			stream = track1
+			print("settings")
+		playing = true
+		stream_paused = false
+	pass
