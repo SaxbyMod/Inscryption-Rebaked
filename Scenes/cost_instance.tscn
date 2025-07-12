@@ -1,0 +1,76 @@
+[gd_scene load_steps=9 format=3 uid="uid://cq0fcgl85l12"]
+
+[ext_resource type="Script" uid="uid://ricvnu4ov6i0" path="res://Code/cost_instance.gd" id="1_onx6p"]
+[ext_resource type="Texture2D" uid="uid://hruea0qoo0nb" path="res://Art/blood_icon.tres" id="2_eg5pt"]
+[ext_resource type="Texture2D" uid="uid://cyngupd4ofob" path="res://Art/bone_icon.tres" id="3_a76ft"]
+[ext_resource type="Texture2D" uid="uid://dlthwe5ts71ri" path="res://Art/energy_icon.tres" id="4_68n4p"]
+[ext_resource type="Theme" uid="uid://c82wwqw147q63" path="res://theme.tres" id="5_y4peo"]
+[ext_resource type="Texture2D" uid="uid://bh6an1gyya2c6" path="res://Art/gem_icon_1.tres" id="6_62n3k"]
+[ext_resource type="Texture2D" uid="uid://qcjj7dtny1jf" path="res://Art/gem_icon_2.tres" id="7_fajk4"]
+[ext_resource type="Texture2D" uid="uid://6j5hye8ajw4j" path="res://Art/gem_icon_3.tres" id="8_af7uv"]
+
+[node name="CostInstance" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_onx6p")
+
+[node name="Blood" type="TextureRect" parent="."]
+visible = false
+custom_minimum_size = Vector2(6, 9)
+offset_right = 30.0
+offset_bottom = 45.0
+size_flags_vertical = 4
+texture = ExtResource("2_eg5pt")
+
+[node name="Bone" type="TextureRect" parent="."]
+visible = false
+custom_minimum_size = Vector2(6, 9)
+offset_right = 30.0
+offset_bottom = 45.0
+size_flags_vertical = 4
+texture = ExtResource("3_a76ft")
+
+[node name="Energy" type="TextureRect" parent="."]
+visible = false
+custom_minimum_size = Vector2(6, 9)
+offset_right = 30.0
+offset_bottom = 45.0
+size_flags_vertical = 4
+texture = ExtResource("4_68n4p")
+
+[node name="Counter" type="RichTextLabel" parent="."]
+offset_left = 33.0
+offset_top = 2.0
+offset_right = 86.0
+offset_bottom = 55.0
+theme = ExtResource("5_y4peo")
+theme_override_colors/default_color = Color(0, 0, 0, 0.705882)
+theme_override_font_sizes/normal_font_size = 64
+text = "x0"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Gems" type="Node2D" parent="."]
+visible = false
+
+[node name="Gem1" type="TextureRect" parent="Gems"]
+custom_minimum_size = Vector2(6, 9)
+offset_left = 82.0
+offset_right = 127.0
+offset_bottom = 45.0
+size_flags_vertical = 4
+texture = ExtResource("6_62n3k")
+
+[node name="Gem2" type="TextureRect" parent="Gems"]
+custom_minimum_size = Vector2(6, 9)
+offset_right = 45.0
+offset_bottom = 45.0
+size_flags_vertical = 4
+texture = ExtResource("7_fajk4")
+
+[node name="Gem3" type="TextureRect" parent="Gems"]
+custom_minimum_size = Vector2(6, 9)
+offset_left = 41.0
+offset_right = 86.0
+offset_bottom = 45.0
+size_flags_vertical = 4
+texture = ExtResource("8_af7uv")

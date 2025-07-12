@@ -1,11 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://0xp12wby2ydk"]
+[gd_scene load_steps=8 format=3 uid="uid://0xp12wby2ydk"]
 
 [ext_resource type="Script" uid="uid://bvvaeni2jfo4a" path="res://Code/card_generic.gd" id="1_87mu5"]
 [ext_resource type="Texture2D" uid="uid://blmdtl67t2ax7" path="res://Art/basic_card.tres" id="2_4d8pd"]
 [ext_resource type="FontFile" uid="uid://clsbw2dt4kdrf" path="res://Marksman.otf" id="3_w05q7"]
-[ext_resource type="Texture2D" uid="uid://hruea0qoo0nb" path="res://Art/blood_icon.tres" id="4_6fktj"]
 [ext_resource type="Texture2D" uid="uid://dc0f2ki8sm4ov" path="res://Art/temp-card-icon.png" id="4_valnt"]
-[ext_resource type="Theme" uid="uid://c82wwqw147q63" path="res://theme.tres" id="5_l1m5x"]
 [ext_resource type="Texture2D" uid="uid://jhj5lrp0p8da" path="res://Art/temp-sigil-icon.png" id="6_o8br8"]
 [ext_resource type="Texture2D" uid="uid://187doea0a1lc" path="res://Art/temp-tribe-icon.png" id="8_6wu2d"]
 
@@ -35,33 +33,6 @@ metadata/_edit_lock_ = true
 offset_right = 420.0
 offset_bottom = 290.0
 texture = ExtResource("4_valnt")
-metadata/_edit_lock_ = true
-
-[node name="CostDisplay" type="Node2D" parent="CardGfx"]
-position = Vector2(210, 10)
-metadata/_edit_lock_ = true
-
-[node name="Cost" type="TextureRect" parent="CardGfx/CostDisplay"]
-custom_minimum_size = Vector2(6, 9)
-offset_left = 110.0
-offset_top = 25.0
-offset_right = 140.0
-offset_bottom = 70.0
-size_flags_vertical = 4
-texture = ExtResource("4_6fktj")
-metadata/_edit_lock_ = true
-
-[node name="Number" type="RichTextLabel" parent="CardGfx/CostDisplay"]
-offset_left = 143.0
-offset_top = 27.0
-offset_right = 196.0
-offset_bottom = 80.0
-theme = ExtResource("5_l1m5x")
-theme_override_colors/default_color = Color(0, 0, 0, 0.705882)
-theme_override_font_sizes/normal_font_size = 64
-text = "x4"
-scroll_active = false
-autowrap_mode = 0
 metadata/_edit_lock_ = true
 
 [node name="Sigils" type="Area2D" parent="CardGfx"]
@@ -190,6 +161,10 @@ metadata/_edit_lock_ = true
 layout_mode = 2
 texture = ExtResource("8_6wu2d")
 metadata/_edit_lock_ = true
+
+[node name="CostSpawningArea" type="Node2D" parent="."]
+position = Vector2(125.551, -244.493)
+scale = Vector2(1, 1)
 
 [node name="Area2D" type="Area2D" parent="."]
 visible = false

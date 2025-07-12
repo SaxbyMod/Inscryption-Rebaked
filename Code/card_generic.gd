@@ -22,6 +22,8 @@ var ruby : AtlasTexture = load("res://Art/ruby_icon.tres")
 var sapphire : AtlasTexture = load("res://Art/sapphire_icon.tres")
 var onyx : AtlasTexture = load("res://Art/onyx_icon.tres")
 
+var costInstance : PackedScene = load("res://Scenes/cost_instance.tscn")
+
 var mouseHover = false
 
 var originalSpritePosition : Vector2
@@ -40,39 +42,43 @@ var direction = 1
 var dead = false
 
 func _ready():
-	for item in cost:
-		var costNew : String = item
-		var costNewCheck : int = costNew.split(" ").size()
-		if costNewCheck == 0:
-			$CardGfx/CostDisplay.queue_free()
-			continue
-		var costNum = costNew.split(" ")[0]
-		var costType = costNew.split(" ")[1]
-		if costType.to_lower() == "bones" || costType.to_lower() == "bone":
-			$CardGfx/CostDisplay/Cost.texture = bone
-			$CardGfx/CostDisplay/Number.text = "x" + str(costNum)
-		if costType.to_lower() == "blood":
-			$CardGfx/CostDisplay/Cost.texture = blood
-			$CardGfx/CostDisplay/Number.text = "x" + str(costNum)
-		if costType.to_lower() == "energy":
-			$CardGfx/CostDisplay/Cost.texture = energy
-			$CardGfx/CostDisplay/Number.text = "x" + str(costNum)
-		if costType.to_lower() == "sapphire":
-			if costNew.split(" ")[2] == "gem" || costNew.split(" ")[2] == "gems":
-				$CardGfx/CostDisplay/Cost.texture = sapphire
-				$CardGfx/CostDisplay/Number.text = "x" + str(costNum)
-		if costType.to_lower() == "emerald":
-			if costNew.split(" ")[2] == "gem" || costNew.split(" ")[2] == "gems":
-				$CardGfx/CostDisplay/Cost.texture = emerald
-				$CardGfx/CostDisplay/Number.text = "x" + str(costNum)
-		if costType.to_lower() == "ruby":
-			if costNew.split(" ")[2] == "gem" || costNew.split(" ")[2] == "gems":
-				$CardGfx/CostDisplay/Cost.texture = ruby
-				$CardGfx/CostDisplay/Number.text = "x" + str(costNum)
-		if costType.to_lower() == "onyx":
-			if costNew.split(" ")[2] == "gem" || costNew.split(" ")[2] == "gems":
-				$CardGfx/CostDisplay/Cost.texture = onyx
-				$CardGfx/CostDisplay/Number.text = "x" + str(costNum)
+	for n in len(cost):
+		var inst : CostInstance = costInstance.instantiate()
+		$CostSpawningArea.add_child(inst)
+		inst.set_display(cost[n], n)
+	#for item in cost:
+		#var costNew : String = item
+		#var costNewCheck : int = costNew.split(" ").size()
+		#if costNewCheck == 0:
+			#$CardGfx/CostDisplay.queue_free()
+			#continue
+		#var costNum = costNew.split(" ")[0]
+		#var costType = costNew.split(" ")[1]
+		#if costType.to_lower() == "bones" || costType.to_lower() == "bone":
+			#$CardGfx/CostDisplay/Cost.texture = bone
+			#$CardGfx/CostDisplay/Number.text = "x" + str(costNum)
+		#if costType.to_lower() == "blood":
+			#$CardGfx/CostDisplay/Cost.texture = blood
+			#$CardGfx/CostDisplay/Number.text = "x" + str(costNum)
+		#if costType.to_lower() == "energy":
+			#$CardGfx/CostDisplay/Cost.texture = energy
+			#$CardGfx/CostDisplay/Number.text = "x" + str(costNum)
+		#if costType.to_lower() == "sapphire":
+			#if costNew.split(" ")[2] == "gem" || costNew.split(" ")[2] == "gems":
+				#$CardGfx/CostDisplay/Cost.texture = sapphire
+				#$CardGfx/CostDisplay/Number.text = "x" + str(costNum)
+		#if costType.to_lower() == "emerald":
+			#if costNew.split(" ")[2] == "gem" || costNew.split(" ")[2] == "gems":
+				#$CardGfx/CostDisplay/Cost.texture = emerald
+				#$CardGfx/CostDisplay/Number.text = "x" + str(costNum)
+		#if costType.to_lower() == "ruby":
+			#if costNew.split(" ")[2] == "gem" || costNew.split(" ")[2] == "gems":
+				#$CardGfx/CostDisplay/Cost.texture = ruby
+				#$CardGfx/CostDisplay/Number.text = "x" + str(costNum)
+		#if costType.to_lower() == "onyx":
+			#if costNew.split(" ")[2] == "gem" || costNew.split(" ")[2] == "gems":
+				#$CardGfx/CostDisplay/Cost.texture = onyx
+				#$CardGfx/CostDisplay/Number.text = "x" + str(costNum)
 		#if costType.to_lower() == "prism" || costType.to_lower() == "prisms":
 			#prismCost = costNew	
 	
