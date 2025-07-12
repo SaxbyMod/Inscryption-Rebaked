@@ -5,6 +5,7 @@ var typeDict = {0 : "Blood", 1 : "Bone", 2 : "Energy"}
 
 func _process(delta):
 	if Player.currentlyHovered != null:
+		return
 		if Player.currentlyHovered.is_in_group("card"):
 			var costString = str(Player.currentlyHovered.costAmount) + " " + str(typeDict[Player.currentlyHovered.costType])
 			if Player.currentlyHovered.costAmount == 0:

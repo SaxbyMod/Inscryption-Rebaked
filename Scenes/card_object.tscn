@@ -147,17 +147,3 @@ scale = Vector2(1.5, 1.5)
 [node name="MouseCollider" type="CollisionShape2D" parent="."]
 scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_l6kyr")
-
-[node name="Test1" type="ColorRect" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-color = Color(1, 0, 0, 1)
-
-[node name="Test2" type="ColorRect" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-color = Color(0.324396, 0.488691, 1, 1)

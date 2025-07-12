@@ -127,12 +127,14 @@ func mouse_detection():
 	
 	if mousePos.x > point1.x && mousePos.x < point2.x:
 		if mousePos.y > point1.y && mousePos.y < point2.y:
+			if mouseHover == false:
+				Player.currentlyHovered = self
 			returnValue = true
-			
-	return returnValue
 	
-	$Test1.global_position = pos - size / 2
-	$Test2.global_position = pos + size / 2
+	if mouseHover == true && returnValue == false:
+		if Player.currentlyHovered == self:
+			Player.currentlyHovered = null
+	return returnValue
 
 
 # Tells the player they are hovering over this object
