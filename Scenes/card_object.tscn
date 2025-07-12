@@ -163,8 +163,8 @@ texture = ExtResource("8_6wu2d")
 metadata/_edit_lock_ = true
 
 [node name="CostSpawningArea" type="Node2D" parent="."]
-position = Vector2(125.551, -244.493)
-scale = Vector2(1, 1)
+position = Vector2(80, -257)
+scale = Vector2(1.5, 1.5)
 
 [node name="Area2D" type="Area2D" parent="."]
 visible = false
