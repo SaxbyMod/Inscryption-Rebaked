@@ -229,7 +229,8 @@ func _on_ready() -> void:
 		# Define Cost
 		print("Testing Cost;")
 		print(cost)
-		
+		var description : String = "[NO DATA]"
+		description = "[i]" + flavor + "[/i][Br][/Br][Br][/Br]" + lore
 		# Define an Entry
 		var entry = cardObject.instantiate()
 		entry.cardGfx = ImageTexture.create_from_image(Portrait)
@@ -240,5 +241,6 @@ func _on_ready() -> void:
 		entry.illus = illustrator
 		entry.tribes = tribes
 		entry.sigils = sigils
+		entry.cardDesc = description
 		
 		cardParent.add_child(entry)
