@@ -45,66 +45,50 @@ func _ready():
 	var tribeempty : Image = Image.new()
 	tribeempty.load("res://Art/Empty-Tribe.png")
 	var tribeemptygfx : Texture2D = ImageTexture.create_from_image(tribeempty)
-	$"CardGfx/Text Boxes/Text Element Defined/Tribe Holder/Tribe Container/Tribe 1".texture = tribeemptygfx
-	$"CardGfx/Text Boxes/Text Element Defined/Tribe Holder/Tribe Container/Tribe 2".texture = tribeemptygfx
-	$"CardGfx/Text Boxes/Text Element Defined/Tribe Holder/Tribe Container/Tribe 3".texture = tribeemptygfx
-	$"CardGfx/Text Boxes/Text Element Defined/Tribe Holder/Tribe Container/Tribe 4".texture = tribeemptygfx
-	$"CardGfx/Text Boxes/Text Element Defined/Tribe Holder/Tribe Container/Tribe 5".texture = tribeemptygfx
+	for n in range(1, 5):
+		get_node("CardGfx/Text Boxes/Text Element Defined/Tribe Holder/Tribe Container/Tribe " + str(n)).texture = tribeemptygfx
+
 	for n in len(tribes):
-		if n == 0:
-			var image : Image = Image.new()
-			image.load("res://ModData/Art/Tribes/" + tribes[n] + ".png")
-			var tribe1 : Texture2D = ImageTexture.create_from_image(image)
-			$"CardGfx/Text Boxes/Text Element Defined/Tribe Holder/Tribe Container/Tribe 1".texture = tribe1
-		if n == 1:
-			var image : Image = Image.new()
-			image.load("res://ModData/Art/Tribes/" + tribes[n] + ".png")
-			var tribe2 : Texture2D = ImageTexture.create_from_image(image)
-			$"CardGfx/Text Boxes/Text Element Defined/Tribe Holder/Tribe Container/Tribe 2".texture = tribe2
-		if n == 2:
-			var image : Image = Image.new()
-			image.load("res://ModData/Art/Tribes/" + tribes[n] + ".png")
-			var tribe3 : Texture2D = ImageTexture.create_from_image(image)
-			$"CardGfx/Text Boxes/Text Element Defined/Tribe Holder/Tribe Container/Tribe 3".texture = tribe3
-		if n == 3:
-			var image : Image = Image.new()
-			image.load("res://ModData/Art/Tribes/" + tribes[n] + ".png")
-			var tribe4 : Texture2D = ImageTexture.create_from_image(image)
-			$"CardGfx/Text Boxes/Text Element Defined/Tribe Holder/Tribe Container/Tribe 4".texture = tribe4
-		if n == 4:
-			var image : Image = Image.new()
-			image.load("res://ModData/Art/Tribes/" + tribes[n] + ".png")
-			var tribe5 : Texture2D = ImageTexture.create_from_image(image)
-			$"CardGfx/Text Boxes/Text Element Defined/Tribe Holder/Tribe Container/Tribe 5".texture = tribe5
+		var image : Image = Image.new()
+		image.load("res://ModData/Art/Tribes/" + tribes[n] + ".png")
+		var tribe1 : Texture2D = ImageTexture.create_from_image(image)
+		get_node("CardGfx/Text Boxes/Text Element Defined/Tribe Holder/Tribe Container/Tribe " + str(n+1)).texture = tribe1
+	
 	
 	var sigilempty : Image = Image.new()
 	tribeempty.load("res://Art/Empty-Sigil.png")
 	var sigilemptygfx : Texture2D = ImageTexture.create_from_image(sigilempty)
-	$"CardGfx/Sigils/GridContainer/Sigil".texture = sigilemptygfx
-	$"CardGfx/Sigils/GridContainer/Sigil2".texture = sigilemptygfx
-	$"CardGfx/Sigils/GridContainer/Sigil3".texture = sigilemptygfx
-	$"CardGfx/Sigils/GridContainer/Sigil4".texture = sigilemptygfx
+	for n in range(1, 4):
+		get_node("CardGfx/Sigils/GridContainer/Sigil" + str(n)).texture = sigilemptygfx
+
 	for n in len(sigils):
-		if n == 0:
-			var image : Image = Image.new()
-			image.load("res://ModData/Art/Sigils/" + sigils[n] + ".png")
-			var sigil1 : Texture2D = ImageTexture.create_from_image(image)
-			$"CardGfx/Sigils/GridContainer/Sigil".texture = sigil1
-		if n == 1:
-			var image : Image = Image.new()
-			image.load("res://ModData/Art/Sigils/" + sigils[n] + ".png")
-			var sigil2 : Texture2D = ImageTexture.create_from_image(image)
-			$"CardGfx/Sigils/GridContainer/Sigil2".texture = sigil2
-		if n == 2:
-			var image : Image = Image.new()
-			image.load("res://ModData/Art/Sigils/" + sigils[n] + ".png")
-			var sigil3 : Texture2D = ImageTexture.create_from_image(image)
-			$"CardGfx/Sigils/GridContainer/Sigil3".texture = sigil3
-		if n == 3:
-			var image : Image = Image.new()
-			image.load("res://ModData/Art/Sigils/" + sigils[n] + ".png")
-			var sigil4 : Texture2D = ImageTexture.create_from_image(image)
-			$"CardGfx/Sigils/GridContainer/Sigil4".texture = sigil4
+		var image : Image = Image.new()
+		image.load("res://ModData/Art/Sigils/" + sigils[n] + ".png")
+		var sigil1 : Texture2D = ImageTexture.create_from_image(image)
+		get_node("CardGfx/Sigils/GridContainer/Sigil" + str(n+1)).texture = sigil1
+		
+		
+		
+		#if n == 0:
+			#var image : Image = Image.new()
+			#image.load("res://ModData/Art/Sigils/" + sigils[n] + ".png")
+			#var sigil1 : Texture2D = ImageTexture.create_from_image(image)
+			#$"CardGfx/Sigils/GridContainer/Sigil1".texture = sigil1
+		#if n == 1:
+			#var image : Image = Image.new()
+			#image.load("res://ModData/Art/Sigils/" + sigils[n] + ".png")
+			#var sigil2 : Texture2D = ImageTexture.create_from_image(image)
+			#$"CardGfx/Sigils/GridContainer/Sigil2".texture = sigil2
+		#if n == 2:
+			#var image : Image = Image.new()
+			#image.load("res://ModData/Art/Sigils/" + sigils[n] + ".png")
+			#var sigil3 : Texture2D = ImageTexture.create_from_image(image)
+			#$"CardGfx/Sigils/GridContainer/Sigil3".texture = sigil3
+		#if n == 3:
+			#var image : Image = Image.new()
+			#image.load("res://ModData/Art/Sigils/" + sigils[n] + ".png")
+			#var sigil4 : Texture2D = ImageTexture.create_from_image(image)
+			#$"CardGfx/Sigils/GridContainer/Sigil4".texture = sigil4
 	
 	$CardGfx/Avatar/Portrait.texture = cardGfx
 	originalSpritePosition = $CardGfx.position
