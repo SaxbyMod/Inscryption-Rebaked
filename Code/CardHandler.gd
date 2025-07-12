@@ -238,5 +238,6 @@ func _on_ready() -> void:
 		entry.power = power
 		entry.cost = cost
 		entry.illus = illustrator
+		entry.tribes = tribes
 		
 		cardParent.add_child(entry)
