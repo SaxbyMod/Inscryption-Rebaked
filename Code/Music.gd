@@ -9,7 +9,6 @@ extends AudioStreamPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _process(delta: float) -> void:
-	print("test")
 	if playing == false || stream_paused == true:
 		if scene_id == "Loading":
 			stream = track1

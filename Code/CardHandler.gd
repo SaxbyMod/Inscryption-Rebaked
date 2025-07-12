@@ -242,5 +242,12 @@ func _on_ready() -> void:
 		entry.tribes = tribes
 		entry.sigils = sigils
 		entry.cardDesc = description
-		
 		cardParent.add_child(entry)
+		
+	var horizontalOffset = 260
+
+	for n in len(cardParent.get_children()):
+		cardParent = $Cards
+		var summon : Card = cardParent.get_children()[n]
+		cardParent.add_child(summon)
+		summon.position = Vector2(horizontalOffset * n, 0)
