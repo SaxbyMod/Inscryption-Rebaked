@@ -54,11 +54,11 @@ func _ready():
 	var tribeempty : Image = Image.new()
 	tribeempty.load("res://Art/Empty-Tribe.png")
 	var tribeemptygfx : Texture2D = ImageTexture.create_from_image(tribeempty)
-	$"CardGfx/Text CardGfx/Text Boxes/Text Element Defined/Tribe Holder/HBoxContainer/Tribe 1".texture = tribeemptygfx
-	$"CardGfx/Text CardGfx/Text Boxes/Text Element Defined/Tribe Holder/HBoxContainer/Tribe 2".texture = tribeemptygfx
-	$"CardGfx/Text CardGfx/Text Boxes/Text Element Defined/Tribe Holder/HBoxContainer/Tribe 3".texture = tribeemptygfx
-	$"CardGfx/Text CardGfx/Text Boxes/Text Element Defined/Tribe Holder/HBoxContainer/Tribe 4".texture = tribeemptygfx
-	$"CardGfx/Text CardGfx/Text Boxes/Text Element Defined/Tribe Holder/HBoxContainer/Tribe 5".texture = tribeemptygfx
+	$"CardGfx/Text Boxes/Text Element Defined/Tribe Holder/Tribe Container/Tribe 1".texture = tribeemptygfx
+	$"CardGfx/Text Boxes/Text Element Defined/Tribe Holder/Tribe Container/Tribe 2".texture = tribeemptygfx
+	$"CardGfx/Text Boxes/Text Element Defined/Tribe Holder/Tribe Container/Tribe 3".texture = tribeemptygfx
+	$"CardGfx/Text Boxes/Text Element Defined/Tribe Holder/Tribe Container/Tribe 4".texture = tribeemptygfx
+	$"CardGfx/Text Boxes/Text Element Defined/Tribe Holder/Tribe Container/Tribe 5".texture = tribeemptygfx
 	var countup = 0
 	for n in len(tribes):
 		countup += 1
@@ -66,27 +66,27 @@ func _ready():
 			var image : Image = Image.new()
 			image.load("res://ModData/Art/Tribes/" + tribes[n] + ".png")
 			var tribe1 : Texture2D = ImageTexture.create_from_image(image)
-			$"CardGfx/Text CardGfx/Text Boxes/Text Element Defined/Tribe Holder/HBoxContainer/Tribe 1".texture = tribe1
+			$"CardGfx/Text Boxes/Text Element Defined/Tribe Holder/Tribe Container/Tribe 1".texture = tribe1
 		if countup == 2:
 			var image : Image = Image.new()
 			image.load("res://ModData/Art/Tribes/" + tribes[n] + ".png")
 			var tribe2 : Texture2D = ImageTexture.create_from_image(image)
-			$"CardGfx/Text CardGfx/Text Boxes/Text Element Defined/Tribe Holder/HBoxContainer/Tribe 1".texture = tribe2
+			$"CardGfx/Text Boxes/Text Element Defined/Tribe Holder/Tribe Container/Tribe 2".texture = tribe2
 		if countup == 3:
 			var image : Image = Image.new()
 			image.load("res://ModData/Art/Tribes/" + tribes[n] + ".png")
 			var tribe3 : Texture2D = ImageTexture.create_from_image(image)
-			$"CardGfx/Text CardGfx/Text Boxes/Text Element Defined/Tribe Holder/HBoxContainer/Tribe 1".texture = tribe3
+			$"CardGfx/Text Boxes/Text Element Defined/Tribe Holder/Tribe Container/Tribe 3".texture = tribe3
 		if countup == 4:
 			var image : Image = Image.new()
 			image.load("res://ModData/Art/Tribes/" + tribes[n] + ".png")
 			var tribe4 : Texture2D = ImageTexture.create_from_image(image)
-			$"CardGfx/Text CardGfx/Text Boxes/Text Element Defined/Tribe Holder/HBoxContainer/Tribe 1".texture = tribe4
+			$"CardGfx/Text Boxes/Text Element Defined/Tribe Holder/Tribe Container/Tribe 4".texture = tribe4
 		if countup == 5:
 			var image : Image = Image.new()
 			image.load("res://ModData/Art/Tribes/" + tribes[n] + ".png")
 			var tribe5 : Texture2D = ImageTexture.create_from_image(image)
-			$"CardGfx/Text CardGfx/Text Boxes/Text Element Defined/Tribe Holder/HBoxContainer/Tribe 1".texture = tribe5
+			$"CardGfx/Text Boxes/Text Element Defined/Tribe Holder/Tribe Container/Tribe 5".texture = tribe5
 	
 	$CardGfx/Avatar/Portrait.texture = cardGfx
 	originalSpritePosition = $CardGfx.position
