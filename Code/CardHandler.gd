@@ -237,5 +237,6 @@ func _on_ready() -> void:
 		entry.health = health
 		entry.power = power
 		entry.cost = cost
+		entry.illus = illustrator
 		
 		cardParent.add_child(entry)

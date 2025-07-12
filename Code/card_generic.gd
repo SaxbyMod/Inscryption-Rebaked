@@ -5,10 +5,14 @@ class_name Card
 signal card_ticked
 
 var cardGfx : Texture2D
+
 var cardName : String = "[NO DATA]"
 var cardDesc: String = "[NO DATA]"
+var illus: String = "[NO DATA]"
 
 var cost : Array
+var tribes : Array
+var sigils : Array
 
 var health : int = -1
 var power : int = -1
@@ -46,47 +50,52 @@ func _ready():
 		var inst : CostInstance = costInstance.instantiate()
 		$CostSpawningArea.add_child(inst)
 		inst.set_display(cost[n], n)
-	#for item in cost:
-		#var costNew : String = item
-		#var costNewCheck : int = costNew.split(" ").size()
-		#if costNewCheck == 0:
-			#$CardGfx/CostDisplay.queue_free()
-			#continue
-		#var costNum = costNew.split(" ")[0]
-		#var costType = costNew.split(" ")[1]
-		#if costType.to_lower() == "bones" || costType.to_lower() == "bone":
-			#$CardGfx/CostDisplay/Cost.texture = bone
-			#$CardGfx/CostDisplay/Number.text = "x" + str(costNum)
-		#if costType.to_lower() == "blood":
-			#$CardGfx/CostDisplay/Cost.texture = blood
-			#$CardGfx/CostDisplay/Number.text = "x" + str(costNum)
-		#if costType.to_lower() == "energy":
-			#$CardGfx/CostDisplay/Cost.texture = energy
-			#$CardGfx/CostDisplay/Number.text = "x" + str(costNum)
-		#if costType.to_lower() == "sapphire":
-			#if costNew.split(" ")[2] == "gem" || costNew.split(" ")[2] == "gems":
-				#$CardGfx/CostDisplay/Cost.texture = sapphire
-				#$CardGfx/CostDisplay/Number.text = "x" + str(costNum)
-		#if costType.to_lower() == "emerald":
-			#if costNew.split(" ")[2] == "gem" || costNew.split(" ")[2] == "gems":
-				#$CardGfx/CostDisplay/Cost.texture = emerald
-				#$CardGfx/CostDisplay/Number.text = "x" + str(costNum)
-		#if costType.to_lower() == "ruby":
-			#if costNew.split(" ")[2] == "gem" || costNew.split(" ")[2] == "gems":
-				#$CardGfx/CostDisplay/Cost.texture = ruby
-				#$CardGfx/CostDisplay/Number.text = "x" + str(costNum)
-		#if costType.to_lower() == "onyx":
-			#if costNew.split(" ")[2] == "gem" || costNew.split(" ")[2] == "gems":
-				#$CardGfx/CostDisplay/Cost.texture = onyx
-				#$CardGfx/CostDisplay/Number.text = "x" + str(costNum)
-		#if costType.to_lower() == "prism" || costType.to_lower() == "prisms":
-			#prismCost = costNew	
+	
+	var tribeempty : Image = Image.new()
+	tribeempty.load("res://Art/Empty-Tribe.png")
+	var tribeemptygfx : Texture2D = ImageTexture.create_from_image(tribeempty)
+	$"CardGfx/Text CardGfx/Text Boxes/Text Element Defined/Tribe Holder/HBoxContainer/Tribe 1".texture = tribeemptygfx
+	$"CardGfx/Text CardGfx/Text Boxes/Text Element Defined/Tribe Holder/HBoxContainer/Tribe 2".texture = tribeemptygfx
+	$"CardGfx/Text CardGfx/Text Boxes/Text Element Defined/Tribe Holder/HBoxContainer/Tribe 3".texture = tribeemptygfx
+	$"CardGfx/Text CardGfx/Text Boxes/Text Element Defined/Tribe Holder/HBoxContainer/Tribe 4".texture = tribeemptygfx
+	$"CardGfx/Text CardGfx/Text Boxes/Text Element Defined/Tribe Holder/HBoxContainer/Tribe 5".texture = tribeemptygfx
+	var countup = 0
+	for n in len(tribes):
+		countup += 1
+		if countup == 1:
+			var image : Image = Image.new()
+			image.load("res://ModData/Art/Tribes/" + tribes[n] + ".png")
+			var tribe1 : Texture2D = ImageTexture.create_from_image(image)
+			$"CardGfx/Text CardGfx/Text Boxes/Text Element Defined/Tribe Holder/HBoxContainer/Tribe 1".texture = tribe1
+		if countup == 2:
+			var image : Image = Image.new()
+			image.load("res://ModData/Art/Tribes/" + tribes[n] + ".png")
+			var tribe2 : Texture2D = ImageTexture.create_from_image(image)
+			$"CardGfx/Text CardGfx/Text Boxes/Text Element Defined/Tribe Holder/HBoxContainer/Tribe 1".texture = tribe2
+		if countup == 3:
+			var image : Image = Image.new()
+			image.load("res://ModData/Art/Tribes/" + tribes[n] + ".png")
+			var tribe3 : Texture2D = ImageTexture.create_from_image(image)
+			$"CardGfx/Text CardGfx/Text Boxes/Text Element Defined/Tribe Holder/HBoxContainer/Tribe 1".texture = tribe3
+		if countup == 4:
+			var image : Image = Image.new()
+			image.load("res://ModData/Art/Tribes/" + tribes[n] + ".png")
+			var tribe4 : Texture2D = ImageTexture.create_from_image(image)
+			$"CardGfx/Text CardGfx/Text Boxes/Text Element Defined/Tribe Holder/HBoxContainer/Tribe 1".texture = tribe4
+		if countup == 5:
+			var image : Image = Image.new()
+			image.load("res://ModData/Art/Tribes/" + tribes[n] + ".png")
+			var tribe5 : Texture2D = ImageTexture.create_from_image(image)
+			$"CardGfx/Text CardGfx/Text Boxes/Text Element Defined/Tribe Holder/HBoxContainer/Tribe 1".texture = tribe5
 	
 	$CardGfx/Avatar/Portrait.texture = cardGfx
 	originalSpritePosition = $CardGfx.position
 	
 	$"CardGfx/Text Boxes/Healthbar".text = "[right]" + str(health)
 	$"CardGfx/Text Boxes/Powerbar".text = str(power)
+	
+	$"CardGfx/Text Boxes/Text Element Defined/Illus".text = illus
+	
 	
 	if enemyCard:
 		direction = -1
