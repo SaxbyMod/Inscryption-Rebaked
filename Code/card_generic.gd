@@ -8,8 +8,7 @@ var cardGfx : Texture2D
 var cardName : String = "[NO DATA]"
 var cardDesc: String = "[NO DATA]"
 
-var costType = 0
-var costAmount = -1
+var cost : Array
 
 var health : int = -1
 var power : int = -1
@@ -18,8 +17,10 @@ var enemyCard = false
 var blood : AtlasTexture = load("res://Art/blood_icon.tres")
 var bone : AtlasTexture = load("res://Art/bone_icon.tres")
 var energy : AtlasTexture = load("res://Art/energy_icon.tres")
-
-var thisCard : AtlasTexture
+var emerald : AtlasTexture = load("res://Art/emerald_icon.tres")
+var ruby : AtlasTexture = load("res://Art/ruby_icon.tres")
+var sapphire : AtlasTexture = load("res://Art/sapphire_icon.tres")
+var onyx : AtlasTexture = load("res://Art/onyx_icon.tres")
 
 var mouseHover = false
 
@@ -39,25 +40,47 @@ var direction = 1
 var dead = false
 
 func _ready():
+	for item in cost:
+		var costNew : String = item
+		var costNewCheck : int = costNew.split(" ").size()
+		if costNewCheck == 0:
+			$CardGfx/CostDisplay.queue_free()
+			continue
+		var costNum = costNew.split(" ")[0]
+		var costType = costNew.split(" ")[1]
+		if costType.to_lower() == "bones" || costType.to_lower() == "bone":
+			$CardGfx/CostDisplay/Cost.texture = bone
+			$CardGfx/CostDisplay/Number.text = "x" + str(costNum)
+		if costType.to_lower() == "blood":
+			$CardGfx/CostDisplay/Cost.texture = blood
+			$CardGfx/CostDisplay/Number.text = "x" + str(costNum)
+		if costType.to_lower() == "energy":
+			$CardGfx/CostDisplay/Cost.texture = energy
+			$CardGfx/CostDisplay/Number.text = "x" + str(costNum)
+		if costType.to_lower() == "sapphire":
+			if costNew.split(" ")[2] == "gem" || costNew.split(" ")[2] == "gems":
+				$CardGfx/CostDisplay/Cost.texture = sapphire
+				$CardGfx/CostDisplay/Number.text = "x" + str(costNum)
+		if costType.to_lower() == "emerald":
+			if costNew.split(" ")[2] == "gem" || costNew.split(" ")[2] == "gems":
+				$CardGfx/CostDisplay/Cost.texture = emerald
+				$CardGfx/CostDisplay/Number.text = "x" + str(costNum)
+		if costType.to_lower() == "ruby":
+			if costNew.split(" ")[2] == "gem" || costNew.split(" ")[2] == "gems":
+				$CardGfx/CostDisplay/Cost.texture = ruby
+				$CardGfx/CostDisplay/Number.text = "x" + str(costNum)
+		if costType.to_lower() == "onyx":
+			if costNew.split(" ")[2] == "gem" || costNew.split(" ")[2] == "gems":
+				$CardGfx/CostDisplay/Cost.texture = onyx
+				$CardGfx/CostDisplay/Number.text = "x" + str(costNum)
+		#if costType.to_lower() == "prism" || costType.to_lower() == "prisms":
+			#prismCost = costNew	
+	
 	$CardGfx/Avatar/Portrait.texture = cardGfx
 	originalSpritePosition = $CardGfx.position
 	
 	$"CardGfx/Text Boxes/Healthbar".text = "[right]" + str(health)
 	$"CardGfx/Text Boxes/Powerbar".text = str(power)
-	
-	match costType:
-		0:
-			thisCard = blood
-		1:
-			thisCard = bone
-		2:
-			thisCard = energy
-	
-	$CardGfx/CostDisplay/Cost.texture = thisCard
-	$CardGfx/CostDisplay/Number.text = "x" + str(costAmount)
-	
-	if costAmount == 0:
-		$CardGfx/CostDisplay.queue_free()
 	
 	if enemyCard:
 		direction = -1

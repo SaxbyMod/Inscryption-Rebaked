@@ -4,4 +4,4 @@
 
 [resource]
 atlas = ExtResource("1_jxjar")
-region = Rect2(635, 17, 6, 9)
+region = Rect2(634, 17, 7, 9)

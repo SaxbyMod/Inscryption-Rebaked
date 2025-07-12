@@ -4,4 +4,4 @@
 
 [resource]
 atlas = ExtResource("1_uiqfx")
-region = Rect2(3, 514, 42, 56)
+region = Rect2(296, 580, 42, 56)

@@ -229,38 +229,6 @@ func _on_ready() -> void:
 		# Define Cost
 		print("Testing Cost;")
 		print(cost)
-		var boneCost
-		var bloodCost
-		var energyCost
-		var sapphireGemCost
-		var rubyGemCost
-		var emeraldGemCost
-		var onyxGemCost
-		var prismCost
-		for item in cost:
-			var costNew : String = item
-			var costNum = costNew.split(" ")[0]
-			var costType = costNew.split(" ")[1]
-			if costType.to_lower() == "bones" || costType.to_lower() == "bone":
-				boneCost = costNew
-			if costType.to_lower() == "blood":
-				bloodCost = costNew
-			if costType.to_lower() == "energy":
-				energyCost = costNew
-			if costType.to_lower() == "sapphire":
-				if costNew.split(" ")[2] == "gem" || costNew.split(" ")[2] == "gems":
-					sapphireGemCost = costNew
-			if costType.to_lower() == "emerald":
-				if costNew.split(" ")[2] == "gem" || costNew.split(" ")[2] == "gems":
-					emeraldGemCost = costNew
-			if costType.to_lower() == "ruby":
-				if costNew.split(" ")[2] == "gem" || costNew.split(" ")[2] == "gems":
-					rubyGemCost = costNew
-			if costType.to_lower() == "onyx":
-				if costNew.split(" ")[2] == "gem" || costNew.split(" ")[2] == "gems":
-					onyxGemCost = costNew
-			if costType.to_lower() == "prism" || costType.to_lower() == "prisms":
-				prismCost = costNew
 		
 		# Define an Entry
 		var entry = cardObject.instantiate()
@@ -268,5 +236,6 @@ func _on_ready() -> void:
 		entry.cardName = name
 		entry.health = health
 		entry.power = power
+		entry.cost = cost
 		
 		cardParent.add_child(entry)
