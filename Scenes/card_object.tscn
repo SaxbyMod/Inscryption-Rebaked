@@ -145,5 +145,4 @@ position = Vector2(80, -257)
 scale = Vector2(1.5, 1.5)
 
 [node name="MouseCollider" type="CollisionShape2D" parent="."]
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_l6kyr")
