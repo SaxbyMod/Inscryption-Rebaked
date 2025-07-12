@@ -16,15 +16,6 @@ var sigils : Array
 
 var health : int = -1
 var power : int = -1
-var enemyCard = false
-
-var blood : AtlasTexture = load("res://Art/blood_icon.tres")
-var bone : AtlasTexture = load("res://Art/bone_icon.tres")
-var energy : AtlasTexture = load("res://Art/energy_icon.tres")
-var emerald : AtlasTexture = load("res://Art/emerald_icon.tres")
-var ruby : AtlasTexture = load("res://Art/ruby_icon.tres")
-var sapphire : AtlasTexture = load("res://Art/sapphire_icon.tres")
-var onyx : AtlasTexture = load("res://Art/onyx_icon.tres")
 
 var costInstance : PackedScene = load("res://Scenes/cost_instance.tscn")
 
@@ -36,16 +27,16 @@ var parentSlot : Slot
 var prevParentSlot : Slot
 var slotted : bool = false
 
+# Procedural animation stuff
 var pickupAnim = 0
-# This is a very shitty solution and should be redone with proper animations
 var attackAnim = 0
 var attackTimer : float = 0
-
-var direction = 1
+var defaultScale : float = 0
 
 var dead = false
 
 func _ready():
+	defaultScale = scale.x
 	for n in len(cost):
 		var inst : CostInstance = costInstance.instantiate()
 		$CostSpawningArea.add_child(inst)
@@ -59,30 +50,28 @@ func _ready():
 	$"CardGfx/Text Boxes/Text Element Defined/Tribe Holder/Tribe Container/Tribe 3".texture = tribeemptygfx
 	$"CardGfx/Text Boxes/Text Element Defined/Tribe Holder/Tribe Container/Tribe 4".texture = tribeemptygfx
 	$"CardGfx/Text Boxes/Text Element Defined/Tribe Holder/Tribe Container/Tribe 5".texture = tribeemptygfx
-	var countup = 0
 	for n in len(tribes):
-		countup += 1
-		if countup == 1:
+		if n == 0:
 			var image : Image = Image.new()
 			image.load("res://ModData/Art/Tribes/" + tribes[n] + ".png")
 			var tribe1 : Texture2D = ImageTexture.create_from_image(image)
 			$"CardGfx/Text Boxes/Text Element Defined/Tribe Holder/Tribe Container/Tribe 1".texture = tribe1
-		if countup == 2:
+		if n == 1:
 			var image : Image = Image.new()
 			image.load("res://ModData/Art/Tribes/" + tribes[n] + ".png")
 			var tribe2 : Texture2D = ImageTexture.create_from_image(image)
 			$"CardGfx/Text Boxes/Text Element Defined/Tribe Holder/Tribe Container/Tribe 2".texture = tribe2
-		if countup == 3:
+		if n == 2:
 			var image : Image = Image.new()
 			image.load("res://ModData/Art/Tribes/" + tribes[n] + ".png")
 			var tribe3 : Texture2D = ImageTexture.create_from_image(image)
 			$"CardGfx/Text Boxes/Text Element Defined/Tribe Holder/Tribe Container/Tribe 3".texture = tribe3
-		if countup == 4:
+		if n == 3:
 			var image : Image = Image.new()
 			image.load("res://ModData/Art/Tribes/" + tribes[n] + ".png")
 			var tribe4 : Texture2D = ImageTexture.create_from_image(image)
 			$"CardGfx/Text Boxes/Text Element Defined/Tribe Holder/Tribe Container/Tribe 4".texture = tribe4
-		if countup == 5:
+		if n == 4:
 			var image : Image = Image.new()
 			image.load("res://ModData/Art/Tribes/" + tribes[n] + ".png")
 			var tribe5 : Texture2D = ImageTexture.create_from_image(image)
@@ -95,25 +84,23 @@ func _ready():
 	$"CardGfx/Sigils/GridContainer/Sigil2".texture = sigilemptygfx
 	$"CardGfx/Sigils/GridContainer/Sigil3".texture = sigilemptygfx
 	$"CardGfx/Sigils/GridContainer/Sigil4".texture = sigilemptygfx
-	countup = 0
 	for n in len(sigils):
-		countup += 1
-		if countup == 1:
+		if n == 0:
 			var image : Image = Image.new()
 			image.load("res://ModData/Art/Sigils/" + sigils[n] + ".png")
 			var sigil1 : Texture2D = ImageTexture.create_from_image(image)
 			$"CardGfx/Sigils/GridContainer/Sigil".texture = sigil1
-		if countup == 2:
+		if n == 1:
 			var image : Image = Image.new()
 			image.load("res://ModData/Art/Sigils/" + sigils[n] + ".png")
 			var sigil2 : Texture2D = ImageTexture.create_from_image(image)
 			$"CardGfx/Sigils/GridContainer/Sigil2".texture = sigil2
-		if countup == 3:
+		if n == 2:
 			var image : Image = Image.new()
 			image.load("res://ModData/Art/Sigils/" + sigils[n] + ".png")
 			var sigil3 : Texture2D = ImageTexture.create_from_image(image)
 			$"CardGfx/Sigils/GridContainer/Sigil3".texture = sigil3
-		if countup == 4:
+		if n == 3:
 			var image : Image = Image.new()
 			image.load("res://ModData/Art/Sigils/" + sigils[n] + ".png")
 			var sigil4 : Texture2D = ImageTexture.create_from_image(image)
@@ -126,10 +113,6 @@ func _ready():
 	$"CardGfx/Text Boxes/Powerbar".text = str(power)
 	
 	$"CardGfx/Text Boxes/Text Element Defined/Illus".text = illus
-	
-	
-	if enemyCard:
-		direction = -1
 
 
 func _process(delta):
@@ -142,11 +125,11 @@ func _process(delta):
 	
 	# Graphics code (scary-looking)
 	if mouseHover:
-		$CardGfx.scale.x = lerp($CardGfx.scale.x, 1.1, delta * 16)
-		$CardGfx.scale.y = lerp($CardGfx.scale.y, 1.1, delta * 16)
+		scale.x = lerp(scale.x, defaultScale * 1.1, delta * 16)
+		scale.y = lerp(scale.y, defaultScale * 1.1, delta * 16)
 	else:
-		$CardGfx.scale.x = lerp($CardGfx.scale.x, 1.0, delta * 16)
-		$CardGfx.scale.y = lerp($CardGfx.scale.y, 1.0, delta * 16)
+		scale.x = lerp(scale.x, defaultScale, delta * 16)
+		scale.y = lerp(scale.y, defaultScale, delta * 16)
 	
 	if Player.selectedCard == self:
 		pickupAnim = -50
@@ -167,19 +150,12 @@ func _process(delta):
 		attackAnim = -sin(attackTimer) * 20
 		attackTimer -= delta
 	
-	var direction = 1
-	if enemyCard:
-		direction = -1
-	
-	$CardGfx.position.y = lerp($CardGfx.position.y, originalSpritePosition.y + pickupAnim, delta * 16) + attackAnim * direction
+	$CardGfx.position.y = lerp($CardGfx.position.y, originalSpritePosition.y + pickupAnim, delta * 16) + attackAnim
 	prevParentSlot = parentSlot
 
 
 # Tells the player they are hovering over this object
 func _on_area_2d_mouse_entered():
-	if enemyCard:
-		return
-	
 	mouseHover = true
 	Player.currentlyHovered = self
 
