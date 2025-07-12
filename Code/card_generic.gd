@@ -78,6 +78,7 @@ func _process(delta):
 		return
 	
 	mouseHover = mouse_detection()
+	print(parentSlot)
 	
 	# If the card changes slots then it sets its previous slot to be unoccupied
 	if parentSlot != prevParentSlot and prevParentSlot != null:
@@ -135,18 +136,6 @@ func mouse_detection():
 		if Player.currentlyHovered == self:
 			Player.currentlyHovered = null
 	return returnValue
-
-
-# Tells the player they are hovering over this object
-func _on_area_2d_mouse_entered():
-	print("ajkdajdl")
-	mouseHover = true
-	Player.currentlyHovered = self
-
-func _on_area_2d_mouse_exited():
-	mouseHover = false
-	if Player.currentlyHovered == self:
-		Player.currentlyHovered = null
 
 # This tells all attached components to "tick" themselves
 func tick_turn():

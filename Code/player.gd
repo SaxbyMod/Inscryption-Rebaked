@@ -37,7 +37,5 @@ func _process(delta):
 		CardManager.advance_turn()
 
 func play_card():
-	if levels[selectedCard.costType] - selectedCard.costAmount >= 0:
-		levels[selectedCard.costType] -= selectedCard.costAmount
-		selectedCard.parentSlot = currentlyHovered
-		selectedCard = null
+	selectedCard.parentSlot = currentlyHovered
+	selectedCard = null
