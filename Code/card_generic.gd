@@ -37,11 +37,14 @@ var dead = false
 
 func _ready():
 	defaultScale = scale.x
+	
+	#Cost setup
 	for n in len(cost):
 		var inst : CostInstance = costInstance.instantiate()
 		$CostSpawningArea.add_child(inst)
 		inst.set_display(cost[n], n)
-
+	
+	#Graphics
 	for n in range(1, 6):
 		get_node("CardGfx/Text Boxes/Text Element Defined/Tribe Holder/Tribe Container/Tribe " + str(n)).texture = null
 
@@ -60,29 +63,6 @@ func _ready():
 		image.load("res://ModData/Art/Sigils/" + sigils[n] + ".png")
 		var sigil1 : Texture2D = ImageTexture.create_from_image(image)
 		get_node("CardGfx/Sigils/GridContainer/Sigil" + str(n+1)).texture = sigil1
-		
-		
-		
-		#if n == 0:
-			#var image : Image = Image.new()
-			#image.load("res://ModData/Art/Sigils/" + sigils[n] + ".png")
-			#var sigil1 : Texture2D = ImageTexture.create_from_image(image)
-			#$"CardGfx/Sigils/GridContainer/Sigil1".texture = sigil1
-		#if n == 1:
-			#var image : Image = Image.new()
-			#image.load("res://ModData/Art/Sigils/" + sigils[n] + ".png")
-			#var sigil2 : Texture2D = ImageTexture.create_from_image(image)
-			#$"CardGfx/Sigils/GridContainer/Sigil2".texture = sigil2
-		#if n == 2:
-			#var image : Image = Image.new()
-			#image.load("res://ModData/Art/Sigils/" + sigils[n] + ".png")
-			#var sigil3 : Texture2D = ImageTexture.create_from_image(image)
-			#$"CardGfx/Sigils/GridContainer/Sigil3".texture = sigil3
-		#if n == 3:
-			#var image : Image = Image.new()
-			#image.load("res://ModData/Art/Sigils/" + sigils[n] + ".png")
-			#var sigil4 : Texture2D = ImageTexture.create_from_image(image)
-			#$"CardGfx/Sigils/GridContainer/Sigil4".texture = sigil4
 	
 	$CardGfx/Avatar/Portrait.texture = cardGfx
 	originalSpritePosition = $CardGfx.position
@@ -97,11 +77,13 @@ func _process(delta):
 	if dead:
 		return
 	
+	mouseHover = mouse_detection()
+	
 	# If the card changes slots then it sets its previous slot to be unoccupied
 	if parentSlot != prevParentSlot and prevParentSlot != null:
 		prevParentSlot.occupied = false
 	
-	# Graphics code (scary-looking)
+	# If the mouse is over the tile scale it up a bit
 	if mouseHover:
 		scale.x = lerp(scale.x, defaultScale * 1.1, delta * 16)
 		scale.y = lerp(scale.y, defaultScale * 1.1, delta * 16)
@@ -132,8 +114,30 @@ func _process(delta):
 	prevParentSlot = parentSlot
 
 
+func mouse_detection():
+	var returnValue = false
+	
+	var size = $MouseCollider.shape.size * defaultScale
+	var pos = $MouseCollider.global_position
+	
+	var point1 = pos - size / 2
+	var point2 = pos + size / 2
+	
+	var mousePos = get_global_mouse_position()
+	
+	if mousePos.x > point1.x && mousePos.x < point2.x:
+		if mousePos.y > point1.y && mousePos.y < point2.y:
+			returnValue = true
+			
+	return returnValue
+	
+	$Test1.global_position = pos - size / 2
+	$Test2.global_position = pos + size / 2
+
+
 # Tells the player they are hovering over this object
 func _on_area_2d_mouse_entered():
+	print("ajkdajdl")
 	mouseHover = true
 	Player.currentlyHovered = self
 
