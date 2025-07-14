@@ -119,7 +119,7 @@ func CardHandler() -> Dictionary:
 					cardBank.secrets = secrets
 				elif (Check == 13):
 					# Define the Playsound [May be marked Obselete]
-					cardBank.playsound = j
+					cardBank.playsound = j.replace("null", "")
 				Check = Check + 1
 			# Append the card to the list
 			cardBank = {

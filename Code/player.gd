@@ -13,10 +13,10 @@ func _process(delta):
 	if Input.is_action_just_pressed("Settings"):
 		get_tree().change_scene_to_file("res://Scenes/Settings.tscn")
 	
-	if Input.is_action_pressed("EXIT THE GAME"):
+	if Input.is_action_pressed("Exit Button"):
 		get_tree().quit()
 	
-	if Input.is_action_just_pressed("leftClick"):
+	if Input.is_action_just_pressed("Left Click"):
 		if currentlyHovered != null:
 			# If we click a selected card then we should unselect it
 			if currentlyHovered == selectedCard:
@@ -32,6 +32,9 @@ func _process(delta):
 			if currentlyHovered.is_in_group("slot") and selectedCard != null:
 				if not currentlyHovered.enemy:
 					play_card()
+	
+	if Input.is_action_just_pressed("Right Click"):
+		print("Does nothing right now.")
 	
 	if Input.is_action_just_pressed("Spacebar"):
 		CardManager.advance_turn()
