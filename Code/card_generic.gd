@@ -43,7 +43,7 @@ func _ready():
 		var inst : CostInstance = costInstance.instantiate()
 		$CostSpawningArea.add_child(inst)
 		inst.set_display(cost[n], n)
-	
+	print($CostSpawningArea.get_children())
 	#Graphics
 	for n in range(1, 6):
 		get_node("CardGfx/Text Boxes/Text Element Defined/Tribe Holder/Tribe Container/Tribe " + str(n)).texture = null

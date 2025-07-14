@@ -53,15 +53,6 @@ autowrap_mode = 0
 [node name="Gems" type="Node2D" parent="."]
 visible = false
 
-[node name="Sapphire" type="TextureRect" parent="Gems"]
-visible = false
-custom_minimum_size = Vector2(6, 9)
-offset_left = 82.0
-offset_right = 127.0
-offset_bottom = 45.0
-size_flags_vertical = 4
-texture = ExtResource("6_eg5pt")
-
 [node name="Ruby" type="TextureRect" parent="Gems"]
 visible = false
 custom_minimum_size = Vector2(6, 9)
@@ -70,11 +61,18 @@ offset_bottom = 45.0
 size_flags_vertical = 4
 texture = ExtResource("7_fajk4")
 
+[node name="Sapphire" type="TextureRect" parent="Gems"]
+visible = false
+custom_minimum_size = Vector2(6, 9)
+offset_right = 45.0
+offset_bottom = 45.0
+size_flags_vertical = 4
+texture = ExtResource("6_eg5pt")
+
 [node name="Emerald" type="TextureRect" parent="Gems"]
 visible = false
 custom_minimum_size = Vector2(6, 9)
-offset_left = 41.0
-offset_right = 86.0
+offset_right = 45.0
 offset_bottom = 45.0
 size_flags_vertical = 4
 texture = ExtResource("8_af7uv")
@@ -82,8 +80,7 @@ texture = ExtResource("8_af7uv")
 [node name="Onyx" type="TextureRect" parent="Gems"]
 visible = false
 custom_minimum_size = Vector2(6, 9)
-offset_left = 123.0
-offset_right = 168.0
+offset_right = 45.0
 offset_bottom = 45.0
 size_flags_vertical = 4
 texture = ExtResource("9_a76ft")
