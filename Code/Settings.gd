@@ -7,29 +7,50 @@ func _process(delta):
 # Sound Settings:
 ## Master
 func _on_set_master_value_changed(value):
-	AudioServer.set_bus_volume_db(0, value)
+	Player.userConfigs.set_value("Audio", "MasterValue", value)
+	apply_config_file()
 func _on_mute_master_toggled(toggled_on):
-	AudioServer.set_bus_mute(0, toggled_on)
+	Player.userConfigs.set_value("Audio", "MasterMute", toggled_on)
+	apply_config_file()
+	
 ## SFX
 func _on_set_sfx_value_changed(value):
-	AudioServer.set_bus_volume_db(2, value)
+	Player.userConfigs.set_value("Audio", "SFXValue", value)
+	apply_config_file()
+	
 func _on_mute_sfx_toggled(toggled_on):
-	AudioServer.set_bus_mute(2, toggled_on)
+	Player.userConfigs.set_value("Audio", "SFXMute", toggled_on)
+	apply_config_file()
+	
 ## Dialouge SFX
 func _on_set_dialouge_sfx_value_changed(value):
-	AudioServer.set_bus_volume_db(3, value)
+	Player.userConfigs.set_value("Audio", "DialougeValue", value)
+	apply_config_file()
+	
 func _on_mute_dialouge_sfx_toggled(toggled_on):
-	AudioServer.set_bus_mute(3, toggled_on)
+	Player.userConfigs.set_value("Audio", "DialougeMute", toggled_on)
+	apply_config_file()
+	
 ## Ambience
 func _on_set_ambience_value_changed(value):
-	AudioServer.set_bus_volume_db(4, value)
+	Player.userConfigs.set_value("Audio", "AmbienceValue", value)
+	apply_config_file()
+	
 func _on_mute_ambience_toggled(toggled_on):
-	AudioServer.set_bus_mute(4, toggled_on)
+	Player.userConfigs.set_value("Audio", "AmbienceMute", toggled_on)
+	apply_config_file()
+	
 ## Music
 func _on_set_music_value_changed(value):
-	AudioServer.set_bus_volume_db(1, value)
+	Player.userConfigs.set_value("Audio", "MusicValue", value)
+	apply_config_file()
+	
 func _on_mute_music_toggled(toggled_on):
-	AudioServer.set_bus_mute(1, toggled_on)
+	Player.userConfigs.set_value("Audio", "MusicMute", toggled_on)
+	apply_config_file()
+
+
+
 # Display Settings:
 
 ## Resolution
@@ -43,6 +64,7 @@ func _on_resolution_item_selected(index):
 			DisplayServer.window_set_size(Vector2i(1920, 1080))
 		3:
 			DisplayServer.window_set_size(Vector2i(2560, 1440))
+	apply_config_file()
 
 ## EXIT Game
 func _on_button_pressed():
@@ -59,6 +81,8 @@ func _on_full_screen_check_toggled(toggled_on: bool) -> void:
 
 func apply_config_file():
 	Player.userConfigs.save("user://settings.cfg")
+	
+	# DISPLAY
 	var fullscreen = Player.userConfigs.get_value("display", "fullscreen", true)
 	var resolution = Player.userConfigs.get_value("display", "resolution", Vector2i(1920, 1080))
 	
@@ -70,3 +94,19 @@ func apply_config_file():
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 		get_tree().get_first_node_in_group("ResolutionSwitcher").visible = true
 		DisplayServer.window_set_size(resolution)
+	
+	#AUDIO
+	AudioServer.set_bus_volume_db(0, Player.userConfigs.get_value("Audio", "MasterValue", 0))
+	AudioServer.set_bus_mute(0, Player.userConfigs.get_value("Audio", "MasterMute", false))
+	
+	AudioServer.set_bus_volume_db(2, Player.userConfigs.get_value("Audio", "SFXValue", 0))
+	AudioServer.set_bus_mute(2, Player.userConfigs.get_value("Audio", "SFXMute", false))
+	
+	AudioServer.set_bus_volume_db(3, Player.userConfigs.get_value("Audio", "DialougeValue", 0))
+	AudioServer.set_bus_mute(3, Player.userConfigs.get_value("Audio", "DialougeMute", false))
+	
+	AudioServer.set_bus_volume_db(4, Player.userConfigs.get_value("Audio", "AmbienceValue", 0))
+	AudioServer.set_bus_mute(4, Player.userConfigs.get_value("Audio", "AmbienceMute", false))
+	
+	AudioServer.set_bus_volume_db(1, Player.userConfigs.get_value("Audio", "MusicValue", 0))
+	AudioServer.set_bus_mute(1, Player.userConfigs.get_value("Audio", "MusicMute", false))

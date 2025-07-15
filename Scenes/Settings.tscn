@@ -35,10 +35,9 @@ theme_override_constants/margin_bottom = 10
 [node name="TabContainer" type="TabContainer" parent="MarginContainer"]
 layout_mode = 2
 tab_alignment = 1
-current_tab = 1
+current_tab = 0
 
 [node name="Sound" type="VBoxContainer" parent="MarginContainer/TabContainer"]
-visible = false
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 theme_override_constants/separation = 10
@@ -195,6 +194,7 @@ layout_mode = 2
 tooltip_text = "Mute the Music Volume?"
 
 [node name="Display" type="VBoxContainer" parent="MarginContainer/TabContainer"]
+visible = false
 clip_contents = true
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2

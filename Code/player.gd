@@ -14,6 +14,18 @@ func _ready() -> void:
 		# If the config file doesn't exist yet then set default values into it and create it
 		userConfigs.set_value("display", "fullscreen", true)
 		userConfigs.set_value("display", "resolution", Vector2i(1920, 1080))
+		
+		Player.userConfigs.set_value("Audio", "MasterValue", 0)
+		Player.userConfigs.set_value("Audio", "MasterMute", false)
+		Player.userConfigs.set_value("Audio", "SFXValue", 0)
+		Player.userConfigs.set_value("Audio", "SFXMute", false)
+		Player.userConfigs.set_value("Audio", "DialougeValue", 0)
+		Player.userConfigs.set_value("Audio", "DialougeMute", false)
+		Player.userConfigs.set_value("Audio", "AmbienceValue", 0)
+		Player.userConfigs.set_value("Audio", "AmbienceMute", false)
+		Player.userConfigs.set_value("Audio", "MusicValue", 0)
+		Player.userConfigs.set_value("Audio", "MusicMute", false)
+		
 		userConfigs.save("user://settings.cfg")
 	
 	var fullscreen = Player.userConfigs.get_value("display", "fullscreen", true)
