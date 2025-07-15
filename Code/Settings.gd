@@ -1,6 +1,7 @@
 extends Control
 
 func _ready() -> void:
+	# AUDIO
 	$"MarginContainer/TabContainer/Sound/Master Volume/Set Master".value = Player.userConfigs.get_value("Audio", "MasterValue", 0)
 	$"MarginContainer/TabContainer/Sound/Master Volume/Mute Master".button_pressed = Player.userConfigs.get_value("Audio", "MasterMute", 0)
 	$"MarginContainer/TabContainer/Sound/SFX Volume/Set SFX".value = Player.userConfigs.get_value("Audio", "SFXValue", 0)
@@ -12,6 +13,10 @@ func _ready() -> void:
 	$"MarginContainer/TabContainer/Sound/Music/Set Music".value = Player.userConfigs.get_value("Audio", "MusicValue", 0)
 	$"MarginContainer/TabContainer/Sound/Music/Mute Music".button_pressed = Player.userConfigs.get_value("Audio", "MusicMute", false)
 
+	# DISPLAY
+	$"MarginContainer/TabContainer/Display/HSplitContainer1/FullScreenCheck".button_pressed = Player.userConfigs.get_value("Display", "Fullscreen", true)
+	# $"MarginContainer/TabContainer/Display/HSplitContainer2/Resolution".selected = Player.userConfigs.get_value("Display", "Resolution", Vector2i(1920, 1080))
+	
 func _process(delta):
 	if Input.is_action_just_pressed("Settings"):
 		get_tree().change_scene_to_file("res://Scenes/deck.tscn")
@@ -82,15 +87,15 @@ func _on_button_pressed():
 
 func _on_full_screen_check_toggled(toggled_on: bool) -> void:
 	if toggled_on:
-		Player.userConfigs.set_value("display", "fullscreen", true)
+		Player.userConfigs.set_value("Display", "Fullscreen", true)
 	else:
-		Player.userConfigs.set_value("display", "fullscreen", false)
+		Player.userConfigs.set_value("Display", "Fullscreen", false)
 	apply_config_file()
 
 func apply_config_file():
 	# DISPLAY
-	var fullscreen = Player.userConfigs.get_value("display", "fullscreen", true)
-	var resolution = Player.userConfigs.get_value("display", "resolution", Vector2i(1920, 1080))
+	var fullscreen = Player.userConfigs.get_value("Display", "Fullscreen", true)
+	var resolution = Player.userConfigs.get_value("Display", "Resolution", Vector2i(1920, 1080))
 	
 	if fullscreen:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
