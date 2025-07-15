@@ -27,7 +27,6 @@ func CardHandler() -> Dictionary:
 			var card = content[i]
 			# Lets iterate over each value in the line, than define it
 			for j in card:
-				print(j)
 				if (Check == 0):
 					# Define the Name
 					cardBank.name = j
@@ -188,11 +187,7 @@ func _on_ready() -> void:
 		var secrets
 		var playsound
 		for item in cardBank:
-			print("testing item;")
-			print(item)
 			var gtem = cardBank[item]
-			print ("Testing gtem;")
-			print(gtem)
 			if Check == 0:
 				name = cardBank[item]
 			if Check == 1:

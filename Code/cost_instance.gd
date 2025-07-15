@@ -3,14 +3,12 @@ extends Node2D
 class_name CostInstance
 
 func set_display(data : String, order : int):
-	print("DATA: ", data)
 	var databits = data.split(" ")
 	
 	# Gem Handling
 	var check : String = databits[0]
 	if check.contains("gems"):
 		var gemslist = databits[0].split(":")[1].replace("{", "").replace("}", "").split(".")
-		print(gemslist)
 		$Gems.visible = true
 		var countup = 0
 		var sapphire = $Gems/Sapphire
