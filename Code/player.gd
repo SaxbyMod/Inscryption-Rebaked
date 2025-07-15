@@ -9,8 +9,10 @@ var userConfigs : ConfigFile = ConfigFile.new()
 
 func _ready() -> void:
 	if FileAccess.file_exists("user://settings.cfg"):
+		print("user config loaded")
 		userConfigs.load("user://settings.cfg")
 	else:
+		print("user config generated")
 		# If the config file doesn't exist yet then set default values into it and create it
 		userConfigs.set_value("display", "fullscreen", true)
 		userConfigs.set_value("display", "resolution", Vector2i(1920, 1080))
@@ -36,6 +38,17 @@ func _ready() -> void:
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 		DisplayServer.window_set_size(resolution)
+	
+	AudioServer.set_bus_volume_db(0, Player.userConfigs.get_value("Audio", "MasterValue", 0))
+	AudioServer.set_bus_mute(0, Player.userConfigs.get_value("Audio", "MasterMute", false))
+	AudioServer.set_bus_volume_db(2, Player.userConfigs.get_value("Audio", "SFXValue", 0))
+	AudioServer.set_bus_mute(2, Player.userConfigs.get_value("Audio", "SFXMute", false))
+	AudioServer.set_bus_volume_db(3, Player.userConfigs.get_value("Audio", "DialougeValue", 0))
+	AudioServer.set_bus_mute(3, Player.userConfigs.get_value("Audio", "DialougeMute", false))
+	AudioServer.set_bus_volume_db(4, Player.userConfigs.get_value("Audio", "AmbienceValue", 0))
+	AudioServer.set_bus_mute(4, Player.userConfigs.get_value("Audio", "AmbienceMute", false))
+	AudioServer.set_bus_volume_db(1, Player.userConfigs.get_value("Audio", "MusicValue", 0))
+	AudioServer.set_bus_mute(1, Player.userConfigs.get_value("Audio", "MusicMute", false))
 
 
 func _process(delta):
