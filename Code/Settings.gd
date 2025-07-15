@@ -1,6 +1,5 @@
 extends Control
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_just_pressed("Settings"):
 		get_tree().change_scene_to_file("res://Scenes/deck.tscn")
@@ -52,15 +51,22 @@ func _on_button_pressed():
 
 func _on_full_screen_check_toggled(toggled_on: bool) -> void:
 	if toggled_on:
+		Player.userConfigs.set_value("display", "fullscreen", true)
+	else:
+		Player.userConfigs.set_value("display", "fullscreen", false)
+	apply_config_file()
+
+
+func apply_config_file():
+	Player.userConfigs.save("user://settings.cfg")
+	var fullscreen = Player.userConfigs.get_value("display", "fullscreen", true)
+	var resolution = Player.userConfigs.get_value("display", "resolution", Vector2i(1920, 1080))
+	
+	if fullscreen:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 		# If the window is in fullscreen then it already is the resolution of your monitor so there's no point in showing a resolution selector
 		get_tree().get_first_node_in_group("ResolutionSwitcher").visible = false
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 		get_tree().get_first_node_in_group("ResolutionSwitcher").visible = true
-		# If the user switches to windowed mode I want the window to assume the resolution selected in the dropdown
-		# This code does that
-		var selectedRes : OptionButton = get_tree().get_first_node_in_group("ResolutionSwitcher").get_child(1)
-		var dimensions = selectedRes.get_item_text(selectedRes.selected).split("x")
-		DisplayServer.window_set_size(Vector2i(int(dimensions[0]), int(dimensions[1])))
-		
+		DisplayServer.window_set_size(resolution)

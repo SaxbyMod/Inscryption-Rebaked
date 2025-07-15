@@ -5,6 +5,27 @@ var currentlyHovered : Node2D
 
 var levels = [1,3,3]
 
+var userConfigs : ConfigFile = ConfigFile.new()
+
+func _ready() -> void:
+	if FileAccess.file_exists("user://settings.cfg"):
+		userConfigs.load("user://settings.cfg")
+	else:
+		# If the config file doesn't exist yet then set default values into it and create it
+		userConfigs.set_value("display", "fullscreen", true)
+		userConfigs.set_value("display", "resolution", Vector2i(1920, 1080))
+		userConfigs.save("user://settings.cfg")
+	
+	var fullscreen = Player.userConfigs.get_value("display", "fullscreen", true)
+	var resolution = Player.userConfigs.get_value("display", "resolution", Vector2i(1920, 1080))
+	
+	if fullscreen:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		DisplayServer.window_set_size(resolution)
+
+
 func _process(delta):
 	if get_tree().current_scene != null:
 		if not get_tree().current_scene.is_in_group("cardPlayer"):
