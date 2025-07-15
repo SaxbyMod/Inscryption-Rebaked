@@ -49,8 +49,6 @@ func _on_mute_music_toggled(toggled_on):
 	Player.userConfigs.set_value("Audio", "MusicMute", toggled_on)
 	apply_config_file()
 
-
-
 # Display Settings:
 
 ## Resolution
@@ -70,14 +68,12 @@ func _on_resolution_item_selected(index):
 func _on_button_pressed():
 	get_tree().quit()
 
-
 func _on_full_screen_check_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		Player.userConfigs.set_value("display", "fullscreen", true)
 	else:
 		Player.userConfigs.set_value("display", "fullscreen", false)
 	apply_config_file()
-
 
 func apply_config_file():
 	Player.userConfigs.save("user://settings.cfg")
@@ -110,3 +106,7 @@ func apply_config_file():
 	
 	AudioServer.set_bus_volume_db(1, Player.userConfigs.get_value("Audio", "MusicValue", 0))
 	AudioServer.set_bus_mute(1, Player.userConfigs.get_value("Audio", "MusicMute", false))
+	
+func _on_ready() -> void:
+	Player.userConfigs.get("user://settings.cfg")
+	# Work on this more later

@@ -83,15 +83,84 @@ func set_display(data : String, order : int):
 		
 	# Cost Handling
 	$Counter.text = "x" + databits[0]
+	$Costs.visible = true
 	match databits[1]:
 		"blood":
-			$Blood.visible = true
+			var blood = $Costs/Blood
+			var countup = 0
+			var spaceincrement = 25
+			var costAmount = int(databits[0])
+			if costAmount >= 4:
+				blood.visible = true
+				position.y = order * 50
+			while countup != costAmount:
+				if countup == 0:
+					blood.visible = true
+					$Counter.visible = false
+				else:
+					var costInstance : TextureRect = null
+					costInstance = blood.duplicate()
+					costInstance.position = Vector2((spaceincrement)*(countup), 0)
+					$Costs.add_child(costInstance)
+					$Costs.move_child(costInstance, costInstance.visibility_layer -1)
+				countup += 1
 		"bone":
-			$Bone.visible = true
+			var bone = $Costs/Bone
+			var countup = 0
+			var spaceincrement = 25
+			var costAmount = int(databits[0])
+			if costAmount >= 4:
+				bone.visible = true
+				position.y = order * 50
+			while countup != costAmount:
+				if countup == 0:
+					bone.visible = true
+					$Counter.visible = false
+				else:
+					var costInstance : TextureRect = null
+					costInstance = bone.duplicate()
+					costInstance.position = Vector2((spaceincrement)*(countup), 0)
+					$Costs.add_child(costInstance)
+					$Costs.move_child(costInstance, costInstance.visibility_layer -1)
+				countup += 1
 		"bones":
-			$Bone.visible = true
+			var bone = $Costs/Bone
+			var countup = 0
+			var spaceincrement = 25
+			var costAmount = int(databits[0])
+			if costAmount >= 4:
+				bone.visible = true
+				position.y = order * 50
+			while countup != costAmount:
+				if countup == 0:
+					bone.visible = true
+					$Counter.visible = false
+				else:
+					var costInstance : TextureRect = null
+					costInstance = bone.duplicate()
+					costInstance.position = Vector2((spaceincrement)*(countup), 0)
+					$Costs.add_child(costInstance)
+					$Costs.move_child(costInstance, costInstance.visibility_layer -1)
+				countup += 1
 		"energy":
-			$Energy.visible = true
+			var energy = $Costs/Energy
+			var countup = 0
+			var spaceincrement = 20
+			var costAmount = int(databits[0])
+			if costAmount >= 5:
+				energy.visible = true
+				position.y = order * 50
+			while countup != costAmount:
+				if countup == 0:
+					energy.visible = true
+					$Counter.visible = false
+				else:
+					var costInstance : TextureRect = null
+					costInstance = energy.duplicate()
+					costInstance.position = Vector2((spaceincrement)*(countup), 0)
+					$Costs.add_child(costInstance)
+					$Costs.move_child(costInstance, costInstance.visibility_layer -1)
+				countup += 1
 
 	# This moves the display down depending on the order it was created in
 	position.y = order * 50

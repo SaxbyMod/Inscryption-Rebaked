@@ -14,30 +14,6 @@
 texture_filter = 1
 script = ExtResource("1_onx6p")
 
-[node name="Blood" type="TextureRect" parent="."]
-visible = false
-custom_minimum_size = Vector2(6, 9)
-offset_right = 30.0
-offset_bottom = 45.0
-size_flags_vertical = 4
-texture = ExtResource("2_eg5pt")
-
-[node name="Bone" type="TextureRect" parent="."]
-visible = false
-custom_minimum_size = Vector2(6, 9)
-offset_right = 30.0
-offset_bottom = 45.0
-size_flags_vertical = 4
-texture = ExtResource("3_a76ft")
-
-[node name="Energy" type="TextureRect" parent="."]
-visible = false
-custom_minimum_size = Vector2(6, 9)
-offset_right = 30.0
-offset_bottom = 45.0
-size_flags_vertical = 4
-texture = ExtResource("4_68n4p")
-
 [node name="Counter" type="RichTextLabel" parent="."]
 offset_left = 33.0
 offset_top = 2.0
@@ -49,6 +25,32 @@ theme_override_font_sizes/normal_font_size = 64
 text = "x0"
 scroll_active = false
 autowrap_mode = 0
+
+[node name="Costs" type="Node2D" parent="."]
+
+[node name="Blood" type="TextureRect" parent="Costs"]
+visible = false
+custom_minimum_size = Vector2(6, 9)
+offset_right = 30.0
+offset_bottom = 45.0
+size_flags_vertical = 4
+texture = ExtResource("2_eg5pt")
+
+[node name="Bone" type="TextureRect" parent="Costs"]
+visible = false
+custom_minimum_size = Vector2(6, 9)
+offset_right = 30.0
+offset_bottom = 45.0
+size_flags_vertical = 4
+texture = ExtResource("3_a76ft")
+
+[node name="Energy" type="TextureRect" parent="Costs"]
+visible = false
+custom_minimum_size = Vector2(6, 9)
+offset_right = 30.0
+offset_bottom = 45.0
+size_flags_vertical = 4
+texture = ExtResource("4_68n4p")
 
 [node name="Gems" type="Node2D" parent="."]
 visible = false
