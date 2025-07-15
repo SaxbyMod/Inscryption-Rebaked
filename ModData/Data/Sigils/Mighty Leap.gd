@@ -1,4 +1,4 @@
-extends Node
+extends Sigil
 
 func MightyLeapRegister() -> SigilBank:
 	# Create a sigil bank

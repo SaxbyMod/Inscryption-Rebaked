@@ -37,13 +37,11 @@ var dead = false
 
 func _ready():
 	defaultScale = scale.x
-	
 	#Cost setup
 	for n in len(cost):
 		var inst : CostInstance = costInstance.instantiate()
 		$CostSpawningArea.add_child(inst)
 		inst.set_display(cost[n], n)
-	print($CostSpawningArea.get_children())
 	#Graphics
 	for n in range(1, 6):
 		get_node("CardGfx/Text Boxes/Text Element Defined/Tribe Holder/Tribe Container/Tribe " + str(n)).texture = null
@@ -59,6 +57,11 @@ func _ready():
 		get_node("CardGfx/Sigils/GridContainer/Sigil" + str(n)).texture = null
 
 	for n in len(sigils):
+		var currentScriptNode = get_node("CardGfx/Sigils/SigilScripts/Sigil" + str(n+1))
+		currentScriptNode.set_script(load("res://ModData/Data/Sigils/" + sigils[n] + ".gd"))
+		
+		currentScriptNode.test()
+		
 		var image : Image = Image.new()
 		image.load("res://ModData/Art/Sigils/" + sigils[n] + ".png")
 		var sigil1 : Texture2D = ImageTexture.create_from_image(image)
@@ -78,7 +81,6 @@ func _process(delta):
 		return
 	
 	mouseHover = mouse_detection()
-	print(parentSlot)
 	
 	# If the card changes slots then it sets its previous slot to be unoccupied
 	if parentSlot != prevParentSlot and prevParentSlot != null:

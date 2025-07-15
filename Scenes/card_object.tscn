@@ -61,6 +61,16 @@ texture = ExtResource("6_o8br8")
 layout_mode = 2
 texture = ExtResource("6_o8br8")
 
+[node name="SigilScripts" type="Node" parent="CardGfx/Sigils"]
+
+[node name="Sigil1" type="Node" parent="CardGfx/Sigils/SigilScripts"]
+
+[node name="Sigil2" type="Node" parent="CardGfx/Sigils/SigilScripts"]
+
+[node name="Sigil3" type="Node" parent="CardGfx/Sigils/SigilScripts"]
+
+[node name="Sigil4" type="Node" parent="CardGfx/Sigils/SigilScripts"]
+
 [node name="Text Boxes" type="Node2D" parent="CardGfx"]
 
 [node name="Powerbar" type="RichTextLabel" parent="CardGfx/Text Boxes"]

@@ -1,4 +1,4 @@
-extends Node
+extends Sigil
 
 func AirborneRegister() -> SigilBank:
 	# Create a sigil bank
@@ -13,3 +13,6 @@ func AirborneRegister() -> SigilBank:
 	sigilBank.netacategories = []
 	sigilBank.icon = ImageTexture.create_from_image(Icon)
 	return sigilBank
+
+func test():
+	print("----------------------------------------------Overwrite")

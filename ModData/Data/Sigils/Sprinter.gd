@@ -1,4 +1,4 @@
-extends Node
+extends Sigil
 
 func SprinterRegister() -> SigilBank:
 	# Create a sigil bank

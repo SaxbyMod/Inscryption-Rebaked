@@ -1,4 +1,4 @@
-extends Node
+extends Sigil
 
 func SniperRegister() -> SigilBank:
 	# Create a sigil bank

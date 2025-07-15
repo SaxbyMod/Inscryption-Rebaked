@@ -140,21 +140,21 @@ func CardHandler() -> Dictionary:
 			}
 		List[cardBank.name] = cardBank
 		# Verbose logging because why not
-		print("Printing Card Bank: ")
-		print(cardBank.name)
-		print(cardBank.flavor)
-		print(cardBank.temple)
-		print(cardBank.rarity)
-		print(cardBank.cost)
-		print(cardBank.sigils)
-		print(cardBank.power)
-		print(cardBank.health)
-		print(cardBank.illustrator)
-		print(cardBank.tribes)
-		print(cardBank.lore)
-		print(cardBank.traits)
-		print(cardBank.secrets)
-		print(cardBank.playsound)
+		#print("Printing Card Bank: ")
+		#print(cardBank.name)
+		#print(cardBank.flavor)
+		#print(cardBank.temple)
+		#print(cardBank.rarity)
+		#print(cardBank.cost)
+		#print(cardBank.sigils)
+		#print(cardBank.power)
+		#print(cardBank.health)
+		#print(cardBank.illustrator)
+		#print(cardBank.tribes)
+		#print(cardBank.lore)
+		#print(cardBank.traits)
+		#print(cardBank.secrets)
+		#print(cardBank.playsound)
 	return List
 
 # Define the Parent and Object
@@ -171,11 +171,7 @@ func _on_ready() -> void:
 	for card in List:
 		# Get the Parent
 		cardParent = $Bestiary
-		print("Testing;")
-		print(card)
 		var cardBank = List[card]
-		print("Testing Bank;")
-		print(cardBank)
 		var Check = 0
 		var name
 		var flavor
@@ -229,8 +225,6 @@ func _on_ready() -> void:
 			Portrait.load("res://ModData/Art/Portraits/" + name + ".png")
 			
 		# Define Cost
-		print("Testing Cost;")
-		print(cost)
 		var description : String = "[NO DATA]"
 		description = "[i]" + flavor + "[/i]\n\n\n" + lore
 		# Define an Entry
