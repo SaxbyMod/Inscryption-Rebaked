@@ -59,6 +59,7 @@ func _ready():
 	for n in len(sigils):
 		var currentScriptNode = get_node("CardGfx/Sigils/SigilScripts/Sigil" + str(n+1))
 		currentScriptNode.set_script(load("res://ModData/Data/Sigils/" + sigils[n] + ".gd"))
+		currentScriptNode.parentCard = self
 		
 		currentScriptNode.test()
 		
