@@ -15,7 +15,8 @@ func _ready() -> void:
 
 	# DISPLAY
 	$"MarginContainer/TabContainer/Display/HSplitContainer1/FullScreenCheck".button_pressed = Player.userConfigs.get_value("Display", "Fullscreen", true)
-	# $"MarginContainer/TabContainer/Display/HSplitContainer2/Resolution".selected = Player.userConfigs.get_value("Display", "Resolution", Vector2i(1920, 1080))
+	var setToRes = convertToIntFromRes(Player.userConfigs.get_value("Display", "Resolution", Vector2i(1920, 1080)))
+	$"MarginContainer/TabContainer/Display/HSplitContainer2/Resolution".selected = setToRes
 	
 func _process(delta):
 	if Input.is_action_just_pressed("Settings"):
@@ -80,6 +81,19 @@ func _on_resolution_item_selected(index):
 		3:
 			DisplayServer.window_set_size(Vector2i(2560, 1440))
 	apply_config_file()
+	
+var vectir : Vector2i
+func convertToIntFromRes(vector) -> int:
+	match vector:
+		Vector2i(1280, 720):
+			return 0
+		Vector2i(1600, 900):
+			return 1
+		Vector2i(1920, 1080):
+			return 2
+		Vector2i(2560, 1440):
+			return 3
+	return 2
 
 ## EXIT Game
 func _on_button_pressed():
