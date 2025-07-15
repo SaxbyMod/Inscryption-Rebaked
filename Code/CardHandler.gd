@@ -232,7 +232,7 @@ func _on_ready() -> void:
 		print("Testing Cost;")
 		print(cost)
 		var description : String = "[NO DATA]"
-		description = "[i]" + flavor + "[/i][Br][/Br][Br][/Br]" + lore
+		description = "[i]" + flavor + "[/i]\n\n\n" + lore
 		# Define an Entry
 		var entry = cardObject.instantiate()
 		entry.cardGfx = ImageTexture.create_from_image(Portrait)
