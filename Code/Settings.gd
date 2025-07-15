@@ -1,5 +1,17 @@
 extends Control
 
+func _ready() -> void:
+	$"MarginContainer/TabContainer/Sound/Master Volume/Set Master".value = Player.userConfigs.get_value("Audio", "MasterValue", 0)
+	$"MarginContainer/TabContainer/Sound/Master Volume/Mute Master".button_pressed = Player.userConfigs.get_value("Audio", "MasterMute", 0)
+	$"MarginContainer/TabContainer/Sound/SFX Volume/Set SFX".value = Player.userConfigs.get_value("Audio", "SFXValue", 0)
+	$"MarginContainer/TabContainer/Sound/SFX Volume/Mute SFX".button_pressed = Player.userConfigs.get_value("Audio", "SFXMute", false)
+	$"MarginContainer/TabContainer/Sound/Dialouge SFX/Set Dialouge SFX".value = Player.userConfigs.get_value("Audio", "DialougeValue", 0)
+	$"MarginContainer/TabContainer/Sound/Dialouge SFX/Mute Dialouge SFX".button_pressed = Player.userConfigs.get_value("Audio", "DialougeMute", false)
+	$"MarginContainer/TabContainer/Sound/Ambience/Set Ambience".value = Player.userConfigs.get_value("Audio", "AmbienceValue", 0)
+	$"MarginContainer/TabContainer/Sound/Ambience/Mute Ambience".button_pressed = Player.userConfigs.get_value("Audio", "AmbienceMute", false)
+	$"MarginContainer/TabContainer/Sound/Music/Set Music".value = Player.userConfigs.get_value("Audio", "MusicValue", 0)
+	$"MarginContainer/TabContainer/Sound/Music/Mute Music".button_pressed = Player.userConfigs.get_value("Audio", "MusicMute", false)
+
 func _process(delta):
 	if Input.is_action_just_pressed("Settings"):
 		get_tree().change_scene_to_file("res://Scenes/deck.tscn")
@@ -76,8 +88,6 @@ func _on_full_screen_check_toggled(toggled_on: bool) -> void:
 	apply_config_file()
 
 func apply_config_file():
-	Player.userConfigs.save("user://settings.cfg")
-	
 	# DISPLAY
 	var fullscreen = Player.userConfigs.get_value("display", "fullscreen", true)
 	var resolution = Player.userConfigs.get_value("display", "resolution", Vector2i(1920, 1080))
@@ -106,6 +116,8 @@ func apply_config_file():
 	
 	AudioServer.set_bus_volume_db(1, Player.userConfigs.get_value("Audio", "MusicValue", 0))
 	AudioServer.set_bus_mute(1, Player.userConfigs.get_value("Audio", "MusicMute", false))
+	
+	Player.userConfigs.save("user://settings.cfg")
 	
 func _on_ready() -> void:
 	Player.userConfigs.get("user://settings.cfg")
