@@ -15,8 +15,7 @@ func _ready() -> void:
 
 	# DISPLAY
 	$"MarginContainer/TabContainer/Display/HSplitContainer1/FullScreenCheck".button_pressed = Player.userConfigs.get_value("Display", "Fullscreen", true)
-	var setToRes = convertToIntFromRes(Player.userConfigs.get_value("Display", "Resolution", Vector2i(1920, 1080)))
-	$"MarginContainer/TabContainer/Display/HSplitContainer2/Resolution".selected = setToRes
+	$"MarginContainer/TabContainer/Display/HSplitContainer2/Resolution".selected = Player.userConfigs.get_value("Display", "Resolution", 2)
 	
 func _process(delta):
 	if Input.is_action_just_pressed("Settings"):
@@ -81,19 +80,6 @@ func _on_resolution_item_selected(index):
 		3:
 			DisplayServer.window_set_size(Vector2i(2560, 1440))
 	apply_config_file()
-	
-var vectir : Vector2i
-func convertToIntFromRes(vector) -> int:
-	match vector:
-		Vector2i(1280, 720):
-			return 0
-		Vector2i(1600, 900):
-			return 1
-		Vector2i(1920, 1080):
-			return 2
-		Vector2i(2560, 1440):
-			return 3
-	return 2
 
 ## EXIT Game
 func _on_button_pressed():
@@ -109,7 +95,7 @@ func _on_full_screen_check_toggled(toggled_on: bool) -> void:
 func apply_config_file():
 	# DISPLAY
 	var fullscreen = Player.userConfigs.get_value("Display", "Fullscreen", true)
-	var resolution = Player.userConfigs.get_value("Display", "Resolution", Vector2i(1920, 1080))
+	var resolution = Player.userConfigs.get_value("Display", "Resolution", 2)
 	
 	if fullscreen:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
@@ -118,7 +104,16 @@ func apply_config_file():
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 		get_tree().get_first_node_in_group("ResolutionSwitcher").visible = true
-		DisplayServer.window_set_size(resolution)
+		
+		match resolution:
+			0:
+				DisplayServer.window_set_size(Vector2i(1280, 720))
+			1:
+				DisplayServer.window_set_size(Vector2i(1600, 900))
+			2:
+				DisplayServer.window_set_size(Vector2i(1920, 1080))
+			3:
+				DisplayServer.window_set_size(Vector2i(2560, 1440))
 	
 	#AUDIO
 	AudioServer.set_bus_volume_db(0, Player.userConfigs.get_value("Audio", "MasterValue", 0))
