@@ -18,7 +18,6 @@ func _ready() -> void:
 	$"MarginContainer/TabContainer/Display/HSplitContainer2/Resolution".selected = Player.userConfigs.get_value("Display", "Resolution", 2)
 	
 func _process(delta):
-	apply_config_file()
 	if Input.is_action_just_pressed("Settings"):
 		get_tree().change_scene_to_file("res://Scenes/deck.tscn")
 
@@ -72,16 +71,12 @@ func _on_mute_music_toggled(toggled_on):
 func _on_resolution_item_selected(index):
 	match index:
 		0:
-			get_window().size = Vector2i(1280, 720)
 			Player.userConfigs.set_value("Display", "Resolution", 0)
 		1:
-			get_window().size = Vector2i(1600, 900)
 			Player.userConfigs.set_value("Display", "Resolution", 1)
 		2:
-			get_window().size = Vector2i(1920, 1080)
 			Player.userConfigs.set_value("Display", "Resolution", 2)
 		3:
-			get_window().size = Vector2i(2560, 1440)
 			Player.userConfigs.set_value("Display", "Resolution", 3)
 	apply_config_file()
 
